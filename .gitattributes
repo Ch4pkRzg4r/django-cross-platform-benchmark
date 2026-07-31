@@ -1,0 +1,2 @@
+# Preserve thesis-recorded artefact bytes exactly; disable Git EOL normalization.
+* -text

@@ -1,4 +1,5 @@
 path,role
+.gitattributes,byte-preserving Git attributes
 .gitignore,repository hygiene
 ARTEFACT_PROVENANCE.md,repository documentation
 CITATION.cff,citation metadata
