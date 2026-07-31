@@ -1,0 +1,35 @@
+Cross-verification: ch4_evidence_pipeline.py output vs. figures/tables printed in MSc_Thesis_v131 Chapter 4
+==============================================================================
+CHECK                             pipeline   thesis v131   status
+A leader = IIS+Waitress       IIS+Waitress  IIS+Waitress   PASS
+A leader p95                         116.9         116.9   PASS
+B leader = Nginx+uWSGI         Nginx+uWSGI   Nginx+uWSGI   PASS
+B leader p95                           118           118   PASS
+C leader p95 (Nginx)                 112.8         112.8   PASS
+C ACA p95                            113.6         113.6   PASS
+D leader = ACA                         ACA           ACA   PASS
+D leader p95                         121.2         121.2   PASS
+Apache C p95 median                  146.3         146.3   PASS
+Apache A censored                       10            10   PASS
+Apache C censored                        6             6   PASS
+Gunicorn D censored                      2             2   PASS
+KW A p95 H                            39.9          39.9   PASS
+KW A p95 eps2                        0.538         0.538   PASS
+KW C p95 H                            51.7          51.7   PASS
+KW A error H                          61.1          61.1   PASS
+KW B apdex eps2                      0.402         0.402   PASS
+T4.14 Nginx Holm p                  0.0365        0.0365   PASS
+T4.14 ACA Holm p                    0.0114        0.0114   PASS
+T4.14 Gunicorn Holm p               0.3498        0.3498   PASS
+T4.14 IIS Holm p                         1             1   PASS
+T4.14 Nginx δ                         0.72          0.72   PASS
+T4.14 ACA δ                           0.94          0.94   PASS
+Nginx A goodput                         20            20   PASS
+ACA D goodput                        17.83         17.83   PASS
+ACA D error %                      0.02025          0.02   PASS
+Gunicorn D p95                        4428          4428   PASS
+Apache A error %                     1.454         1.454   PASS
+Apache C error %                     1.923         1.923   PASS
+valid probe pairs                       14            14   PASS
+
+30/30 checks PASS (seed=20260603, R=10000, censor rule p99>=59000 ms)

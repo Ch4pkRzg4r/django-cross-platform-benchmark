@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use these artefacts, please cite the thesis and this repository."
+type: dataset
+title: "Benchmarking and Evaluation of Traditional Web Servers and Serverless Architectures for an E-Commerce System: Research Artefact Repository"
+version: "1.0.0"
+authors:
+  - family-names: "Abdalla"
+    given-names: "Chapk Rzgar Mohammed"
+    affiliation: "College of Science, University of Sulaimani"
+keywords:
+  - benchmarking
+  - serverless
+  - Django
+  - k6
+  - web-servers
+license: "MIT AND CC-BY-4.0"

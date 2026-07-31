@@ -1,0 +1,1 @@
+This directory holds historical analytical provenance only. `phase3_inferential.py` is the retained earlier inferential phase; the controlling inferential path is the unified wrapper `../run_analysis.py` with `../ch4_evidence_pipeline.py`. Do not run this copy as the current pipeline.

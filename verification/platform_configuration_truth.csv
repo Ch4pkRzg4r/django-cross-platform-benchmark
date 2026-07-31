@@ -1,0 +1,8 @@
+﻿id,name,type,wsgi_server,rev,memory_gib,cpu_cores,scale_to_zero,edge_proxy,notes
+01_apache_modwsgi,Apache + mod_wsgi,traditional,mod_wsgi,REV6,2,2,False,False,
+02_nginx_uwsgi,Nginx + uWSGI,traditional,uWSGI,REV6,2,2,False,False,
+03_django_gunicorn,Django + Gunicorn,traditional,gunicorn,REV6,2,2,False,False,
+04_aca,Azure Container Apps,serverless,gunicorn,REV6,4,2,True,True,ACA Consumption profile forces 1:2 CPU:Memory ratio (4 GiB minimum for 2 vCPU)
+05_koyeb,Koyeb,serverless,gunicorn,REV6,2,2,True,True,
+06_flyio,Fly.io,serverless,gunicorn,REV6,2,2,True,True,
+07_iis_waitress,IIS + Waitress,traditional,waitress,REV5,2,2,False,False,Windows VM stays at REV5 (documented Threat #8); functionally equivalent to REV6 on Linux

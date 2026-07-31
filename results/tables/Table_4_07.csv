@@ -1,0 +1,16 @@
+﻿platform,attempt,first_after_idle_ms,immediate_warm_repeat_ms,ratio_first/warm,valid
+ACA,1,23626.2,212.5,111.2,True
+ACA,2,20480.0,199.6,102.6,True
+ACA,3,20668.8,297.2,69.6,True
+ACA,4,20407.8,128.4,158.9,True
+ACA,5,20699.7,202.9,102.0,True
+Koyeb,1,-1.0,-1.0,,False
+Koyeb,2,861.8,146.6,5.9,True
+Koyeb,3,15822.3,140.8,112.4,True
+Koyeb,4,530.4,150.3,3.5,True
+Koyeb,5,7300.3,153.9,47.4,True
+Fly.io,1,3873.2,236.6,16.4,True
+Fly.io,2,519.2,112.4,4.6,True
+Fly.io,3,3709.9,122.9,30.2,True
+Fly.io,4,500.9,138.6,3.6,True
+Fly.io,5,4037.9,157.1,25.7,True

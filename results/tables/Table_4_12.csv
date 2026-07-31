@@ -1,0 +1,11 @@
+﻿Question / hypothesis,Primary evidence,Evidence-bounded verdict,Caveat
+RQ1 Latency,Table 4.2; Figures 4.1–4.2; Table 4.8,Leadership and observed tail inflation rotate by scenario; no universal latency winner.,End-to-end deployment outcome; p99/p50 is censoring-aware.
+RQ2 Throughput/goodput,Table 4.3; Figure 4.4; E4 dropped-iteration fields,"Actual rate, goodput and error rate interpreted together.",Delivery diagnostics do not prove every scheduled iteration was delivered.
+RQ3 Reliability,Table 4.3; Figure 4.5; Table 4.8,Callback-defined error rates differ across configurations and scenarios.,Application-boundary outcome; no internal failure mechanism inferred.
+RQ4 User experience,Table 4.3; Figure 4.6,All cell medians exceed the author-defined 0.85 Apdex threshold; margins differ.,T/F are author-defined operational targets.
+RQ5 Elasticity/resources,"Tables 4.5–4.6, 4.10; Figures 4.8–4.9",Burst response heterogeneous; resources scoped to Linux trio.,Temporal evidence descriptive; probe informs H2 only.
+RQ6 Cost-efficiency,Table 4.11,Modelled USD per 1M successful requests differs under stated inputs.,Conditional model; not invoices or TCO.
+H1 Apache lowest C p95,"Tables 4.2, 4.13, 4.14",NOT SUPPORTED (see Table 4.14).,Apache C tails include timeout censoring.
+H2 post-idle first-request delay,Table 4.7; Figure 4.10,Descriptively supported: all valid pairs slower after idle.,Five-attempt probe; no lifecycle state verified.
+H3 cost differs,Table 4.11,Supported within stated model only.,Not an invoice/TCO finding.
+H4 burst raises error,"Tables 4.3, 4.6",NOT SUPPORTED as a consistent cross-platform claim.,No aggregate cross-scenario inferential test claimed.

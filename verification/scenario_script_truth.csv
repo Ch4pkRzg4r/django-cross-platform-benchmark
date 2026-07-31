@@ -1,0 +1,5 @@
+﻿Script,SHA256,GET_Count_Static,POST_Count_Static,GET_Paths_Static,POST_Paths_Static,Executor,Environment_Defaults,preAllocatedVUs_Expression,maxVUs_Expression,Stage_Target_Expressions,Header_Comment_RPS_Values
+scenario_A_browse.js,ba02368b2a7f5e02576be931b9642d530bbdd2a97d58c38ff27a33c6797b701a,1,0,,,constant-arrival-rate,"{""TARGET_RPS"": ""20"", ""DURATION"": ""30m""}",PRE_VUS,MAX_VUS,,50
+scenario_B_mixed.js,6bbaf76a282d2e2b6e2b4b630f0ec465ecc435d12c90b142e19a13003cbce39e,1,0,,,constant-arrival-rate,"{""TARGET_RPS"": ""15"", ""DURATION"": ""30m""}",PRE_VUS,MAX_VUS,,30
+scenario_C_checkout.js,3ce76155459891967df04462480d6376284f7de3d2b4bc386af951d3742ca9af,3,0,/about/ | /cart/ | /shop/,,constant-arrival-rate,"{""TARGET_RPS"": ""10"", ""DURATION"": ""30m""}",20,200,,
+scenario_D_burst.js,1c83cb20036db3609678325829654d3a36d27154ef25be38072591b384d62884,1,0,/shop/,,ramping-arrival-rate,"{""BASELINE_RPS"": ""5"", ""PEAK_RPS"": ""40"", ""DURATION_MIN"": ""30""}",30,300,BASELINE_RPS | PEAK_RPS | PEAK_RPS | BASELINE_RPS | BASELINE_RPS,

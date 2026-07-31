@@ -1,0 +1,27 @@
+{
+  "generated": "2026-07-10T19:06:31",
+  "candidate": "Chapk Rzgar Mohammed Abdalla",
+  "canonical_input": "master_runs.csv",
+  "canonical_sha256": "710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7",
+  "provenance_chain": [
+    "orchestrator.ps1 + k6/*.js -> raw per-run CSV/JSON (Ch.3 §3.11)",
+    "parse_k6_output.py -> master_runs.csv, 39 fields/run (Ch.3 §3.12)",
+    "phase1_validation.py -> validated + 6 quality flags (§4.1)",
+    "phase2_eda.py -> normality/Levene -> non-parametric justification (§3.15)",
+    "phase3_inferential.py -> KW/Dunn/Cliff/bootstrap/Friedman (§4.6)",
+    "ch4_evidence_pipeline.py -> Tables 4.1-4.14, Figures 4.1-4.11, E1-E4 (§4.1-4.8)"
+  ],
+  "phases": [
+    {
+      "phase": "exhibits",
+      "script": "ch4_evidence_pipeline.py",
+      "produces": "out_ch4_v153_final_style/ (Tables 4.1-4.14, Figures 4.1-4.11, E1-E4, VERIFY_report.txt)",
+      "thesis_reference": "Ch.4 §4.1-§4.8 (all final exhibits)",
+      "result": {
+        "script": "ch4_evidence_pipeline.py",
+        "returncode": 0,
+        "stdout_tail": "  [T] Table_4_12 (10 rows)\n  [T] Table_4_13 (4 rows)\n  [T] Table_4_14 (4 rows)\n\n=== DONE ===\n  outputs: C:\\Users\\Tech Line\\Downloads\\Chapk_Thesis_Chapter4_Analysis_Scripts_v153_FINAL_STYLE\\final_bundle\\out_ch4_v153_final_style\n  manifest: C:\\Users\\Tech Line\\Downloads\\Chapk_Thesis_Chapter4_Analysis_Scripts_v153_FINAL_STYLE\\final_bundle\\out_ch4_v153_final_style\\MANIFEST.csv\n  report: C:\\Users\\Tech Line\\Downloads\\Chapk_Thesis_Chapter4_Analysis_Scripts_v153_FINAL_STYLE\\final_bundle\\out_ch4_v153_final_style\\VERIFY_report.txt"
+      }
+    }
+  ]
+}

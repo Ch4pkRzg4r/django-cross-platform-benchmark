@@ -1,0 +1,1 @@
+Evidence classes used across this repository: benchmark-time records; continuity-bridged captures; current as-built captures; documented design; provider documentation. Each artefact's class is stated where it matters; no current-only capture is presented as benchmark-time evidence.

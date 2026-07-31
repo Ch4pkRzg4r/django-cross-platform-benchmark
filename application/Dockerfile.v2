@@ -1,0 +1,68 @@
+# ================================================================
+# Django E-commerce Dockerfile v2 - Apple-to-Apple Unified Image
+# ================================================================
+# Target tag: chapkrzgar/ecom:2.0
+# Strategy: single-stage, Python 3.13-slim, Gunicorn workers=2 threads=4
+# Concurrency: 8 slots (matches IIS Waitress threads=8 for apple-to-apple)
+# Date: 12 May 2026
+# ================================================================
+
+FROM python:3.12-slim
+ENV BUILD_MARKER="PHASE65_REV6_20260515-012135"
+
+# Build-time labels for reproducibility tracking
+LABEL maintainer="Chapk Rzgar Mohammed Abdalla <chapk@univsul.edu.iq>"
+LABEL thesis="Benchmarking Traditional Web Servers and Serverless Architectures"
+LABEL version="2.0"
+LABEL build-date="2026-05-12"
+LABEL python-version="3.13"
+LABEL gunicorn-config="workers=2 threads=4 worker-class=gthread"
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    DJANGO_SETTINGS_MODULE=ecommerce.settings \
+    PORT=8000
+
+WORKDIR /app
+
+# Copy requirements first (Docker layer caching - rebuild deps only if changed)
+COPY requirements.txt .
+
+# Install Python dependencies (uses pre-built wheels, no apt-get needed)
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application source code
+COPY . .
+
+# Create runtime directories
+RUN mkdir -p /app/logs /app/media /app/staticfiles
+
+# Collect static files (whitenoise will serve them)
+RUN python manage.py collectstatic --noinput --clear 2>/dev/null || true
+
+EXPOSE 8000
+
+# Healthcheck endpoint (Docker daemon checks /health/ every 30s)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/', timeout=5)" || exit 1
+
+# Gunicorn config: 2 workers x 4 threads = 8 concurrent slots
+# This matches IIS Waitress threads=8 for apple-to-apple comparison
+CMD ["gunicorn", \
+     "--bind", "0.0.0.0:8000", \
+     "--workers", "2", \
+     "--threads", "4", \
+     "--worker-class", "gthread", \
+     "--worker-connections", "1000", \
+     "--max-requests", "10000", \
+     "--max-requests-jitter", "500", \
+     "--timeout", "60", \
+     "--graceful-timeout", "30", \
+     "--keep-alive", "5", \
+     "--access-logfile", "-", \
+     "--error-logfile", "-", \
+     "--log-level", "warning", \
+     "--config", "python:ecommerce.gunicorn_conf", \
+     "ecommerce.wsgi:application"]

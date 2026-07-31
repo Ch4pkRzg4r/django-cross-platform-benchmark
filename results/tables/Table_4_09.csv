@@ -1,0 +1,17 @@
+﻿Scen.,Outcome,Traditional (median of 4 cell medians),Managed (median of 3 cell medians),Δ (Trad − Managed)
+A,p95 latency (ms),149.379,208.591,-59.211
+A,Callback-defined goodput (RPS),20.001,19.909,0.092
+A,Error rate,0.0,0.001,-0.001
+A,Apdex (T=500 ms; F=2000 ms),0.994,0.98,0.014
+B,p95 latency (ms),125.551,163.503,-37.952
+B,Callback-defined goodput (RPS),15.001,14.997,0.004
+B,Error rate,0.0,0.0,-0.0
+B,Apdex (T=500 ms; F=2000 ms),1.0,0.997,0.003
+C,p95 latency (ms),130.59,181.018,-50.428
+C,Callback-defined goodput (RPS),29.982,29.834,0.149
+C,Error rate,0.0,0.0,-0.0
+C,Apdex (T=500 ms; F=2000 ms),0.999,0.996,0.003
+D,p95 latency (ms),173.353,169.484,3.869
+D,Callback-defined goodput (RPS),17.714,17.824,-0.11
+D,Error rate,0.002,0.0,0.002
+D,Apdex (T=500 ms; F=2000 ms),0.989,0.997,-0.008

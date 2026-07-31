@@ -1,0 +1,5 @@
+﻿Scenario,Lowest observed median p95,Delivery / reliability context,Main evidence boundary
+A,IIS+Waitress — 116.9 ms,IIS+Waitress: 20.00 RPS goodput; 0.000% error. Highest p95: Fly.io (726.4 ms); censored: Apache+mod_wsgi 10/10,End-to-end deployment outcome under the stated topology.
+B,Nginx+uWSGI — 118.0 ms,Gunicorn: 15.00 RPS goodput; 0.000% error. Highest p95: Koyeb (164.6 ms),End-to-end deployment outcome under the stated topology.
+C,Nginx+uWSGI — 112.8 ms,Gunicorn: 29.98 RPS goodput; 0.000% error. Highest p95: Fly.io (704.5 ms); censored: Apache+mod_wsgi 6/10,End-to-end deployment outcome under the stated topology.
+D,ACA — 121.2 ms,Nginx+uWSGI: 17.84 RPS goodput; 0.000% error. Highest p95: Gunicorn (4428.3 ms); censored: Gunicorn 2/10,End-to-end deployment outcome under the stated topology.

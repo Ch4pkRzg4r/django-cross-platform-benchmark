@@ -1,0 +1,71 @@
+PgBouncer 1.25.1
+libevent 2.1.12-stable
+adns: evdns2
+tls: OpenSSL 3.5.4 30 Sep 2025
+PID   USER     TIME  COMMAND
+    1 postgres 12:14 /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini
+   39 postgres  0:00 sh -lc pgbouncer -V 2>&1 || true; ps -ef; echo "=== pgbouncer configs ==="; find /etc / -maxdepth 4 -type f -iname "*pgbouncer*.ini" -print -exec sh -c "echo --- \$1; cat \$1" _ {} \; 2>/dev/null
+   46 postgres  0:00 ps -ef
+=== pgbouncer configs ===
+/etc/pgbouncer/pgbouncer.ini
+--- /etc/pgbouncer/pgbouncer.ini
+################## Auto generated ##################
+[databases]
+ecommerce_benchmark = host=postgres port=5432 auth_user=benchuser
+[pgbouncer]
+listen_addr = 0.0.0.0
+listen_port = 6432
+unix_socket_dir = 
+user = postgres
+auth_file = /etc/pgbouncer/userlist.txt
+# [auth line redacted — see SECURITY_AND_REDACTION.md]
+pool_mode = transaction
+max_client_conn = 3000
+default_pool_size = 50
+reserve_pool_size = 10
+reserve_pool_timeout = 3
+ignore_startup_parameters = extra_float_digits
+
+# Log settings
+admin_users = postgres
+
+
+
+# Connection sanity checks, timeouts
+server_idle_timeout = 600
+
+# TLS settings
+
+# Dangerous timeouts
+################## end file ##################
+/etc/pgbouncer/pgbouncer.ini
+--- /etc/pgbouncer/pgbouncer.ini
+################## Auto generated ##################
+[databases]
+ecommerce_benchmark = host=postgres port=5432 auth_user=benchuser
+[pgbouncer]
+listen_addr = 0.0.0.0
+listen_port = 6432
+unix_socket_dir = 
+user = postgres
+auth_file = /etc/pgbouncer/userlist.txt
+# [auth line redacted — see SECURITY_AND_REDACTION.md]
+pool_mode = transaction
+max_client_conn = 3000
+default_pool_size = 50
+reserve_pool_size = 10
+reserve_pool_timeout = 3
+ignore_startup_parameters = extra_float_digits
+
+# Log settings
+admin_users = postgres
+
+
+
+# Connection sanity checks, timeouts
+server_idle_timeout = 600
+
+# TLS settings
+
+# Dangerous timeouts
+################## end file ##################

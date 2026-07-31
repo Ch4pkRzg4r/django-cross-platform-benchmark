@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "thesis": "Benchmarking and Evaluation of Traditional Web Servers and Serverless Architectures for an E-Commerce System",
+    "author": "Chapk Rzgar Mohammed Abdalla",
+    "institution": "University of Sulaimani",
+    "supervisor": "Asst. Prof. Dr. Kamaran Hama Ali Faraj",
+    "phase": "7",
+    "generated": "2026-05-15"
+  },
+  "platforms": [
+    {
+      "id": "01_apache_modwsgi",
+      "name": "Apache + mod_wsgi",
+      "type": "traditional",
+      "url": "http://20.218.108.186:8080",
+      "host": "20.218.108.186",
+      "wsgi_server": "mod_wsgi",
+      "rev": "REV6",
+      "memory_gib": 2,
+      "cpu_cores": 2,
+      "docker_container": "bench_apache",
+      "scale_to_zero": false,
+      "edge_proxy": false
+    },
+    {
+      "id": "02_nginx_uwsgi",
+      "name": "Nginx + uWSGI",
+      "type": "traditional",
+      "url": "http://20.218.108.186:8081",
+      "host": "20.218.108.186",
+      "wsgi_server": "uWSGI",
+      "rev": "REV6",
+      "memory_gib": 2,
+      "cpu_cores": 2,
+      "docker_container": "bench_nginx",
+      "scale_to_zero": false,
+      "edge_proxy": false
+    },
+    {
+      "id": "03_django_gunicorn",
+      "name": "Django + Gunicorn",
+      "type": "traditional",
+      "url": "http://20.218.108.186:8000",
+      "host": "20.218.108.186",
+      "wsgi_server": "gunicorn",
+      "rev": "REV6",
+      "memory_gib": 2,
+      "cpu_cores": 2,
+      "docker_container": "bench_django",
+      "scale_to_zero": false,
+      "edge_proxy": false
+    },
+    {
+      "id": "04_aca",
+      "name": "Azure Container Apps",
+      "type": "serverless",
+      "url": "https://thesis-aca-app.wittywater-12e4bdd5.germanywestcentral.azurecontainerapps.io",
+      "wsgi_server": "gunicorn",
+      "rev": "REV6",
+      "memory_gib": 4,
+      "cpu_cores": 2,
+      "memory_note": "ACA Consumption profile forces 1:2 CPU:Memory ratio (4 GiB minimum for 2 vCPU)",
+      "scale_to_zero": true,
+      "edge_proxy": true,
+      "edge_provider": "Azure Front Door"
+    },
+    {
+      "id": "05_koyeb",
+      "name": "Koyeb",
+      "type": "serverless",
+      "url": "https://natural-carrie-universityofsulaymaniyah-857c4cfe.koyeb.app",
+      "wsgi_server": "gunicorn",
+      "rev": "REV6",
+      "memory_gib": 2,
+      "cpu_cores": 2,
+      "scale_to_zero": true,
+      "edge_proxy": true,
+      "edge_provider": "Cloudflare"
+    },
+    {
+      "id": "06_flyio",
+      "name": "Fly.io",
+      "type": "serverless",
+      "url": "https://thesis-django-fly.fly.dev",
+      "wsgi_server": "gunicorn",
+      "rev": "REV6",
+      "memory_gib": 2,
+      "cpu_cores": 2,
+      "scale_to_zero": true,
+      "edge_proxy": true,
+      "edge_provider": "Fly Anycast"
+    },
+    {
+      "id": "07_iis_waitress",
+      "name": "IIS + Waitress",
+      "type": "traditional",
+      "url": "http://20.113.33.47",
+      "host": "20.113.33.47",
+      "wsgi_server": "waitress",
+      "rev": "REV5",
+      "rev_note": "Windows VM stays at REV5 (documented Threat #8); functionally equivalent to REV6 on Linux",
+      "memory_gib": 2,
+      "cpu_cores": 2,
+      "scale_to_zero": false,
+      "edge_proxy": false
+    }
+  ]
+}

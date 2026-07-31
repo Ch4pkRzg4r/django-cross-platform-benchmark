@@ -1,0 +1,9 @@
+﻿Evidence component,Retained record,Use in this chapter
+Retained design,280 observations; 7 configurations × 4 scenarios × 10 replications,Primary evidence base for Chapters 4–6.
+Primary endpoints,"p95 latency, callback-defined goodput, error rate and Apdex",Scenario-stratified descriptive and inferential analysis.
+Tail endpoints,p99 secondary; p99.9 appendix-only (evidence grid E4),p99 is explicitly flagged where timeout-censoring occurs.
+Diagnostic transport fields,DNS unavailable; TLS non-discriminating; TCP limited,Not reported as primary comparative outcomes.
+Temporal summaries,"Warm-up: 21 A–C summaries; burst: 12,617 second-level trace rows",Descriptive evidence only; not replication-level inference.
+Post-idle health-probe data,15 attempted pairs; 14 valid paired observations,Supplementary descriptive H2 evidence; separate from the 280-run matrix.
+Operational evidence,Linux-only container resource data and stated-assumption cost model,Scope-qualified; no unqualified seven-platform overall rank.
+Execution chronology,Platform runs collected in time blocks over the study window,Residual time/provider variation cannot be fully separated from configuration effects.

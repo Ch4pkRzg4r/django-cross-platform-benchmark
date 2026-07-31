@@ -1,0 +1,118 @@
+path,role
+.gitignore,repository hygiene
+ARTEFACT_PROVENANCE.md,repository documentation
+CITATION.cff,citation metadata
+DATA_AVAILABILITY.md,repository documentation
+FILE_INDEX.csv,file index (this file)
+LICENSE-CODE-MIT.txt,licence
+LICENSE-DATA-CC-BY-4.0.txt,licence
+LICENSING.md,repository documentation
+MANIFEST_SHA256.csv,"integrity manifest (indexes all files except itself, by convention)"
+README.md,repository documentation
+REPRODUCIBILITY.md,repository documentation
+SECURITY_AND_REDACTION.md,repository documentation
+analysis/analyze_coldstart.py,controlling analysis script
+analysis/analyze_timeseries.py,controlling analysis script
+analysis/ch4_evidence_pipeline.py,controlling analysis script
+analysis/historical-provenance/README.md,historical analytical provenance
+analysis/historical-provenance/phase3_inferential.py,historical analytical provenance
+analysis/phase1_validation.py,controlling analysis script
+analysis/phase2_eda.py,controlling analysis script
+analysis/run_analysis.py,controlling analysis script
+application/Dockerfile,as-built application source capture
+application/Dockerfile.apache-wsgi,as-built application source capture
+application/Dockerfile.nginx-uwsgi,as-built application source capture
+application/Dockerfile.v2,as-built application source capture
+application/build-and-push.sh,as-built application source capture
+application/commerce/models.py,as-built application source capture
+application/commerce/urls.py,as-built application source capture
+application/commerce/views.py,as-built application source capture
+application/ecommerce/settings.PUBLIC.py,as-built application source capture (.PUBLIC credential-templated derivative)
+application/ecommerce/urls.py,as-built application source capture
+application/ecommerce/wsgi.py,as-built application source capture
+application/manage.py,as-built application source capture
+application/postgres/pg_hba.conf,as-built application source capture
+application/postgres/postgresql.conf,as-built application source capture
+application/requirements.txt,as-built application source capture
+application/supervisord.conf,as-built application source capture
+application/uwsgi.ini,as-built application source capture
+benchmark/k6-scenarios/scenario_A_browse.js,campaign k6 scenario script (benchmark-time hash)
+benchmark/k6-scenarios/scenario_B_mixed.js,campaign k6 scenario script (benchmark-time hash)
+benchmark/k6-scenarios/scenario_C_checkout.js,campaign k6 scenario script (benchmark-time hash)
+benchmark/k6-scenarios/scenario_D_burst.js,campaign k6 scenario script (benchmark-time hash)
+benchmark/orchestrator/orchestrator.ps1,campaign orchestrator (benchmark-time)
+benchmark/parse_k6_output.py,benchmark tooling (benchmark-time hash)
+configuration/apache-mod_wsgi.conf,deployment/platform configuration
+configuration/docker-compose-phase65.PUBLIC.yml,deployment/platform configuration (.PUBLIC derivative)
+configuration/docker/apache.conf,deployment/platform configuration
+configuration/docker/nginx.conf,deployment/platform configuration
+configuration/nginx-uwsgi.conf,deployment/platform configuration
+configuration/platforms.PUBLIC.json,deployment/platform configuration (.PUBLIC derivative)
+configuration/scenarios.json,deployment/platform configuration
+configuration/uwsgi.ini,deployment/platform configuration
+data/canonical/DATA_DICTIONARY.md,canonical analytical dataset / dictionary
+data/canonical/master_runs.csv,canonical analytical dataset / dictionary
+data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md,raw-retention SHA-256 manifest
+data/raw-archive-manifests/archive_parts_sha256_manifest.csv,raw-retention SHA-256 manifest
+data/raw-archive-manifests/docker_stats_sha256_manifest.csv,raw-retention SHA-256 manifest
+data/raw-archive-manifests/raw_files_sha256_manifest.csv,raw-retention SHA-256 manifest
+data/raw-archive-manifests/run_logs_sha256_manifest.csv,raw-retention SHA-256 manifest
+data/supplementary/coldstart_raw.csv,supplementary input dataset (thesis-recorded hash)
+data/supplementary/docker-stats-sample/01_apache_modwsgi__A_browse__rep01__docker_stats.csv,supplementary sample
+data/supplementary/timeseries_burst_recovery.csv,supplementary input dataset (thesis-recorded hash)
+data/supplementary/warmup_transient.csv,supplementary input dataset (thesis-recorded hash)
+documentation/evidence_state.md,documentation
+documentation/nonfigure_or_unreferenced_media_inventory.csv,documentation
+environment/EXECUTION_ENVIRONMENT.md,environment/dependency record
+environment/pgbouncer_runtime_extract.PUBLIC.txt,environment/dependency record
+environment/pip_freeze_iis_runtime.txt,environment/dependency record
+environment/requirements.txt,environment/dependency record
+results/figures/figure_map.csv,figure map
+results/figures/image1.png,exact thesis figure
+results/figures/image10.png,exact thesis figure
+results/figures/image11.png,exact thesis figure
+results/figures/image12.png,exact thesis figure
+results/figures/image13.png,exact thesis figure
+results/figures/image14.png,exact thesis figure
+results/figures/image15.png,exact thesis figure
+results/figures/image16.png,exact thesis figure
+results/figures/image17.png,exact thesis figure
+results/figures/image18.png,exact thesis figure
+results/figures/image19.png,exact thesis figure
+results/figures/image2.png,exact thesis figure
+results/figures/image20.png,exact thesis figure
+results/figures/image21.png,exact thesis figure
+results/figures/image22.png,exact thesis figure
+results/figures/image23.png,exact thesis figure
+results/figures/image24.png,exact thesis figure
+results/figures/image25.png,exact thesis figure
+results/figures/image26.png,exact thesis figure
+results/figures/image27.png,exact thesis figure
+results/figures/image28.png,exact thesis figure
+results/figures/image29.png,exact thesis figure
+results/figures/image3.png,exact thesis figure
+results/figures/image4.png,exact thesis figure
+results/figures/image5.png,exact thesis figure
+results/figures/image6.png,exact thesis figure
+results/figures/image7.png,exact thesis figure
+results/figures/image8.png,exact thesis figure
+results/figures/image9.png,exact thesis figure
+results/tables/TABLES_NOTE.md,tables note
+results/tables/Table_4_01.csv,full-precision table source
+results/tables/Table_4_02.csv,full-precision table source
+results/tables/Table_4_03.csv,full-precision table source
+results/tables/Table_4_04.csv,full-precision table source
+results/tables/Table_4_05.csv,full-precision table source
+results/tables/Table_4_06.csv,full-precision table source
+results/tables/Table_4_07.csv,full-precision table source
+results/tables/Table_4_08.csv,full-precision table source
+results/tables/Table_4_09.csv,full-precision table source
+results/tables/Table_4_12.csv,full-precision table source
+results/tables/Table_4_13.csv,full-precision table source
+results/tables/Table_4_14.csv,full-precision table source
+verification/RUN_MANIFEST.json,verification/integrity record
+verification/VERIFY_report.txt,verification/integrity record
+verification/k6_binary_identity.txt,verification/integrity record
+verification/platform_configuration_truth.csv,verification/integrity record
+verification/scenario_script_truth.csv,verification/integrity record
+verification/verification_summary.md,verification/integrity record

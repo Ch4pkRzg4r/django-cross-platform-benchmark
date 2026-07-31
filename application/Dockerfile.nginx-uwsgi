@@ -1,0 +1,50 @@
+FROM python:3.12-slim
+ENV BUILD_MARKER="PHASE65_REV6_20260515-012135"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        nginx \
+        supervisor \
+        gcc \
+        libpq-dev \
+        curl \
+        build-essential \
+        python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt \
+    && pip install --no-cache-dir uwsgi==2.0.28
+
+WORKDIR /app
+COPY . /app/
+
+RUN python manage.py collectstatic --noinput || true
+
+RUN mkdir -p /run/uwsgi \
+    && chown -R www-data:www-data /run/uwsgi /app
+
+COPY uwsgi.ini /app/uwsgi.ini
+COPY nginx-uwsgi.conf /etc/nginx/nginx.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD curl -fsS http://localhost/health/ || exit 1
+
+EXPOSE 80
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+LABEL maintainer="Chapk Rzgar Mohammed Abdalla <chapk@univsul.edu.iq>" \
+      thesis="Benchmarking Traditional Web Servers and Serverless Architectures" \
+      python-version="3.13" \
+      wsgi-server="Nginx+uWSGI" \
+      wsgi-config="processes=2 threads=4" \
+      version="2.0"

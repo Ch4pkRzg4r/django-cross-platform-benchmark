@@ -1,0 +1,88 @@
+{
+    "_meta":  {
+                  "description":  "Four workload scenarios following Wen et al. EMSE 2025 + Eismann et al. ICPE 2022 patterns",
+                  "rps_calibration_note":  "RPS targets are starting points; will be tuned during Pilot Run (Step 3) to ensure no platform saturates and within-cell CV \u003c 3.7% (Henning et al. FSE 2025)",
+                  "duration_per_run_min":  30,
+                  "warmup_sec":  180,
+                  "cooldown_sec":  60
+              },
+    "scenarios":  [
+                      {
+                          "id":  "A_browse",
+                          "name":  "Browse (read-heavy)",
+                          "executor":  "constant-arrival-rate",
+                          "rps":  20,
+                          "duration_min":  30,
+                          "description":  "Read-heavy workload simulating users browsing the shop. 70% homepage/shop, 20% product detail, 10% about/admin. Pure GET requests, no session state.",
+                          "academic_basis":  "Pareto 80/20 read-heavy e-commerce pattern (Wen et al. EMSE 2025)"
+                      },
+                      {
+                          "id":  "B_mixed",
+                          "name":  "Mixed (browse + auth)",
+                          "executor":  "constant-arrival-rate",
+                          "rps":  15,
+                          "duration_min":  30,
+                          "description":  "Mixed read+session workload. 60% browse, 30% session-cookie login flow, 10% admin static. Tests session middleware overhead.",
+                          "academic_basis":  "Realistic e-commerce mix (Eismann et al. ICPE 2022)"
+                      },
+                      {
+                          "id":  "C_checkout",
+                          "name":  "Checkout (write-heavy)",
+                          "executor":  "constant-arrival-rate",
+                          "rps":  10,
+                          "duration_min":  30,
+                          "description":  "Write-heavy workload simulating cart additions and checkout flow. 50% GET shop, 50% POST cart/checkout. Tests PostgreSQL write throughput.",
+                          "academic_basis":  "DB-bound write workload (industry standard for stress-testing)"
+                      },
+                      {
+                          "id":  "D_burst",
+                          "name":  "Burst (sudden spike)",
+                          "executor":  "ramping-arrival-rate",
+                          "stages":  [
+                                         {
+                                             "duration":  "5m",
+                                             "target":  5
+                                         },
+                                         {
+                                             "duration":  "1m",
+                                             "target":  40
+                                         },
+                                         {
+                                             "duration":  "10m",
+                                             "target":  40
+                                         },
+                                         {
+                                             "duration":  "1m",
+                                             "target":  5
+                                         },
+                                         {
+                                             "duration":  "13m",
+                                             "target":  5
+                                         }
+                                     ],
+                          "duration_min":  30,
+                          "description":  "Flash-sale burst scenario. 5min baseline at 10 RPS, sudden 10x spike to 100 RPS for 10min, decay back. Tests autoscaling responsiveness on serverless platforms.",
+                          "academic_basis":  "Flash-sale / Black-Friday pattern (Henning et al. FSE 2025)"
+                      }
+                  ],
+    "endpoints":  {
+                      "browse_weight":  {
+                                            "shop":  0.40,
+                                            "home":  0.20,
+                                            "product_detail":  0.20,
+                                            "about":  0.10,
+                                            "admin_login_page":  0.10
+                                        },
+                      "paths":  {
+                                    "health":  "/health/",
+                                    "home":  "/",
+                                    "shop":  "/shop/",
+                                    "product_detail":  "/shop/product/1/",
+                                    "about":  "/about/",
+                                    "admin_login_page":  "/admin/login/",
+                                    "login_post":  "/account/login/",
+                                    "cart_add":  "/cart/add/1/",
+                                    "cart_view":  "/cart/"
+                                }
+                  }
+}

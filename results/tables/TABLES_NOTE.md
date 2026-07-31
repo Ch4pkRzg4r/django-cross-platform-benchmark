@@ -1,0 +1,1 @@
+Twelve full-precision mirrors are included (Tables 4.1–4.9, 4.12–4.14). Tables 4.10, 4.11 and 4.15 have no distinct CSV in the retained collection; their values derive from the canonical dataset and the exhibit layer as documented in the thesis.

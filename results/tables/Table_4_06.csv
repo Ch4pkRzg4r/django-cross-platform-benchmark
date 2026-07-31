@@ -1,0 +1,8 @@
+﻿platform,baseline_p95_ms(60–300s),peak_phase_p95_ms(360–960s),peak_phase_max_p95_ms,post_ramp_p95_ms(≥1020s),seconds_p95>1000ms(whole run),peak_rate_RPS(360–960s)
+Apache+mod_wsgi,132.6,120.4,134.9,141.7,24,40.0
+Nginx+uWSGI,127.1,121.1,134.6,120.0,0,40.0
+Gunicorn,125.2,141.4,5274.5,127.2,2,40.0
+IIS+Waitress,158.5,148.6,443.5,178.6,1,40.0
+ACA,113.0,119.2,140.5,117.1,0,40.0
+Koyeb,138.0,146.7,201.1,136.5,0,40.0
+Fly.io,157.7,325.2,387.8,221.3,3,40.0

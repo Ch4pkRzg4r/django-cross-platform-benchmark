@@ -1,0 +1,54 @@
+FROM python:3.12-slim
+ENV BUILD_MARKER="PHASE65_REV6_20260515-012135"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        apache2 \
+        apache2-dev \
+        gcc \
+        libpq-dev \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt \
+    && pip install --no-cache-dir mod_wsgi==5.0.0
+
+WORKDIR /app
+COPY . /app/
+
+RUN python manage.py collectstatic --noinput || true
+
+# DISABLE_DEFAULT_MPM: empty Ubuntu default mpm_event.conf (override happens in our site config)
+RUN echo "# Default Ubuntu mpm_event.conf neutralized by REV4 - tuning is in sites-available/django.conf" > /etc/apache2/mods-available/mpm_event.conf
+COPY apache-mod_wsgi.conf /etc/apache2/sites-available/django.conf
+RUN a2dissite 000-default.conf \
+    && a2ensite django.conf \
+    && a2enmod headers rewrite
+
+RUN mod_wsgi-express install-module > /etc/apache2/mods-available/wsgi.load \
+    && a2enmod wsgi
+
+RUN chown -R www-data:www-data /app \
+    && mkdir -p /var/log/apache2 \
+    && chown -R www-data:www-data /var/log/apache2
+
+RUN sed -i 's|ErrorLog .*|ErrorLog /dev/stderr|' /etc/apache2/apache2.conf
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD curl -fsS http://localhost/health/ || exit 1
+
+EXPOSE 80
+
+CMD ["apachectl", "-D", "FOREGROUND"]
+
+LABEL maintainer="Chapk Rzgar Mohammed Abdalla <chapk@univsul.edu.iq>" \
+      thesis="Benchmarking Traditional Web Servers and Serverless Architectures" \
+      python-version="3.13" \
+      wsgi-server="Apache+mod_wsgi" \
+      wsgi-config="processes=2 threads=4" \
+      version="2.0"
