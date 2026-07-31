@@ -3,6 +3,7 @@ message: "If you use these artefacts, please cite the thesis and this repository
 type: dataset
 title: "Benchmarking and Evaluation of Traditional Web Servers and Serverless Architectures for an E-Commerce System: Research Artefact Repository"
 version: "1.0.0"
+repository-code: "https://github.com/Ch4pkRzg4r/django-cross-platform-benchmark"
 authors:
   - family-names: "Abdalla"
     given-names: "Chapk Rzgar Mohammed"

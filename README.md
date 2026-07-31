@@ -2,6 +2,8 @@
 
 Research artefacts supporting the MSc thesis **“Benchmarking and Evaluation of Traditional Web Servers and Serverless Architectures for an E-Commerce System”** by **Chapk Rzgar Mohammed Abdalla**, College of Science, **University of Sulaimani** (2026).
 
+**Canonical repository:** https://github.com/Ch4pkRzg4r/django-cross-platform-benchmark
+
 ## Scope
 A controlled cross-platform benchmark of one Django 5.1.2 e-commerce application deployed on **seven configurations** — Apache + mod_wsgi, Nginx + uWSGI, Gunicorn, Azure Container Apps, Koyeb, Fly.io, and IIS + Waitress (Windows) — under **four open-model k6 workload scenarios** (steady browse, mixed browse/admin GET traffic, a GET-only cart sequence, and a burst profile), with **ten retained replications per platform–scenario cell: 7 × 4 × 10 = 280 measured runs**, backed by PostgreSQL 17 with PgBouncer.
 
