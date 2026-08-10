@@ -17,7 +17,7 @@ SHA-256: `710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7`
 
 ## Current controlling analysis — v330
 
-The current thesis-matched end-to-end analysis is **v330**. It is data-driven: compatible changes to the analytical input propagate to the statistical results, tables and dynamically generated figures.
+The current final-thesis analysis is the validated **v330 calibrated end-to-end pipeline**. It is data-driven: compatible changes to analytical input values propagate to the statistical results, tables and dynamically generated figures.
 
 Validated v330 source SHA-256:
 
@@ -29,31 +29,49 @@ The byte-exact source is carried in `analysis/v330-payload/` and reconstructed w
 python analysis/materialize_v330_pipeline.py
 ```
 
-For a normal repository rerun using the canonical dataset plus the small supplementary carriers:
+Analysis dependencies are recorded in:
+
+`environment/requirements-analysis-v330.txt`
+
+## Running v330
+
+Create/activate a Python environment, then:
 
 ```bash
-python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# Windows:     .venv\Scripts\activate
-pip install -r environment/requirements.txt
-python analysis/run_v330_from_repo.py
+pip install -r environment/requirements-analysis-v330.txt
 ```
 
-The runner assembles the repository layout into a disposable `.v330-run/` data directory, materialises the byte-exact controlling source, and executes the current pipeline.
+### A. Frozen exact-thesis run
 
-### Full exact thesis-mirror run
+A full frozen-thesis mirror requires two controlled evidence inputs that are intentionally **not duplicated as ordinary Git content**:
 
-The exact Table 4.11 resource summary requires the retained **120-run Docker telemetry archive**, which is deliberately not duplicated as ordinary Git content. For a full controlled run, supply the telemetry ZIP from the evidence archive:
+1. the complete 120-run `docker_stats.zip` resource-telemetry archive, required for exact Table 4.11; and
+2. the directory containing the 18 exact final-thesis publication reference figures, used only as a byte-identity regression oracle.
+
+Run:
 
 ```bash
-python analysis/run_v330_from_repo.py --docker-stats /path/to/docker_stats.zip
+python analysis/run_v330_from_repo.py \
+  --docker-stats /path/to/docker_stats.zip \
+  --figure-reference-dir /path/to/reference/thesis_figures \
+  --verify-against-v329
 ```
 
-Exact regression against the final thesis also uses the controlled v329 reference assets. Those reference assets and the heavy raw campaign archive are maintained in the controlled evidence package rather than claimed as standalone GitHub-only evidence.
+The runner constructs a disposable `.v330-run/` directory, copies the Git-tracked canonical/supplementary analytical carriers, copies the current exact Table 4.1–4.16 reference CSVs strictly as regression oracles, materialises the byte-exact v330 source, and runs the complete verification chain.
+
+### B. Changed-data/data-driven test
+
+To test a compatible changed analytical dataset, supply it explicitly:
+
+```bash
+python analysis/run_v330_from_repo.py --master /path/to/changed_master_runs.csv
+```
+
+When the supplied master hash differs from the frozen thesis hash, v330 recalculates analyses/tables/dynamic figures and deliberately does **not** emit frozen publication rasters or require exact-thesis reference figures. This is the intended safeguard against hard-coded thesis output.
 
 ## Current analytical contract
 
-For the frozen thesis input, the validated v330 pipeline reproduces:
+For the frozen controlled input set, v330 was validated to reproduce:
 
 - **28** platform–scenario cells with exactly **10** retained runs per cell;
 - **20** scenario-stratified Kruskal–Wallis tests: 5 declared outcomes × 4 scenarios;
@@ -61,34 +79,55 @@ For the frozen thesis input, the validated v330 pipeline reproduces:
 - **23** Holm-significant p95 contrasts in the frozen thesis data;
 - Cliff’s delta effect sizes and rank-based eta-squared;
 - **140** percentile-bootstrap intervals: 28 cells × 5 outcomes, 10,000 resamples with fixed base seed `20260603`;
-- exact current-thesis **Tables 4.1–4.16** for the frozen controlled input;
-- dynamic current Chapter-4 figure carriers for Figures 4.1–4.12 and 4.13a–f.
+- exact current-thesis **Tables 4.1–4.16**;
+- current dynamic figure carriers for Figures 4.1–4.12 and 4.13a–f;
+- 18/18 exact final-thesis publication-asset hashes in the controlled calibration package.
 
-The current controlling analysis **does not use the superseded cross-scenario Friedman/Wilcoxon H4 test**. Earlier analytical scripts are retained only for provenance and historical auditability.
+The current controlling analysis **does not use the superseded cross-scenario Friedman/Wilcoxon H4 test**. Earlier analytical scripts are retained only for provenance/auditability.
+
+## Current Chapter-4 artefacts
+
+The authoritative current namespace is:
+
+`results/current-thesis/`
+
+It contains:
+
+- exact Table 4.1–4.16 CSV mirrors;
+- the current Figure 4.1–4.12 + 4.13a–f map;
+- frozen-input verification records;
+- the SHA-256 manifest of the 18 exact publication figure assets.
+
+Earlier files under `results/tables/` and `results/figures/` are retained as pre-v330 provenance and are explicitly labelled as such rather than silently overwritten.
+
+The validated v330 analytical-update integrity manifest is:
+
+`MANIFEST_V330_UPDATE_SHA256.csv`
+
+The earlier `MANIFEST_SHA256.csv` remains the integrity snapshot of the pre-v330 repository baseline. The two manifests are intentionally distinct so historical hashes are not rewritten retroactively.
 
 ## Repository contents
 
 - `benchmark/` — benchmark-time orchestrator, four k6 workload scripts and parser.
-- `application/` — as-built Django application capture, with credential-templated public derivatives where required.
+- `application/` — as-built Django application capture, with credential-templated derivatives where required.
 - `configuration/` — retained platform/scenario/deployment configuration evidence.
-- `analysis/` — current v330 materialiser/runner plus retained earlier analytical components and historical provenance.
+- `analysis/` — v330 source payload/materialiser/repository runner plus earlier analytical provenance.
 - `data/canonical/` — frozen 280×39 dataset and dictionary.
-- `data/supplementary/` — warm-up, burst-recovery and post-idle inputs that are small enough for Git.
-- `data/raw-archive-manifests/` — per-file integrity manifests for the retained raw campaign and resource evidence.
-- `results/tables/` — Chapter-4 machine-readable table sources.
-- `results/figures/` — thesis figure assets / figure mapping; current v330 figure-map synchronization is tracked with the final analysis update.
-- `verification/` — integrity, configuration-truth and v330 validation records.
-- `environment/` — dependency/runtime records.
+- `data/supplementary/` — warm-up, burst-recovery and post-idle analytical carriers small enough for Git.
+- `data/raw-archive-manifests/` — integrity manifests for the retained raw campaign and resource evidence.
+- `results/current-thesis/` — current final-thesis Chapter-4 table/map/verification artefacts.
+- `verification/` — retained baseline integrity/configuration-truth records.
+- `environment/` — runtime/dependency records.
 
 ## Evidence and reproducibility boundary
 
-This repository supports inspection of the benchmark implementation, canonical data, analytical logic, integrity records and deterministic computational rerunning of the retained analysis. It does **not** claim that a historical managed-cloud campaign can be recreated bit-for-bit today: provider-internal state, historical platform state and some external transients are not controllable or observable after the fact.
+This repository supports inspection of the benchmark implementation, canonical data, analytical logic, integrity records and controlled computational rerunning of the retained analysis. It does **not** claim that the historical managed-cloud campaign can be recreated bit-for-bit today: provider-internal state, historical managed-platform state and some external transients are not controllable or observable after the experiment.
 
-The full original per-run raw k6 JSON/CSV evidence and the complete resource-telemetry archive are retained as controlled evidence outside ordinary Git history because of their size. GitHub stores their integrity/provenance manifests. No public raw-data URL is claimed until the controlled archive has been uploaded, checked and approved for release.
+The full original per-run k6 JSON/CSV evidence and other heavy raw evidence are retained as controlled evidence outside ordinary Git history because of size. GitHub stores integrity/provenance manifests. No public raw-data URL is claimed until the controlled archive has been uploaded, checked and approved for release.
 
-## Data-driven behaviour
+## Data-driven safeguard
 
-v330 was also tested on a disposable changed-data copy. Altering retained source values changed the corresponding Chapter-4 table values, Kruskal–Wallis result and dynamic Figure 4.1. Exact frozen-thesis publication assets were not emitted for the changed dataset. This guards against a hard-coded thesis-output pipeline.
+A controlled mutation test doubled only the ten IIS + Waitress / Scenario-A p95 source values. The regenerated Table 4.2 p95 changed from **116.9 ms to 233.7 ms**, the corresponding Kruskal–Wallis result changed, and the dynamic Figure 4.1 hash changed. Frozen publication assets were not emitted. See `results/current-thesis/verification/DATA_DRIVEN_MUTATION_TEST.txt`.
 
 ## Citation and licensing
 
