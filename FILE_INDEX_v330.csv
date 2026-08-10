@@ -1,0 +1,43 @@
+path,role
+README.md,current repository guide and v330 quick start
+REPRODUCIBILITY.md,current reproducibility and scope statement
+DATA_AVAILABILITY.md,current data/evidence availability boundary
+MANIFEST_V330_UPDATE_SHA256.csv,SHA-256 manifest for validated v330 analytical additions
+analysis/README.md,current analysis role map
+analysis/materialize_v330_pipeline.py,integrity-checking byte-exact v330 source materializer
+analysis/run_v330_from_repo.py,evidence-boundary-safe repository runner
+analysis/v330-payload/README.md,v330 payload format and expected source hash
+analysis/v330-payload/payload_01.b64,byte-exact v330 source transport part 1 of 5
+analysis/v330-payload/payload_02.b64,byte-exact v330 source transport part 2 of 5
+analysis/v330-payload/payload_03.b64,byte-exact v330 source transport part 3 of 5
+analysis/v330-payload/payload_04.b64,byte-exact v330 source transport part 4 of 5
+analysis/v330-payload/payload_05.b64,byte-exact v330 source transport part 5 of 5
+environment/requirements-analysis-v330.txt,v330 analysis dependencies
+results/current-thesis/README.md,current final-thesis Chapter-4 artefact namespace
+results/current-thesis/figure_map.csv,current Figure 4.1-4.12 plus 4.13a-f map
+results/current-thesis/tables/Table_4_01.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_02.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_03.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_04.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_05.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_06.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_07.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_08.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_09.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_10.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_11.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_12.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_13.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_14.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_15.csv,exact current-thesis table mirror
+results/current-thesis/tables/Table_4_16.csv,exact current-thesis table mirror
+results/current-thesis/verification/EXACT_TABLE_MIRROR_CHECK.txt,16 of 16 current table regression PASS
+results/current-thesis/verification/NUMERIC_REGRESSION_CHECK_v329.txt,current statistical and figure-carrier regression PASS
+results/current-thesis/verification/EXACT_PUBLISHED_FIGURE_ASSET_CHECK.txt,18 of 18 controlled publication assets byte-identical PASS
+results/current-thesis/verification/PUBLISHED_FIGURE_SHA256_MANIFEST.csv,hash registry for exact publication figures
+results/current-thesis/verification/PIPELINE_SUMMARY.json,machine-readable validated v330 run summary
+results/current-thesis/verification/FINAL_CALIBRATION_REPORT.txt,consolidated v330 calibration statement
+results/current-thesis/verification/DATA_DRIVEN_MUTATION_TEST.txt,changed-data anti-hard-coding safeguard PASS
+results/tables/TABLES_NOTE.md,pre-v330 table provenance notice
+results/figures/README_CURRENT_STATUS.md,pre-v330 figure provenance notice
+analysis/historical-provenance/README.md,historical-analysis warning and current v330 pointer
