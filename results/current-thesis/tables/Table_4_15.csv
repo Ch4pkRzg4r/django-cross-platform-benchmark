@@ -1,0 +1,5 @@
+Comparator,Apache p95 median (ms),Comparator p95 median (ms),Holm-adjusted p,Cliff’s δ (Apache − comparator),Magnitude
+Nginx + uWSGI,146.3,112.8,0.0365,0.72,large
+Django + Gunicorn,146.3,118.5,0.3498,0.64,large
+ACA,146.3,113.6,0.0114,0.94,large
+IIS + Waitress,146.3,142.7,1.0000,0.10,negligible
