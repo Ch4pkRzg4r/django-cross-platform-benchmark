@@ -1,0 +1,4 @@
+Platform,Median run-average CPU (%),Median run p95 CPU (%),Median run-average memory (MiB),Memory share of 2 GiB cap
+Apache + mod_wsgi,7.3,10.3,162,7.9%
+Nginx + uWSGI,7.1,10.4,185,9.0%
+Django + Gunicorn,8.9,12.8,129,6.3%
