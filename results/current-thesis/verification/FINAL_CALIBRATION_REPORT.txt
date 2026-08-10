@@ -1,0 +1,37 @@
+v330 FINAL CALIBRATION REPORT
+=============================
+
+Canonical master dataset
+------------------------
+Rows x source fields: 280 x 39
+SHA-256:
+710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7
+
+Script
+------
+thesis_analysis_pipeline_v330_calibrated.py
+SHA-256:
+d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574
+
+A. Current Chapter-4 table mirror
+---------------------------------
+Tables 4.1-4.16: exact cell text/order/rounding PASS on the frozen controlled input.
+
+B. Current statistical/numerical regression
+--------------------------------------------
+PASS: 280 x 42 prepared frame; 28 balanced cells; current figure carriers; 20 scenario-stratified Kruskal-Wallis tests; 84 Dunn/Holm p95 pairs; 23 significant p95 contrasts; Cliff's delta; balanced family summaries; focused Scenario-C comparison; 140 bootstrap intervals. The outdated cross-scenario H4 test is not used.
+
+C. Exact published figure assets
+--------------------------------
+18/18 current thesis publication assets were byte-identical to their controlled references during calibration. See PUBLISHED_FIGURE_SHA256_MANIFEST.csv and EXACT_PUBLISHED_FIGURE_ASSET_CHECK.txt.
+
+D. Changed-data behaviour
+-------------------------
+PASS. A controlled changed-data test altered the corresponding table, inferential result and dynamic Figure 4.1, while frozen publication assets were not emitted for the changed dataset.
+
+Interpretation
+--------------
+- Tables 4.1-4.16 are regenerated from data and match the current thesis on the frozen controlled inputs.
+- Current statistical outputs reproduce the thesis controlling analysis.
+- Dynamic figures are regenerated from analytical data and backed by numerical carriers.
+- Exact final publication rasters are treated as frozen publication artefacts, never as substitutes for changed-data outputs.
