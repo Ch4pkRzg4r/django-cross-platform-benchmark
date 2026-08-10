@@ -1,0 +1,10 @@
+Platform,Group,Baseline p95 (ms),Peak p95 (ms),Peak max p95 (ms),Post-ramp p95 (ms),Sec p95>1s,Peak RPS
+Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths
+Apache + mod_wsgi,Trad.,132.6,120.4,134.9,141.7,24,40
+Nginx + uWSGI,Trad.,127.1,121.1,134.6,120.0,0,40
+Django + Gunicorn,Trad.,125.2,141.4,"5,274.5",127.2,2,40
+IIS + Waitress,Trad.,158.5,148.6,443.5,178.6,1,40
+Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths
+Azure Container Apps,Managed,113.0,119.2,140.5,117.1,0,40
+Koyeb,Managed,138.0,146.7,201.1,136.5,0,40
+Fly.io,Managed,157.7,325.2,387.8,221.3,3,40
