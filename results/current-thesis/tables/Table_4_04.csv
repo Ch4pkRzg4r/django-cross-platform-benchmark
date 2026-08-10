@@ -1,0 +1,24 @@
+Platform,Group,Scen.,Waiting p50 (ms),Waiting p95 (ms),Latency CV,"Derived p50 residual (duration p50 - waiting p50), ms",Mean received-data rate (kB/s)
+Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths
+Apache + mod_wsgi,Self,A,103.4,142.0,7.11,5.5,80.0
+Apache + mod_wsgi,Self,B,97.5,120.0,9.06,6.4,49.6
+Apache + mod_wsgi,Self,C,101.1,144.0,5.59,2.1,93.0
+Nginx + uWSGI,Self,A,109.2,145.5,0.79,4.0,82.2
+Nginx + uWSGI,Self,B,96.0,112.6,0.13,6.5,50.4
+Nginx + uWSGI,Self,C,96.3,109.4,0.21,2.4,98.1
+Django + Gunicorn,Self,A,106.7,144.6,1.75,3.7,81.9
+Django + Gunicorn,Self,B,101.0,121.7,0.15,6.0,50.4
+Django + Gunicorn,Self,C,99.5,114.8,0.17,2.2,98.0
+IIS + Waitress,Self,A,100.1,111.9,1.98,1.1,82.1
+IIS + Waitress,Self,B,105.8,127.9,2.26,1.6,50.5
+IIS + Waitress,Self,C,105.9,141.2,2.26,1.4,98.2
+Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths
+Azure Container Apps,Prov.,A,112.9,152.6,0.32,1.2,77.4
+Azure Container Apps,Prov.,B,108.9,149.7,1.67,3.3,46.7
+Azure Container Apps,Prov.,C,97.2,110.8,0.15,2.2,91.1
+Koyeb,Prov.,A,127.8,188.3,4.90,5.4,77.3
+Koyeb,Prov.,B,133.6,161.8,5.65,1.7,47.0
+Koyeb,Prov.,C,119.5,174.3,5.74,4.9,92.5
+Fly.io,Prov.,A,130.9,708.4,3.85,12.8,78.8
+Fly.io,Prov.,B,113.2,148.0,2.82,13.8,47.9
+Fly.io,Prov.,C,148.7,648.9,3.50,14.4,92.4

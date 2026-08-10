@@ -1,0 +1,31 @@
+Platform,Group,Scen.,Target iter./s,Actual req./s,Goodput (RPS),Failure (%),Apdex-style
+Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths
+Apache + mod_wsgi,Trad.,A,20,19.84,19.55,1.454%,0.983
+Apache + mod_wsgi,Trad.,B,15,14.88,14.77,0.787%,0.992
+Apache + mod_wsgi,Trad.,C,10,29.31,28.53,1.923%,0.978
+Apache + mod_wsgi,Trad.,D,5→40→5 (≈17.83),17.71,17.59,0.701%,0.992
+Nginx + uWSGI,Trad.,A,20,20.00,20.00,0.000%,0.994
+Nginx + uWSGI,Trad.,B,15,15.00,15.00,0.000%,1.000
+Nginx + uWSGI,Trad.,C,10,29.98,29.98,0.000%,1.000
+Nginx + uWSGI,Trad.,D,5→40→5 (≈17.83),17.84,17.84,0.000%,0.999
+Django + Gunicorn,Trad.,A,20,20.00,20.00,0.001%,0.994
+Django + Gunicorn,Trad.,B,15,15.00,15.00,0.000%,1.000
+Django + Gunicorn,Trad.,C,10,29.98,29.98,0.000%,1.000
+Django + Gunicorn,Trad.,D,5→40→5 (≈17.83),16.46,16.40,0.381%,0.924
+IIS + Waitress,Trad.,A,20,20.00,20.00,0.000%,1.000
+IIS + Waitress,Trad.,B,15,15.00,15.00,0.000%,0.999
+IIS + Waitress,Trad.,C,10,29.98,29.98,0.000%,0.997
+IIS + Waitress,Trad.,D,5→40→5 (≈17.83),17.84,17.84,0.005%,0.986
+Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths
+Azure Container Apps,Managed,A,20,20.00,20.00,0.019%,0.999
+Azure Container Apps,Managed,B,15,15.00,15.00,0.020%,0.998
+Azure Container Apps,Managed,C,10,29.99,29.98,0.015%,1.000
+Azure Container Apps,Managed,D,5→40→5 (≈17.83),17.84,17.83,0.020%,1.000
+Koyeb,Managed,A,20,19.60,19.57,0.073%,0.980
+Koyeb,Managed,B,15,14.88,14.87,0.046%,0.996
+Koyeb,Managed,C,10,29.85,29.83,0.039%,0.996
+Koyeb,Managed,D,5→40→5 (≈17.83),17.83,17.82,0.042%,0.997
+Fly.io,Managed,A,20,19.96,19.91,0.105%,0.936
+Fly.io,Managed,B,15,15.00,15.00,0.041%,0.997
+Fly.io,Managed,C,10,29.62,29.57,0.172%,0.940
+Fly.io,Managed,D,5→40→5 (≈17.83),17.84,17.82,0.089%,0.992

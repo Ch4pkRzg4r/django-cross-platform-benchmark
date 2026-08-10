@@ -1,0 +1,8 @@
+Platform,Monthly USD,Median goodput,USD / 1M callback-qualified,Scope boundary
+Fly.io,11.39,18.75,0.231,Modelled warm-cost input; not current invoice data.
+Koyeb,21.43,17.83,0.457,"Modelled warm-cost input; dated pricing for the intended region, SKU and service components must be revalidated."
+Nginx + uWSGI,96.98,18.92,1.951,Azure VM plus storage model.
+Django + Gunicorn,96.98,18.57,1.987,Azure VM plus storage model.
+Apache + mod_wsgi,96.98,17.63,2.094,Modelled Azure VM plus storage input; high-failure and timeout-boundary-affected cells require caution.
+Azure Container Apps,157.68,18.60,3.225,Warm 24/7 model; provider billing/lifecycle not independently verified.
+IIS + Waitress,173.71,18.88,3.500,Windows VM plus storage model.

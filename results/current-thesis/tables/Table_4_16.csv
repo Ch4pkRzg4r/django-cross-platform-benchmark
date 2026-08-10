@@ -1,0 +1,10 @@
+Evidence family,Included quantities,Main analytical role,Complete-value location
+Identification / provenance (6),run_id; platform; scenario; replication; controller start/end,Provenance only; not a performance endpoint,Chapter 3; Appendix B; Appendix E provenance summary
+Workload / rate (4),test duration; target field; actual RPS; callback-qualified goodput,Actual RPS descriptive; goodput is a primary inferential outcome,Table 4.3; complete cell-summary carrier identified in Appendix E
+Volume / error (3),total requests; total callback-defined errors; error rate,Failure rate is primary; counts are descriptive context,Table 4.3; complete cell-summary carrier identified in Appendix E
+Latency distribution (10),p50; p90; p95; p99; p99.9; mean; min; max; sample SD; CV,p95 primary; CV inferential dispersion diagnostic; other latency fields secondary/tail,Table 4.2; Tables E.2–E.3
+Connection timing (6),DNS p50/p95; TCP p50/p95; TLS p50/p95,Diagnostic only; not used for causal network decomposition,Canonical/cell-summary carrier; not duplicated in the thesis
+Waiting / TTFB (3),waiting p50; p95; p99,Client-path diagnostic; descriptive,Table 4.4; complete cell-summary carrier identified in Appendix E
+Latency-only Apdex-style score (1),"Apdex-style score, T=500 ms and F=2000 ms",Primary inferential/user-experience proxy,Table 4.3; Figure 4.6; Table E.4
+Transfer / bandwidth (3),bytes received; bytes sent; mean receive rate,Descriptive transfer evidence,Table 4.4; complete cell-summary carrier identified in Appendix E
+Iteration / event time (3),k6 iterations; first Point timestamp; last Point timestamp,Iterations provide delivery context; raw timestamps remain run-level provenance,Canonical dataset; complete cell-summary carrier where applicable

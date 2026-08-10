@@ -1,0 +1,24 @@
+Scen.,Lower observed-median configuration,p95 (ms),Higher observed-median configuration,p95 (ms),Holm-adj. p,Cliff’s |δ|
+A,IIS + Waitress,116.9,Fly.io,726.4,<0.0001,1.00
+A,IIS + Waitress,116.9,Koyeb,208.6,<0.0001,1.00
+A,IIS + Waitress,116.9,Azure Container Apps,153.4,0.0218,1.00
+B,Nginx + uWSGI,118.0,Fly.io,163.5,<0.0001,1.00
+B,Nginx + uWSGI,118.0,Koyeb,164.6,0.0001,1.00
+B,Nginx + uWSGI,118.0,Azure Container Apps,151.9,0.0068,0.78
+B,Apache + mod_wsgi,125.0,Fly.io,163.5,0.0109,1.00
+B,Apache + mod_wsgi,125.0,Koyeb,164.6,0.0195,1.00
+C,Azure Container Apps,113.6,Fly.io,704.5,<0.0001,1.00
+C,Nginx + uWSGI,112.8,Fly.io,704.5,<0.0001,1.00
+C,Django + Gunicorn,118.5,Fly.io,704.5,0.0003,1.00
+C,Azure Container Apps,113.6,Koyeb,181.0,0.0007,1.00
+C,Nginx + uWSGI,112.8,Koyeb,181.0,0.0032,0.86
+C,Azure Container Apps,113.6,Apache + mod_wsgi,146.3,0.0114,0.94
+C,Azure Container Apps,113.6,IIS + Waitress,142.7,0.0233,1.00
+C,Nginx + uWSGI,112.8,Apache + mod_wsgi,146.3,0.0365,0.72
+D,Azure Container Apps,121.2,Fly.io,354.8,0.0001,1.00
+D,Azure Container Apps,121.2,Django + Gunicorn,"4,428.3",0.0006,0.82
+D,Apache + mod_wsgi,141.7,Fly.io,354.8,0.0033,1.00
+D,Nginx + uWSGI,134.3,Fly.io,354.8,0.0056,0.82
+D,Apache + mod_wsgi,141.7,Django + Gunicorn,"4,428.3",0.0137,0.64
+D,Nginx + uWSGI,134.3,Django + Gunicorn,"4,428.3",0.0222,0.72
+D,Azure Container Apps,121.2,IIS + Waitress,205.0,0.0222,0.88

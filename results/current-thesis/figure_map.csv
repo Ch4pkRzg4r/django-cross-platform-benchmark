@@ -1,0 +1,19 @@
+Figure,Caption,PNG,PDF
+4.1,Scenario-specific median p95 latency by deployment path.,figures/Figure_4_01.png,figures/Figure_4_01.pdf
+4.2,Tail-inflation diagnostic: median run-level p99/p50 ratio by scenario.,figures/Figure_4_02.png,figures/Figure_4_02.pdf
+4.3,Relative p95 latency gap between provider-managed and self-managed paths.,figures/Figure_4_03.png,figures/Figure_4_03.pdf
+4.4,Callback-qualified goodput attainment as a percentage of the nominal offered rate.,figures/Figure_4_04.png,figures/Figure_4_04.pdf
+4.5,Callback-defined request-failure rate by deployment path and scenario.,figures/Figure_4_05.png,figures/Figure_4_05.pdf
+4.6,Callback-qualified goodput and latency-only Apdex-style score by deployment path.,figures/Figure_4_06.png,figures/Figure_4_06.pdf
+4.7,Relative callback-qualified goodput gap between provider-managed and self-managed paths.,figures/Figure_4_07.png,figures/Figure_4_07.pdf
+4.8,Temporal diagnostics: warm-up sensitivity and post-idle first-request latency contrast.,figures/Figure_4_08.png,figures/Figure_4_08.pdf
+4.9,Scenario D burst-phase p95 latency relative to baseline.,figures/Figure_4_09.png,figures/Figure_4_09.pdf
+4.10,Significant Dunn/Holm p95 rank-distribution contrasts by scenario.,figures/Figure_4_10.png,figures/Figure_4_10.pdf
+4.11,Median p95 latency with 95% percentile-bootstrap intervals.,figures/Figure_4_11.png,figures/Figure_4_11.pdf
+4.12,Conditional warm-cost versus scenario-specific median p95 latency.,figures/Figure_4_12.png,figures/Figure_4_12.pdf
+4.13a,Six-panel scenario-specific metric profile across the 28 benchmark cells. (continued panel),figures/Figure_4_13a.png,figures/Figure_4_13a.pdf
+4.13b,Six-panel scenario-specific metric profile across the 28 benchmark cells. (continued panel),figures/Figure_4_13b.png,figures/Figure_4_13b.pdf
+4.13c,Six-panel scenario-specific metric profile across the 28 benchmark cells. (continued panel),figures/Figure_4_13c.png,figures/Figure_4_13c.pdf
+4.13d,Six-panel scenario-specific metric profile across the 28 benchmark cells. (continued panel),figures/Figure_4_13d.png,figures/Figure_4_13d.pdf
+4.13e,Six-panel scenario-specific metric profile across the 28 benchmark cells. (continued panel),figures/Figure_4_13e.png,figures/Figure_4_13e.pdf
+4.13f,Six-panel scenario-specific metric profile across the 28 benchmark cells. (continued panel),figures/Figure_4_13f.png,figures/Figure_4_13f.pdf

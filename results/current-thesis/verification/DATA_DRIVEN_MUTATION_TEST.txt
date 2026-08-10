@@ -1,0 +1,27 @@
+v330 DATA-DRIVEN MUTATION TEST
+===============================
+
+Controlled test change
+----------------------
+Only the ten retained IIS + Waitress / Scenario A latency_p95 source values were multiplied by 2 in a disposable copy of master_runs.csv.
+
+Observed response
+-----------------
+Table 4.2 IIS-A p95:
+  frozen baseline : 116.9 ms
+  changed input   : 233.7 ms
+
+Table 4.8 Scenario-A p95 Kruskal-Wallis:
+  frozen baseline : H=39.90, raw p=4.77e-07, eta2_H=0.538
+  changed input   : H=28.29, raw p=8.27e-05, eta2_H=0.354
+
+Figure 4.1 dynamic PNG SHA-256 changed:
+  baseline : 121512a1e87916686735f6f64be679ae05c49d05f780c2d6965d9f685582f6dc
+  mutation : 6915bf56b4fc00b47cff7ff2a6c161e96005ad8074265ceb2fc24c81eb1f26c2
+
+Exact published v329 assets on changed data:
+  NOT EMITTED (correct behavior).
+
+Conclusion
+----------
+PASS. Compatible analytical input changes propagate to tables, inferential results and dynamic figures. Frozen publication assets are emitted only for the frozen canonical dataset.

@@ -1,0 +1,4 @@
+Platform,Attempted / valid pairs,First request p50 (ms),Warm repeat p50 (ms),Median paired multiplier,Boundary
+ACA,5 / 5,"20,668.8",202.9,102.6×,All valid pairs: first > warm
+Koyeb,5 / 4,"4,081.1",148.5,26.7×,One failed pair; all valid first > warm
+Fly.io,5 / 5,"3,709.9",138.6,16.4×,All valid pairs: first > warm

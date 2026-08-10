@@ -1,0 +1,21 @@
+Scen.,Outcome,Traditional,Managed,M − T
+A,p95 latency (ms),149.4,208.6,59.2
+A,Goodput (RPS),20.00,19.91,-0.09
+A,Callback-defined request-failure rate,0.001%,0.073%,0.073%
+A,Apdex-style,0.994,0.980,-0.014
+A,Latency CV,1.86,3.85,1.99
+B,p95 latency (ms),125.6,163.5,38.0
+B,Goodput (RPS),15.00,15.00,0.00
+B,Callback-defined request-failure rate,0.000%,0.041%,0.041%
+B,Apdex-style,1.000,0.997,-0.003
+B,Latency CV,1.20,2.82,1.61
+C,p95 latency (ms),130.6,181.0,50.4
+C,Goodput (RPS),29.98,29.83,-0.15
+C,Callback-defined request-failure rate,0.000%,0.039%,0.039%
+C,Apdex-style,0.999,0.996,-0.003
+C,Latency CV,1.23,3.50,2.26
+D,p95 latency (ms),173.4,169.5,-3.9
+D,Goodput (RPS),17.71,17.82,0.11
+D,Callback-defined request-failure rate,0.193%,0.042%,-0.151%
+D,Apdex-style,0.989,0.997,0.008
+D,Latency CV,3.60,3.62,0.02

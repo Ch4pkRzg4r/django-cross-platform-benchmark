@@ -1,0 +1,26 @@
+PASS prepared analytical frame has 280 rows and 42 columns (39 source + 3 derived): (280, 42)
+PASS 28 platform-scenario cells, exactly 10 retained runs per cell
+PASS Figure 4.1/4.2 backing values match thesis Table 4.2 (28 data rows)
+PASS Figures 4.4-4.7 backing values match thesis Table 4.3
+PASS Figure 4.8 warm-up inputs match thesis Table 4.5
+PASS Figure 4.9 burst-phase inputs match thesis Table 4.6
+PASS Figure 4.8 post-idle inputs match thesis Table 4.7
+PASS Figure 4.10 has exactly 23 Holm-significant p95 pairwise contrasts
+PASS Figure 4.10 pairwise carrier exactly matches thesis Table 4.9 row order, medians, Holm p and Cliff's |δ|
+PASS Figure 4.11 bootstrap carrier is deterministic (28 cells, fixed seeds, 10,000 resamples)
+PASS Figure 4.12 cost carrier matches thesis Table 4.12
+PASS Figure 4.13 contains six panels with scaled ranks bounded to [0,1]
+PASS All 18 current-thesis visual files exist as PNG and PDF (4.1-4.12 + 4.13a-f)
+PASS Six-page Figure 4.13 combined PDF exists
+--- CURRENT v329 STATISTICAL ANALYSIS ---
+PASS current analysis contains exactly 20 scenario-stratified Kruskal-Wallis tests
+PASS Kruskal-Wallis H, raw p and rank eta-squared exactly reproduce thesis Table 4.8
+PASS Dunn/Holm p95 output contains exactly the 23 significant current-thesis contrasts
+PASS Dunn/Holm + Cliff's |delta| exactly reproduce thesis Table 4.9
+PASS Balanced descriptive family summaries exactly reproduce thesis Table 4.10
+PASS Focused Scenario-C Apache comparisons exactly reproduce thesis Table 4.15
+PASS analysis scope explicitly records that outdated cross-scenario H4 tests are not used
+PASS complete Dunn/Holm carrier contains all 84 comparisons (21 per scenario)
+PASS bootstrap carrier contains 140 cell-outcome intervals (28 x 5)
+
+OVERALL: PASS

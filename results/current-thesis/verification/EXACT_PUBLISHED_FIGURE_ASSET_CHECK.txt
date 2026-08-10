@@ -1,0 +1,20 @@
+PASS Figure_4_01.jpg: byte-identical published thesis asset
+PASS Figure_4_02.jpg: byte-identical published thesis asset
+PASS Figure_4_03.jpg: byte-identical published thesis asset
+PASS Figure_4_04.jpg: byte-identical published thesis asset
+PASS Figure_4_05.jpg: byte-identical published thesis asset
+PASS Figure_4_06.jpg: byte-identical published thesis asset
+PASS Figure_4_07.jpg: byte-identical published thesis asset
+PASS Figure_4_08.jpg: byte-identical published thesis asset
+PASS Figure_4_09.jpg: byte-identical published thesis asset
+PASS Figure_4_10.jpg: byte-identical published thesis asset
+PASS Figure_4_11.jpg: byte-identical published thesis asset
+PASS Figure_4_12.jpg: byte-identical published thesis asset
+PASS Figure_4_13a.png: byte-identical published thesis asset
+PASS Figure_4_13b.png: byte-identical published thesis asset
+PASS Figure_4_13c.png: byte-identical published thesis asset
+PASS Figure_4_13d.png: byte-identical published thesis asset
+PASS Figure_4_13e.png: byte-identical published thesis asset
+PASS Figure_4_13f.png: byte-identical published thesis asset
+
+OVERALL PUBLISHED FIGURE ASSET MIRROR: PASS

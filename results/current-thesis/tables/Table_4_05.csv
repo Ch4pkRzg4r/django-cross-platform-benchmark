@@ -1,0 +1,24 @@
+Platform,Group,Scen.,First 30 s p95,Later p95,Ratio
+Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths,Self-managed WSGI paths
+Apache + mod_wsgi,Trad.,A,146.0,149.2,1.0
+Apache + mod_wsgi,Trad.,B,130.4,124.6,1.0
+Apache + mod_wsgi,Trad.,C,126.7,146.8,0.9
+Nginx + uWSGI,Trad.,A,151.1,153.2,1.0
+Nginx + uWSGI,Trad.,B,121.5,117.7,1.0
+Nginx + uWSGI,Trad.,C,113.4,112.8,1.0
+Django + Gunicorn,Trad.,A,143.7,150.0,1.0
+Django + Gunicorn,Trad.,B,134.3,125.8,1.1
+Django + Gunicorn,Trad.,C,121.9,118.4,1.0
+IIS + Waitress,Trad.,A,118.8,116.8,1.0
+IIS + Waitress,Trad.,B,127.7,128.8,1.0
+IIS + Waitress,Trad.,C,140.7,142.5,1.0
+Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths,Provider-managed paths
+Azure Container Apps,Managed,A,155.3,153.4,1.0
+Azure Container Apps,Managed,B,152.3,152.0,1.0
+Azure Container Apps,Managed,C,114.4,113.4,1.0
+Koyeb,Managed,A,162.4,203.1,0.8
+Koyeb,Managed,B,159.9,164.6,1.0
+Koyeb,Managed,C,161.7,180.8,0.9
+Fly.io,Managed,A,156.3,737.2,0.2
+Fly.io,Managed,B,164.0,163.8,1.0
+Fly.io,Managed,C,167.4,715.7,0.2

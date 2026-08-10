@@ -1,0 +1,9 @@
+Evidence component,Retained record,Use in this chapter
+Retained design,280 observations; 7 configurations × 4 scenarios × 10 replications,Primary evidence base for Chapters 4–6.
+Primary endpoints + declared dispersion diagnostic,"Primary: p95 latency, callback-qualified goodput, callback-defined request-failure rate and latency-only Apdex-style score; additional declared diagnostic: latency CV",Scenario-stratified descriptive reporting; the four primary endpoints plus latency CV enter the 20-test omnibus family.
+Tail endpoints,p99 secondary; p99.9 supplementary controlled output registered in Appendix E,p99 is explicitly flagged where the timeout-boundary flag occurs; p99.9 is supplementary and not a primary inferential endpoint.
+Diagnostic transport fields,DNS unavailable; TLS non-discriminating; TCP limited,Not reported as primary comparative outcomes.
+Temporal summaries,"Warm-up: 21 A–C summaries; burst: 12,617 second-level trace rows",Descriptive evidence only; not replication-level inference.
+Post-idle health-probe data,15 attempted post-idle pairs (5/platform); 14 valid; 360-s no-probe interval and 800-ms immediate-repeat delay; 4 June 2026.,Supplementary small-sample descriptive evidence outside the 280-run matrix; no lifecycle/scale-to-zero proof.
+Operational evidence,Linux-only container resource data and stated-assumption cost model,Scope-qualified; no unqualified seven-platform overall rank.
+Execution chronology,280 timestamps; two ordinary inter-run gap clusters (median 157.5 s and 241.5 s) plus three interruptions,Supports a mixed timing-control history; exact command values are not assigned to individual runs.

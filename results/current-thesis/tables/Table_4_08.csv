@@ -1,0 +1,21 @@
+Scen.,Outcome,n,H,raw p,η²H
+A,p95 latency (ms),70,39.90,4.77e-07,0.538
+A,Callback-qualified goodput (RPS),70,47.22,1.70e-08,0.654
+A,Callback-defined request-failure rate,70,61.10,2.69e-11,0.875
+A,Thesis-modified latency-only Apdex-style score,70,45.84,3.18e-08,0.632
+A,Latency CV,70,46.55,2.30e-08,0.644
+B,p95 latency (ms),70,37.05,1.72e-06,0.493
+B,Callback-qualified goodput (RPS),70,45.78,3.27e-08,0.631
+B,Callback-defined request-failure rate,70,60.91,2.95e-11,0.872
+B,Thesis-modified latency-only Apdex-style score,70,31.32,2.20e-05,0.402
+B,Latency CV,70,55.72,3.31e-10,0.789
+C,p95 latency (ms),70,51.70,2.14e-09,0.725
+C,Callback-qualified goodput (RPS),70,38.83,7.73e-07,0.521
+C,Callback-defined request-failure rate,70,51.74,2.10e-09,0.726
+C,Thesis-modified latency-only Apdex-style score,70,50.87,3.15e-09,0.712
+C,Latency CV,70,39.90,4.76e-07,0.538
+D,p95 latency (ms),70,37.51,1.40e-06,0.500
+D,Callback-qualified goodput (RPS),70,33.37,8.92e-06,0.434
+D,Callback-defined request-failure rate,70,45.24,4.20e-08,0.623
+D,Thesis-modified latency-only Apdex-style score,70,32.21,1.48e-05,0.416
+D,Latency CV,70,49.36,6.31e-09,0.688

@@ -1,0 +1,18 @@
+PASS Table 4.1: exact cell text/order/rounding
+PASS Table 4.2: exact cell text/order/rounding
+PASS Table 4.3: exact cell text/order/rounding
+PASS Table 4.4: exact cell text/order/rounding
+PASS Table 4.5: exact cell text/order/rounding
+PASS Table 4.6: exact cell text/order/rounding
+PASS Table 4.7: exact cell text/order/rounding
+PASS Table 4.8: exact cell text/order/rounding
+PASS Table 4.9: exact cell text/order/rounding
+PASS Table 4.10: exact cell text/order/rounding
+PASS Table 4.11: exact cell text/order/rounding
+PASS Table 4.12: exact cell text/order/rounding
+PASS Table 4.13: exact cell text/order/rounding
+PASS Table 4.14: exact cell text/order/rounding
+PASS Table 4.15: exact cell text/order/rounding
+PASS Table 4.16: exact cell text/order/rounding
+
+OVERALL TABLE MIRROR: PASS
