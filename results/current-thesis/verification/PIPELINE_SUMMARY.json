@@ -1,0 +1,18 @@
+{
+  "master_rows": 280,
+  "master_source_columns": 39,
+  "prepared_columns": 42,
+  "platform_scenario_cells": 28,
+  "kruskal_tests": 20,
+  "dunn_holm_pairs": 84,
+  "significant_p95_dunn_holm_contrasts": 23,
+  "bootstrap_cell_outcome_intervals": 140,
+  "tables_written": 16,
+  "exact_table_mirror_pass": true,
+  "dynamic_figures": "4.1-4.12 plus 4.13a-f",
+  "exact_published_figures_emitted": true,
+  "exact_published_figure_asset_hash_pass": true,
+  "master_sha256": "710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7",
+  "frozen_thesis_sha256_match": true,
+  "pipeline_source_sha256": "d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574"
+}
