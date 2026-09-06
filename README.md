@@ -8,6 +8,8 @@ Research artefacts supporting the MSc thesis **“Benchmarking and Evaluation of
 
 > Thesis-document alignment: the submission document reviewed for final QA is **v344**, while the controlling numerical/statistical analysis remains the validated **v330** pipeline. The v344 changes after the v330 analytical freeze are editorial/notation/labelling/redaction/document-QA corrections and do not change the frozen canonical data or numerical Chapter 4 results. See `THESIS_V344_ALIGNMENT.md`.
 
+> Completeness boundary: this repository is complete for the declared canonical-data/analytical audit scope, but it is **not** represented as containing every historical raw byte or the entire runnable historical Django application tree. See `REPOSITORY_COMPLETENESS_AUDIT_V344.md`.
+
 ## Study scope
 
 One Django 5.1.2 e-commerce application was evaluated across seven deployment configurations — Apache + mod_wsgi, Nginx + uWSGI, Gunicorn, IIS + Waitress, Azure Container Apps, Koyeb and Fly.io — under four open-arrival k6 workload scenarios. Ten retained replications were analysed per platform–scenario cell: **7 × 4 × 10 = 280 retained runs**. The application used PostgreSQL 17 with PgBouncer.
@@ -111,9 +113,10 @@ The earlier `MANIFEST_SHA256.csv` remains the integrity snapshot of the pre-v330
 ## Repository contents
 
 - `THESIS_V344_ALIGNMENT.md` — current thesis-document/repository alignment and evidence boundary.
+- `REPOSITORY_COMPLETENESS_AUDIT_V344.md` — explicit present/missing-material audit and approved thesis wording.
 - `benchmark/` — benchmark-time orchestrator, four k6 workload scripts and parser.
-- `application/` — as-built Django application capture, with credential-templated derivatives where required.
-- `configuration/` — retained platform/scenario/deployment configuration evidence.
+- `application/` — selected sanitised benchmark-relevant Django source/runtime capture; this is not claimed as the entire historical runnable application tree.
+- `configuration/` — retained platform/scenario/deployment configuration evidence, using safe/redacted derivatives where required.
 - `analysis/` — v330 source payload/materialiser/repository runner plus earlier analytical provenance.
 - `data/canonical/` — frozen 280×39 dataset and dictionary.
 - `data/supplementary/` — warm-up, burst-recovery and post-idle analytical carriers small enough for Git.
@@ -126,7 +129,7 @@ The earlier `MANIFEST_SHA256.csv` remains the integrity snapshot of the pre-v330
 
 This repository supports inspection of the benchmark implementation, canonical data, analytical logic, integrity records and controlled computational rerunning of the retained analysis. It does **not** claim that the historical managed-cloud campaign can be recreated bit-for-bit today: provider-internal state, historical managed-platform state and some external transients are not controllable or observable after the experiment.
 
-The full original per-run k6 JSON/CSV evidence and other heavy raw evidence are retained as controlled evidence outside ordinary Git history because of size. GitHub stores integrity/provenance manifests. No public raw-data URL is claimed until the controlled archive has been uploaded, checked and approved for release.
+The full original per-run k6 JSON/CSV evidence and other heavy raw evidence are retained as controlled evidence outside ordinary Git history because of size. GitHub stores integrity/provenance manifests. The complete runnable historical Django application tree is likewise not claimed to be fully duplicated in ordinary Git; the repository contains selected sanitised source captures suitable for evidence inspection. No public raw-data URL is claimed until the controlled archive has been uploaded, checked and approved for release.
 
 ## Data-driven safeguard
 
