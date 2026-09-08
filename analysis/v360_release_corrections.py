@@ -2,29 +2,30 @@
 """v360 release-layer corrections and reproducibility carriers.
 
 This module deliberately leaves the byte-exact validated v330 analytical source
-unchanged. It applies the small, independently adjudicated v360 release-layer
-corrections that are defined from the frozen canonical run-level dataset:
+unchanged. It applies the independently adjudicated post-v359 release-layer
+corrections defined from the frozen canonical run-level dataset:
 
 1. p99/p50 tail inflation is computed per run first, then summarised by the
    median within each platform-scenario cell. This supersedes the historical
    ratio-of-cell-medians appendix carrier emitted by the v330 table writer.
-2. Scenario-D phase wording is carried separately from this module; no burst
-   table values are silently changed here.
-3. The completed-iteration shortfall diagnostic is explicitly separated from
+2. The completed-iteration shortfall diagnostic is explicitly separated from
    k6 dropped_iterations and is computed relative to scenario-specific planned
    iteration starts.
-4. Figure 4.1 and Figure 4.13 data carriers are regenerated directly from the
+3. Figure 4.1 and Figure 4.13 data carriers are regenerated directly from the
    frozen canonical run-level data.
 
-The module writes transparent CSV/JSON carriers and fails closed if the frozen
-280-run / 28-cell / 10-replication structure is not present.
+The script fails closed on the frozen 280-run / 28-cell / 10-replication design.
+All release CSVs are staged and validated before publication. The manifest hashes
+an explicit CSV list, never hashes itself, and is published last.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import os
 import subprocess
+import tempfile
 from pathlib import Path
 
 import numpy as np
@@ -57,6 +58,12 @@ RANK_METRICS = [
     "latency_p50", "latency_p95", "latency_p99", "latency_p999",
     "latency_cv", "tail_ratio", "goodput_rps", "error_pct",
     "apdex_t500_f2000", "waiting_p50", "waiting_p95", "bandwidth_rx_bps",
+]
+PUBLISHED_CSVS = [
+    "v360_tail_ratio_cells.csv",
+    "v360_figure4_1_p95_cells.csv",
+    "v360_completed_iteration_shortfall.csv",
+    "v360_figure4_13_rank_carrier.csv",
 ]
 
 
@@ -106,7 +113,6 @@ def main() -> int:
     repo = Path(__file__).resolve().parent.parent
     master = (args.master or (repo / "data" / "canonical" / "master_runs.csv")).resolve()
     out = (args.out_dir or (repo / ".v360-run" / "release")).resolve()
-    out.mkdir(parents=True, exist_ok=True)
 
     got_sha = sha256(master)
     if got_sha != FROZEN_CANONICAL_SHA256 and not args.allow_nonfrozen:
@@ -123,6 +129,7 @@ def main() -> int:
 
     keys = ["platform", "scenario"]
     med = df.groupby(keys, sort=False).median(numeric_only=True).reset_index()
+
     ratio_cells = (
         df.groupby(keys, sort=False)["tail_ratio"].median().rename("p99_over_p50")
         .reset_index()
@@ -141,16 +148,16 @@ def main() -> int:
     )
     ratio_cells["platform_label"] = ratio_cells.platform.map(PLATFORM_LABEL)
     ratio_cells["scenario_label"] = ratio_cells.scenario.map(SCENARIO_LABEL)
-    ratio_cells.to_csv(out / "v360_tail_ratio_cells.csv", index=False)
+    if len(ratio_cells) != 28 or ratio_cells[keys].duplicated().any():
+        raise SystemExit("tail-ratio carrier must contain exactly 28 unique cells")
 
     fig41 = med[keys + ["latency_p95"]].copy()
     fig41["platform_label"] = fig41.platform.map(PLATFORM_LABEL)
     fig41["scenario_label"] = fig41.scenario.map(SCENARIO_LABEL)
-    fig41.rename(columns={"latency_p95": "median_p95_ms"}).to_csv(
-        out / "v360_figure4_1_p95_cells.csv", index=False
-    )
+    fig41 = fig41.rename(columns={"latency_p95": "median_p95_ms"})
+    if len(fig41) != 28 or fig41[keys].duplicated().any():
+        raise SystemExit("Figure 4.1 carrier must contain exactly 28 unique cells")
 
-    # Completed-iteration shortfall relative to the planned start count.
     short = df[["run_id", "platform", "scenario", "replication", "k6_iterations"]].copy()
     short["planned_iteration_starts"] = short.scenario.map(PLANNED_ITERATION_STARTS)
     short["completed_iteration_shortfall_count"] = np.maximum(
@@ -159,13 +166,15 @@ def main() -> int:
     short["completed_iteration_shortfall_pct"] = (
         100.0 * short.completed_iteration_shortfall_count / short.planned_iteration_starts
     )
-    short.to_csv(out / "v360_completed_iteration_shortfall.csv", index=False)
+    if len(short) != 280 or short.run_id.nunique() != 280:
+        raise SystemExit("shortfall carrier must contain exactly 280 unique retained runs")
 
-    # Figure 4.13 rank carrier. Average ranks preserve exact stored-precision ties;
-    # H/L mark every configuration tied at the unrounded within-scenario extrema.
-    cell = med.merge(ratio_cells[keys + ["p99_over_p50"]], on=keys, validate="one_to_one")
-    cell = cell.rename(columns={"p99_over_p50": "tail_ratio"})
-    rank_rows = []
+    # `med` already contains the median of the run-level tail_ratio because
+    # tail_ratio was added before groupby(). Reuse it directly. The previous
+    # implementation merged a second tail_ratio column and caused pandas to
+    # return a Series for row["tail_ratio"], which made the official entry fail.
+    cell = med.copy()
+    rank_rows: list[dict] = []
     for scenario, g in cell.groupby("scenario", sort=False):
         for metric in RANK_METRICS:
             vals = g[metric]
@@ -187,34 +196,57 @@ def main() -> int:
                     "L": bool(value == lo),
                     "H": bool(value == hi),
                 })
-    pd.DataFrame(rank_rows).to_csv(out / "v360_figure4_13_rank_carrier.csv", index=False)
+    rank_df = pd.DataFrame(rank_rows)
+    if rank_df.columns.duplicated().any():
+        raise SystemExit("rank carrier contains duplicate column names")
+    if len(rank_df) != 336:
+        raise SystemExit(f"rank carrier must contain 336 rows, got {len(rank_df)}")
+    if rank_df[["scenario", "platform", "metric"]].duplicated().any():
+        raise SystemExit("rank carrier contains duplicate scenario/platform/metric rows")
 
-    manifest = {
-        "release": "v360",
-        "purpose": "release-layer correction over byte-exact validated v330 base",
-        "repository_commit_if_available": git_commit(repo),
-        "canonical_path": str(master),
-        "canonical_sha256": got_sha,
-        "canonical_rows": int(len(df)),
-        "canonical_cells": int(df.groupby(keys).ngroups),
-        "tail_ratio_estimand": "median_r(latency_p99_r / latency_p50_r)",
-        "historical_operator_superseded": "median_r(latency_p99_r) / median_r(latency_p50_r)",
-        "tail_ratio_cells": 28,
-        "historical_operator_differs_at_3dp_cells": int(
-            (ratio_cells.p99_over_p50.round(3) != ratio_cells.historical_ratio_of_cell_medians.round(3)).sum()
-        ),
-        "shortfall_definition": "100*max(P-I,0)/P where I is retained completed iterations; not an actual-start census and not k6 dropped_iterations",
-        "shortfall_gt_1pct_runs": int((short.completed_iteration_shortfall_pct > 1.0).sum()),
-        "shortfall_ge_5pct_runs": int((short.completed_iteration_shortfall_pct >= 5.0).sum()),
-        "shortfall_max_pct": float(short.completed_iteration_shortfall_pct.max()),
-        "outputs": {},
-    }
-    for path in sorted(out.glob("v360_*")):
-        if path.is_file():
-            manifest["outputs"][path.name] = {"sha256": sha256(path), "bytes": path.stat().st_size}
-    (out / "v360_release_manifest.json").write_text(
-        json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8"
-    )
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="v360-stage-", dir=str(out.parent)) as tmp:
+        stage = Path(tmp)
+        ratio_cells.to_csv(stage / PUBLISHED_CSVS[0], index=False)
+        fig41.to_csv(stage / PUBLISHED_CSVS[1], index=False)
+        short.to_csv(stage / PUBLISHED_CSVS[2], index=False)
+        rank_df.to_csv(stage / PUBLISHED_CSVS[3], index=False)
+
+        manifest = {
+            "release": "v360",
+            "purpose": "release-layer correction over byte-exact validated v330 base",
+            "repository_commit_if_available": git_commit(repo),
+            "canonical_path": str(master),
+            "canonical_sha256": got_sha,
+            "canonical_rows": int(len(df)),
+            "canonical_cells": int(df.groupby(keys).ngroups),
+            "tail_ratio_estimand": "median_r(latency_p99_r / latency_p50_r)",
+            "historical_operator_superseded": "median_r(latency_p99_r) / median_r(latency_p50_r)",
+            "tail_ratio_cells": 28,
+            "historical_operator_differs_at_3dp_cells": int(
+                (ratio_cells.p99_over_p50.round(3) != ratio_cells.historical_ratio_of_cell_medians.round(3)).sum()
+            ),
+            "shortfall_definition": "100*max(P-I,0)/P where I is retained completed iterations; not an actual-start census and not k6 dropped_iterations",
+            "shortfall_gt_1pct_runs": int((short.completed_iteration_shortfall_pct > 1.0).sum()),
+            "shortfall_ge_5pct_runs": int((short.completed_iteration_shortfall_pct >= 5.0).sum()),
+            "shortfall_max_pct": float(short.completed_iteration_shortfall_pct.max()),
+            "rank_rows": int(len(rank_df)),
+            "outputs": {},
+        }
+        # Hash only the explicit release CSVs. Never include the manifest itself
+        # or stale v360_* files from a previous run.
+        for name in PUBLISHED_CSVS:
+            path = stage / name
+            manifest["outputs"][name] = {"sha256": sha256(path), "bytes": path.stat().st_size}
+
+        manifest_path = stage / "v360_release_manifest.json"
+        manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
+
+        out.mkdir(parents=True, exist_ok=True)
+        # Publish only after all data/rank/manifest validation has succeeded.
+        for name in PUBLISHED_CSVS:
+            os.replace(stage / name, out / name)
+        os.replace(manifest_path, out / "v360_release_manifest.json")
 
     print(json.dumps(manifest, indent=2, sort_keys=True))
     return 0
