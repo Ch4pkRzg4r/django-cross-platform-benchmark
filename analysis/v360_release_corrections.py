@@ -106,6 +106,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--master", type=Path, default=None)
     ap.add_argument("--out-dir", type=Path, default=None)
+    ap.add_argument("--burst-carrier", type=Path, default=None,
+                    help="replication-median per-second Scenario-D carrier; defaults to data/supplementary/timeseries_burst_recovery.csv")
     ap.add_argument("--allow-nonfrozen", action="store_true",
                     help="allow a changed canonical file for exploratory testing")
     args = ap.parse_args()
@@ -113,6 +115,7 @@ def main() -> int:
     repo = Path(__file__).resolve().parent.parent
     master = (args.master or (repo / "data" / "canonical" / "master_runs.csv")).resolve()
     out = (args.out_dir or (repo / ".v360-run" / "release")).resolve()
+    burst_carrier = (args.burst_carrier or (repo / "data" / "supplementary" / "timeseries_burst_recovery.csv")).resolve()
 
     got_sha = sha256(master)
     if got_sha != FROZEN_CANONICAL_SHA256 and not args.allow_nonfrozen:
@@ -168,6 +171,23 @@ def main() -> int:
     )
     if len(short) != 280 or short.run_id.nunique() != 280:
         raise SystemExit("shortfall carrier must contain exactly 280 unique retained runs")
+
+    # Scenario-D achieved rate is derived from the retained replication-median
+    # per-second curve, not copied from a literal constant in the frozen v330
+    # writer. The current estimand is median(rps_tau) for 360 <= tau < 960.
+    if not burst_carrier.exists():
+        raise SystemExit(f"missing Scenario-D burst carrier: {burst_carrier}")
+    burst = pd.read_csv(burst_carrier)
+    burst_required = {"platform", "second", "rps"}
+    burst_missing = sorted(burst_required - set(burst.columns))
+    if burst_missing:
+        raise SystemExit(f"burst carrier missing required fields: {burst_missing}")
+    peak = burst[(burst["second"] >= 360) & (burst["second"] < 960)].copy()
+    if peak.empty:
+        raise SystemExit("burst carrier contains no rows in 360 <= tau < 960")
+    peak_rps = peak.groupby("platform", sort=True)["rps"].median()
+    if len(peak_rps) != 7 or peak_rps.isna().any():
+        raise SystemExit("burst peak-window validation requires seven non-missing platform medians")
 
     # `med` already contains the median of the run-level tail_ratio because
     # tail_ratio was added before groupby(). Reuse it directly. The previous
@@ -231,6 +251,11 @@ def main() -> int:
             "shortfall_ge_5pct_runs": int((short.completed_iteration_shortfall_pct >= 5.0).sum()),
             "shortfall_max_pct": float(short.completed_iteration_shortfall_pct.max()),
             "rank_rows": int(len(rank_df)),
+            "burst_carrier_path": str(burst_carrier),
+            "burst_carrier_sha256": sha256(burst_carrier),
+            "burst_peak_window": "360 <= tau < 960",
+            "burst_peak_rps_estimand": "median_tau(rps_tau) on the retained replication-median per-second curve",
+            "burst_peak_rps_by_platform": {str(k): float(v) for k, v in peak_rps.items()},
             "outputs": {},
         }
         # Hash only the explicit release CSVs. Never include the manifest itself
