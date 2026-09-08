@@ -2,7 +2,7 @@
 
 ## Current controlling computational release
 
-The current thesis release is **v360**. It preserves the byte-exact validated **v330 calibrated end-to-end pipeline** as the computational base and adds a small, transparent release layer for the independently adjudicated post-v359 corrections.
+The current thesis computational release is **v360**. It preserves the byte-exact validated **v330 calibrated end-to-end pipeline** as the computational base and adds a small, transparent release layer for the independently adjudicated post-v359 corrections.
 
 The byte-exact v330 source SHA-256 remains:
 
@@ -28,7 +28,7 @@ python analysis/run_v360_from_repo.py --run-v330 \
   --figure-reference-dir /path/to/reference/thesis_figures
 ```
 
-The release-layer implementation is `analysis/v360_release_corrections.py`.
+The release-layer implementation is `analysis/v360_release_corrections.py`. Its release files are staged and validated before publication; the manifest hashes an explicit output list and does not hash itself or unrelated stale files.
 
 ## Why v360 exists
 
@@ -76,7 +76,11 @@ A normal v360 release check writes into `.v360-run/release/`:
 - `v360_figure4_13_rank_carrier.csv`
 - `v360_release_manifest.json`
 
-The release manifest records the canonical hash, design cardinality, estimand definitions, shortfall counts, output hashes and the repository commit when Git metadata are available.
+The release manifest records the canonical hash, design cardinality, estimand definitions, shortfall counts, explicit output hashes and the repository commit when Git metadata are available. Repeated successful runs must leave every listed output hash verifiable; the manifest itself is deliberately excluded from its own output-hash list.
+
+## Scenario-D phase carrier
+
+`data/supplementary/timeseries_burst_recovery.csv` is the retained replication-median per-second burst carrier. The thesis phase definition is baseline `60 <= tau <= 300`, peak `360 <= tau < 960`, and post-ramp `tau >= 1020`. The published peak-window achieved-rate value is a data-derived median of the retained per-second RPS curve in the half-open peak window; the frozen carrier yields 40 RPS for all seven paths. A literal `40` in the byte-exact historical v330 writer is provenance, not the current definition of the estimand.
 
 ## Full exact thesis-mirror prerequisites
 
@@ -92,7 +96,9 @@ The v360 release layer also derives its carriers from run-level canonical values
 
 ## Historical campaign boundary
 
-Computational rerunning from retained analytical evidence is supported. Re-execution of the historical managed-cloud campaign is not claimed as bit-for-bit reproducible: provider-internal state, historical managed-platform state and some external transients are not observable or controllable after the experiment. The load-generator identity record remains in `verification/k6_binary_identity.txt`.
+Computational rerunning from retained analytical evidence is supported. Re-execution of the historical managed-cloud campaign is not claimed as bit-for-bit reproducible: provider-internal state, historical managed-platform state and some external transients are not observable or controllable after the experiment.
+
+No benchmark-time, continuity-bridged executable identity manifest is retained for the load generator; a **later current-only capture** is available in `verification/k6_binary_identity.txt`. It must not be promoted to campaign-time binary proof.
 
 ## Raw archive integrity
 
