@@ -1,0 +1,51 @@
+name: v361-final-repo-gate
+
+on:
+  push:
+    branches:
+      - audit-v361-final-20260908
+  workflow_dispatch:
+
+jobs:
+  release-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install release-layer dependencies
+        run: python -m pip install --upgrade pip numpy pandas
+
+      - name: Run controlling v360 release command
+        run: python analysis/run_v360_from_repo.py
+
+      - name: Verify release outputs and manifest
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+          out = Path('.v360-run/release')
+          required = [
+              'v360_tail_ratio_cells.csv',
+              'v360_figure4_1_p95_cells.csv',
+              'v360_completed_iteration_shortfall.csv',
+              'v360_figure4_13_rank_carrier.csv',
+              'v360_release_manifest.json',
+          ]
+          missing = [name for name in required if not (out / name).is_file()]
+          if missing:
+              raise SystemExit(f'missing release outputs: {missing}')
+          m = json.loads((out / 'v360_release_manifest.json').read_text(encoding='utf-8'))
+          assert m['canonical_rows'] == 280
+          assert m['canonical_cells'] == 28
+          assert m['tail_ratio_cells'] == 28
+          assert m['rank_rows'] == 336
+          assert m['burst_peak_window'] == '360 <= tau < 960'
+          assert len(m['outputs']) == 4
+          assert 'v360_release_manifest.json' not in m['outputs']
+          print('PASS: release command exited 0 and all required carriers/manifest invariants hold')
