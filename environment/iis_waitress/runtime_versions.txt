@@ -1,0 +1,5 @@
+Python 3.12.7
+pip 26.1.1 from C:\Program Files\Python312\Lib\site-packages\pip (python 3.12)
+Django 5.1.2
+Waitress 3.0.1
+psycopg 3.2.3
