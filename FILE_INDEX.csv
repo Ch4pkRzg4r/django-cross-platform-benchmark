@@ -1,119 +1,319 @@
 path,role
-.gitattributes,byte-preserving Git attributes
+.gitattributes,Git attribute / byte-handling policy
+.github/workflows/verify-current-release.yml,continuous-integration workflow
+.github/workflows/verify-v330.yml,continuous-integration workflow
 .gitignore,repository hygiene
-ARTEFACT_PROVENANCE.md,repository documentation
+ARTEFACT_PROVENANCE.md,repository documentation / provenance note
 CITATION.cff,citation metadata
-DATA_AVAILABILITY.md,repository documentation
+DATA_AVAILABILITY.md,repository documentation / provenance note
 FILE_INDEX.csv,file index (this file)
-LICENSE-CODE-MIT.txt,licence
-LICENSE-DATA-CC-BY-4.0.txt,licence
-LICENSING.md,repository documentation
-MANIFEST_SHA256.csv,"integrity manifest (indexes all files except itself, by convention)"
-README.md,repository documentation
-REPRODUCIBILITY.md,repository documentation
-SECURITY_AND_REDACTION.md,repository documentation
-analysis/analyze_coldstart.py,controlling analysis script
-analysis/analyze_timeseries.py,controlling analysis script
-analysis/ch4_evidence_pipeline.py,controlling analysis script
+FILE_INDEX_v330.csv,repository research artefact
+LICENSE-CODE-MIT.txt,licence / redistribution statement
+LICENSE-DATA-CC-BY-4.0.txt,licence / redistribution statement
+LICENSING.md,repository documentation / provenance note
+LOCAL_INVENTORY_V365_FINDINGS.md,repository documentation / provenance note
+MANIFEST_SHA256.csv,integrity manifest (indexes all tracked files except itself)
+MANIFEST_V330_UPDATE_SHA256.csv,repository research artefact
+README.md,repository documentation / provenance note
+REPOSITORY_CLOSURE_V365.md,repository documentation / provenance note
+REPOSITORY_COMPLETENESS_AUDIT_V344.md,repository documentation / provenance note
+REPOSITORY_COMPLETENESS_V365_PLAN.md,repository documentation / provenance note
+REPOSITORY_FIXTURE_STATIC_GATE_V365.md,repository documentation / provenance note
+REPOSITORY_FIXTURE_STATIC_TRANSFER_REVIEW_V365.md,repository documentation / provenance note
+REPOSITORY_FIXTURE_STATIC_V2_PASS.md,repository documentation / provenance note
+REPOSITORY_GAP_SCAN_V365.md,repository documentation / provenance note
+REPOSITORY_SAFE_TRANSFER_V365.md,repository documentation / provenance note
+REPRODUCIBILITY.md,repository documentation / provenance note
+SECURITY_AND_REDACTION.md,repository documentation / provenance note
+THESIS_V344_ALIGNMENT.md,repository documentation / provenance note
+THESIS_V360_ALIGNMENT.md,repository documentation / provenance note
+analysis/README.md,analysis / release-validation code
+analysis/analyze_coldstart.py,analysis / release-validation code
+analysis/analyze_timeseries.py,analysis / release-validation code
+analysis/ch4_evidence_pipeline.py,analysis / release-validation code
 analysis/historical-provenance/README.md,historical analytical provenance
 analysis/historical-provenance/phase3_inferential.py,historical analytical provenance
-analysis/phase1_validation.py,controlling analysis script
-analysis/phase2_eda.py,controlling analysis script
-analysis/run_analysis.py,controlling analysis script
-application/Dockerfile,as-built application source capture
-application/Dockerfile.apache-wsgi,as-built application source capture
-application/Dockerfile.nginx-uwsgi,as-built application source capture
-application/Dockerfile.v2,as-built application source capture
-application/build-and-push.sh,as-built application source capture
-application/commerce/models.py,as-built application source capture
-application/commerce/urls.py,as-built application source capture
-application/commerce/views.py,as-built application source capture
-application/ecommerce/settings.PUBLIC.py,as-built application source capture (.PUBLIC credential-templated derivative)
-application/ecommerce/urls.py,as-built application source capture
-application/ecommerce/wsgi.py,as-built application source capture
-application/manage.py,as-built application source capture
-application/postgres/pg_hba.conf,as-built application source capture
-application/postgres/postgresql.conf,as-built application source capture
-application/requirements.txt,as-built application source capture
-application/supervisord.conf,as-built application source capture
-application/uwsgi.ini,as-built application source capture
-benchmark/k6-scenarios/scenario_A_browse.js,campaign k6 scenario script (benchmark-time hash)
-benchmark/k6-scenarios/scenario_B_mixed.js,campaign k6 scenario script (benchmark-time hash)
-benchmark/k6-scenarios/scenario_C_checkout.js,campaign k6 scenario script (benchmark-time hash)
-benchmark/k6-scenarios/scenario_D_burst.js,campaign k6 scenario script (benchmark-time hash)
-benchmark/orchestrator/orchestrator.ps1,campaign orchestrator (benchmark-time)
-benchmark/parse_k6_output.py,benchmark tooling (benchmark-time hash)
+analysis/materialize_v330_pipeline.py,analysis / release-validation code
+analysis/phase1_validation.py,analysis / release-validation code
+analysis/phase2_eda.py,analysis / release-validation code
+analysis/run_analysis.py,analysis / release-validation code
+analysis/run_v330_from_repo.py,analysis / release-validation code
+analysis/run_v360_from_repo.py,analysis / release-validation code
+analysis/v330-payload/README.md,analysis / release-validation code
+analysis/v330-payload/payload_01.b64,analysis / release-validation code
+analysis/v330-payload/payload_02.b64,analysis / release-validation code
+analysis/v330-payload/payload_03.b64,analysis / release-validation code
+analysis/v330-payload/payload_04.b64,analysis / release-validation code
+analysis/v330-payload/payload_05.b64,analysis / release-validation code
+analysis/v360_release_corrections.py,analysis / release-validation code
+application/.env.example,application source / runtime configuration
+application/DOCKERFILE_AUTHORITY_V365.md,application container-build configuration / documented derivative
+application/Dockerfile,application container-build configuration / documented derivative
+application/Dockerfile.apache-wsgi,application container-build configuration / documented derivative
+application/Dockerfile.benchmark.PUBLIC,application container-build configuration / documented derivative
+application/Dockerfile.nginx-uwsgi,application container-build configuration / documented derivative
+application/Dockerfile.v2,application container-build configuration / documented derivative
+application/FIXTURE_PUBLIC_PROVENANCE_V365.md,privacy-safe application fixture / loader / provenance
+application/STATIC_ASSET_BOUNDARY.md,application source / runtime configuration
+application/build-and-push.sh,application source / runtime configuration
+application/commerce/__init__.py,Django commerce application source
+application/commerce/admin.py,Django commerce application source
+application/commerce/apps.py,Django commerce application source
+application/commerce/forms.py,Django commerce application source
+application/commerce/migrations/0001_initial.py,Django database migration source
+application/commerce/migrations/0002_contactinfo_contactperson.py,Django database migration source
+application/commerce/migrations/0003_remove_contactinfo_map_embed_url.py,Django database migration source
+application/commerce/migrations/0004_cart_cartitem.py,Django database migration source
+application/commerce/migrations/0005_profile.py,Django database migration source
+application/commerce/migrations/0006_profile_bio_profile_birth_date_profile_location_and_more.py,Django database migration source
+application/commerce/migrations/0007_customuser.py,Django database migration source
+application/commerce/migrations/0008_delete_customuser.py,Django database migration source
+application/commerce/migrations/0009_cartitem_size.py,Django database migration source
+application/commerce/migrations/0010_contactmessage.py,Django database migration source
+application/commerce/migrations/0011_rename_date_created_contactmessage_created_at_and_more.py,Django database migration source
+application/commerce/migrations/0012_alter_contactperson_image_order_payment.py,Django database migration source
+application/commerce/migrations/0013_remove_order_cart_orderitem.py,Django database migration source
+application/commerce/migrations/0014_order_cart_delete_orderitem.py,Django database migration source
+application/commerce/migrations/0015_remove_order_cart_order_status_orderitem.py,Django database migration source
+application/commerce/migrations/__init__.py,Django database migration source
+application/commerce/models.py,Django commerce application source
+application/commerce/signals.py,Django commerce application source
+application/commerce/templates/about.html,Django application template
+application/commerce/templates/base.html,Django application template
+application/commerce/templates/blog.html,Django application template
+application/commerce/templates/blog_detail.html,Django application template
+application/commerce/templates/cart.html,Django application template
+application/commerce/templates/checkout.html,Django application template
+application/commerce/templates/contact.html,Django application template
+application/commerce/templates/index.html,Django application template
+application/commerce/templates/payment.html,Django application template
+application/commerce/templates/payment_success.html,Django application template
+application/commerce/templates/profile.html,Django application template
+application/commerce/templates/registration/login.html,Django application template
+application/commerce/templates/registration/signup.html,Django application template
+application/commerce/templates/shop.html,Django application template
+application/commerce/templates/sproduct.html,Django application template
+application/commerce/templatetags/__init__.py,Django template-tag source
+application/commerce/templatetags/custom_filters.py,Django template-tag source
+application/commerce/templatetags/filters.py,Django template-tag source
+application/commerce/tests.py,Django commerce application source
+application/commerce/urls.py,Django commerce application source
+application/commerce/views.py,Django commerce application source
+application/datadump.PUBLIC.json,privacy-safe application fixture / loader / provenance
+application/ecommerce/__init__.py,Django project/runtime source or safe configuration
+application/ecommerce/asgi.py,Django project/runtime source or safe configuration
+application/ecommerce/gunicorn_conf.py,Django project/runtime source or safe configuration
+application/ecommerce/settings.PUBLIC.py,Django project/runtime source or safe configuration
+application/ecommerce/settings.py,Django project/runtime source or safe configuration
+application/ecommerce/urls.py,Django project/runtime source or safe configuration
+application/ecommerce/wsgi.py,Django project/runtime source or safe configuration
+application/load_data.py,privacy-safe application fixture / loader / provenance
+application/load_public_fixture.py,privacy-safe application fixture / loader / provenance
+application/manage.py,application source / runtime configuration
+application/media_from_static_map.csv,application source / runtime configuration
+application/postgres/pg_hba.conf,application source / runtime configuration
+application/postgres/postgresql.conf,application source / runtime configuration
+application/requirements.txt,application source / runtime configuration
+application/source-recovery/PAYLOAD_MANIFEST.md,reviewed application-source recovery carrier / provenance
+application/source-recovery/README.md,reviewed application-source recovery carrier / provenance
+application/source-recovery/application_support_v365.b64,reviewed application-source recovery carrier / provenance
+application/source-recovery/materialize_application_support.py,reviewed application-source recovery carrier / provenance
+application/static/css/style.css,application static asset (retained byte identity; redistribution boundary documented)
+application/static/css/style.css.map,application static asset (retained byte identity; redistribution boundary documented)
+application/static/css/style.scss,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/material-design-iconic-font/css/material-design-iconic-font.css,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.eot,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.svg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.ttf,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff2,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/poppins/Poppins-Regular.ttf,application static asset (retained byte identity; redistribution boundary documented)
+application/static/fonts/poppins/Poppins-SemiBold.ttf,application static asset (retained byte identity; redistribution boundary documented)
+application/static/images/bg-registration-form-1.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/images/registration-form-1.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/1.mp4,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/a1.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/a2.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/a3.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/a4.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/a5.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/a6.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/about/banner.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b1.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b10.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b14.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b16.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b17.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b18.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b19.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b2.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b20.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b4.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/banner/b7.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/blog/b1.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/blog/b2.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/blog/b3.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/blog/b4.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/blog/b5.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/blog/b6.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/blog/b7.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/button.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/features/f1.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/features/f2.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/features/f3.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/features/f4.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/features/f5.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/features/f6.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/hero4.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/logo.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/pay/app.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/pay/pay.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/pay/play.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/people/1.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/people/2.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/people/3.png,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f1.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f2.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f3.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f4.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f5.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f6.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f7.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/f8.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n1.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n2.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n3.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n4.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n5.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n6.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n7.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/img/products/n8.jpg,application static asset (retained byte identity; redistribution boundary documented)
+application/static/script.js,application static asset (retained byte identity; redistribution boundary documented)
+application/static/style.css,application static asset (retained byte identity; redistribution boundary documented)
+application/supervisord.conf,application source / runtime configuration
+application/uwsgi.ini,application source / runtime configuration
+benchmark/k6-scenarios/scenario_A_browse.js,campaign k6 workload scenario script
+benchmark/k6-scenarios/scenario_B_mixed.js,campaign k6 workload scenario script
+benchmark/k6-scenarios/scenario_C_checkout.js,campaign k6 workload scenario script
+benchmark/k6-scenarios/scenario_D_burst.js,campaign k6 workload scenario script
+benchmark/orchestrator/orchestrator.ps1,campaign orchestrator
+benchmark/parse_k6_output.py,benchmark tooling
 configuration/apache-mod_wsgi.conf,deployment/platform configuration
-configuration/docker-compose-phase65.PUBLIC.yml,deployment/platform configuration (.PUBLIC derivative)
+configuration/docker-compose-phase65.PUBLIC.yml,deployment/platform configuration
 configuration/docker/apache.conf,deployment/platform configuration
 configuration/docker/nginx.conf,deployment/platform configuration
 configuration/nginx-uwsgi.conf,deployment/platform configuration
-configuration/platforms.PUBLIC.json,deployment/platform configuration (.PUBLIC derivative)
+configuration/platforms.PUBLIC.json,deployment/platform configuration
+configuration/platforms/06_flyio/FLY_PUBLIC_PROVENANCE.md,platform-specific deployment configuration / evidence
+configuration/platforms/06_flyio/fly.PUBLIC.toml,platform-specific deployment configuration / evidence
+configuration/platforms/07_iis_waitress/apply-memory-limit.ps1,platform-specific deployment configuration / evidence
+configuration/platforms/07_iis_waitress/web.config.PUBLIC.xml,platform-specific deployment configuration / evidence
+configuration/platforms/README.md,platform-specific deployment configuration / evidence
 configuration/scenarios.json,deployment/platform configuration
 configuration/uwsgi.ini,deployment/platform configuration
 data/canonical/DATA_DICTIONARY.md,canonical analytical dataset / dictionary
 data/canonical/master_runs.csv,canonical analytical dataset / dictionary
-data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md,raw-retention SHA-256 manifest
-data/raw-archive-manifests/archive_parts_sha256_manifest.csv,raw-retention SHA-256 manifest
-data/raw-archive-manifests/docker_stats_sha256_manifest.csv,raw-retention SHA-256 manifest
-data/raw-archive-manifests/raw_files_sha256_manifest.csv,raw-retention SHA-256 manifest
-data/raw-archive-manifests/run_logs_sha256_manifest.csv,raw-retention SHA-256 manifest
-data/supplementary/coldstart_raw.csv,supplementary input dataset (thesis-recorded hash)
-data/supplementary/docker-stats-sample/01_apache_modwsgi__A_browse__rep01__docker_stats.csv,supplementary sample
-data/supplementary/timeseries_burst_recovery.csv,supplementary input dataset (thesis-recorded hash)
-data/supplementary/warmup_transient.csv,supplementary input dataset (thesis-recorded hash)
-documentation/evidence_state.md,documentation
-documentation/nonfigure_or_unreferenced_media_inventory.csv,documentation
-environment/EXECUTION_ENVIRONMENT.md,environment/dependency record
-environment/pgbouncer_runtime_extract.PUBLIC.txt,environment/dependency record
-environment/pip_freeze_iis_runtime.txt,environment/dependency record
-environment/requirements.txt,environment/dependency record
-results/figures/figure_map.csv,figure map
-results/figures/image1.png,exact thesis figure
-results/figures/image10.png,exact thesis figure
-results/figures/image11.png,exact thesis figure
-results/figures/image12.png,exact thesis figure
-results/figures/image13.png,exact thesis figure
-results/figures/image14.png,exact thesis figure
-results/figures/image15.png,exact thesis figure
-results/figures/image16.png,exact thesis figure
-results/figures/image17.png,exact thesis figure
-results/figures/image18.png,exact thesis figure
-results/figures/image19.png,exact thesis figure
-results/figures/image2.png,exact thesis figure
-results/figures/image20.png,exact thesis figure
-results/figures/image21.png,exact thesis figure
-results/figures/image22.png,exact thesis figure
-results/figures/image23.png,exact thesis figure
-results/figures/image24.png,exact thesis figure
-results/figures/image25.png,exact thesis figure
-results/figures/image26.png,exact thesis figure
-results/figures/image27.png,exact thesis figure
-results/figures/image28.png,exact thesis figure
-results/figures/image29.png,exact thesis figure
-results/figures/image3.png,exact thesis figure
-results/figures/image4.png,exact thesis figure
-results/figures/image5.png,exact thesis figure
-results/figures/image6.png,exact thesis figure
-results/figures/image7.png,exact thesis figure
-results/figures/image8.png,exact thesis figure
-results/figures/image9.png,exact thesis figure
-results/tables/TABLES_NOTE.md,tables note
-results/tables/Table_4_01.csv,full-precision table source
-results/tables/Table_4_02.csv,full-precision table source
-results/tables/Table_4_03.csv,full-precision table source
-results/tables/Table_4_04.csv,full-precision table source
-results/tables/Table_4_05.csv,full-precision table source
-results/tables/Table_4_06.csv,full-precision table source
-results/tables/Table_4_07.csv,full-precision table source
-results/tables/Table_4_08.csv,full-precision table source
-results/tables/Table_4_09.csv,full-precision table source
-results/tables/Table_4_12.csv,full-precision table source
-results/tables/Table_4_13.csv,full-precision table source
-results/tables/Table_4_14.csv,full-precision table source
-verification/RUN_MANIFEST.json,verification/integrity record
-verification/VERIFY_report.txt,verification/integrity record
-verification/k6_binary_identity.txt,verification/integrity record
-verification/platform_configuration_truth.csv,verification/integrity record
-verification/scenario_script_truth.csv,verification/integrity record
-verification/verification_summary.md,verification/integrity record
+data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md,raw-evidence retention / SHA-256 manifest
+data/raw-archive-manifests/archive_parts_sha256_manifest.csv,raw-evidence retention / SHA-256 manifest
+data/raw-archive-manifests/docker_stats_sha256_manifest.csv,raw-evidence retention / SHA-256 manifest
+data/raw-archive-manifests/raw_files_sha256_manifest.csv,raw-evidence retention / SHA-256 manifest
+data/raw-archive-manifests/run_logs_sha256_manifest.csv,raw-evidence retention / SHA-256 manifest
+data/supplementary/WARMUP_TRANSIENT_V365_CORRECTION.md,supplementary analytical data / correction record
+data/supplementary/coldstart_raw.csv,supplementary analytical data / correction record
+data/supplementary/docker-stats-sample/01_apache_modwsgi__A_browse__rep01__docker_stats.csv,supplementary analytical data / correction record
+data/supplementary/timeseries_burst_recovery.csv,supplementary analytical data / correction record
+data/supplementary/warmup_transient.csv,supplementary analytical data / correction record
+data/supplementary/warmup_transient_v365_corrected.csv,supplementary analytical data / correction record
+documentation/STATIC_ASSET_MANIFEST_V365.csv,repository documentation / evidence register
+documentation/evidence_state.md,repository documentation / evidence register
+documentation/nonfigure_or_unreferenced_media_inventory.csv,repository documentation / evidence register
+environment/EXECUTION_ENVIRONMENT.md,environment / dependency / runtime evidence
+environment/iis_waitress/active_waitress_process.txt,environment / dependency / runtime evidence
+environment/iis_waitress/appcmd_modules.txt,environment / dependency / runtime evidence
+environment/iis_waitress/python312_pip_freeze.txt,environment / dependency / runtime evidence
+environment/iis_waitress/python_w3wp_memory_snapshot.txt,environment / dependency / runtime evidence
+environment/iis_waitress/runtime_versions.txt,environment / dependency / runtime evidence
+environment/iis_waitress/sites_safe.txt,environment / dependency / runtime evidence
+environment/pgbouncer_runtime_extract.PUBLIC.txt,environment / dependency / runtime evidence
+environment/pip_freeze_iis_runtime.txt,environment / dependency / runtime evidence
+environment/requirements-analysis-v330.txt,environment / dependency / runtime evidence
+environment/requirements.txt,environment / dependency / runtime evidence
+results/current-thesis/README.md,repository documentation / provenance note
+results/current-thesis/figure_map.csv,repository research artefact
+results/current-thesis/tables/Table_4_01.csv,repository research artefact
+results/current-thesis/tables/Table_4_02.csv,repository research artefact
+results/current-thesis/tables/Table_4_03.csv,repository research artefact
+results/current-thesis/tables/Table_4_04.csv,repository research artefact
+results/current-thesis/tables/Table_4_05.csv,repository research artefact
+results/current-thesis/tables/Table_4_06.csv,repository research artefact
+results/current-thesis/tables/Table_4_07.csv,repository research artefact
+results/current-thesis/tables/Table_4_08.csv,repository research artefact
+results/current-thesis/tables/Table_4_09.csv,repository research artefact
+results/current-thesis/tables/Table_4_10.csv,repository research artefact
+results/current-thesis/tables/Table_4_11.csv,repository research artefact
+results/current-thesis/tables/Table_4_12.csv,repository research artefact
+results/current-thesis/tables/Table_4_13.csv,repository research artefact
+results/current-thesis/tables/Table_4_14.csv,repository research artefact
+results/current-thesis/tables/Table_4_15.csv,repository research artefact
+results/current-thesis/tables/Table_4_16.csv,repository research artefact
+results/current-thesis/verification/DATA_DRIVEN_MUTATION_TEST.txt,repository research artefact
+results/current-thesis/verification/EXACT_PUBLISHED_FIGURE_ASSET_CHECK.txt,repository research artefact
+results/current-thesis/verification/EXACT_TABLE_MIRROR_CHECK.txt,repository research artefact
+results/current-thesis/verification/FINAL_CALIBRATION_REPORT.txt,repository research artefact
+results/current-thesis/verification/NUMERIC_REGRESSION_CHECK_v329.txt,repository research artefact
+results/current-thesis/verification/PIPELINE_SUMMARY.json,repository research artefact
+results/current-thesis/verification/PUBLISHED_FIGURE_SHA256_MANIFEST.csv,repository research artefact
+results/current-thesis/verification/README.md,repository documentation / provenance note
+results/figures/README_CURRENT_STATUS.md,figure source / thesis figure carrier
+results/figures/figure_map.csv,figure source / thesis figure carrier
+results/figures/image1.png,figure source / thesis figure carrier
+results/figures/image10.png,figure source / thesis figure carrier
+results/figures/image11.png,figure source / thesis figure carrier
+results/figures/image12.png,figure source / thesis figure carrier
+results/figures/image13.png,figure source / thesis figure carrier
+results/figures/image14.png,figure source / thesis figure carrier
+results/figures/image15.png,figure source / thesis figure carrier
+results/figures/image16.png,figure source / thesis figure carrier
+results/figures/image17.png,figure source / thesis figure carrier
+results/figures/image18.png,figure source / thesis figure carrier
+results/figures/image19.png,figure source / thesis figure carrier
+results/figures/image2.png,figure source / thesis figure carrier
+results/figures/image20.png,figure source / thesis figure carrier
+results/figures/image21.png,figure source / thesis figure carrier
+results/figures/image22.png,figure source / thesis figure carrier
+results/figures/image23.png,figure source / thesis figure carrier
+results/figures/image24.png,figure source / thesis figure carrier
+results/figures/image25.png,figure source / thesis figure carrier
+results/figures/image26.png,figure source / thesis figure carrier
+results/figures/image27.png,figure source / thesis figure carrier
+results/figures/image28.png,figure source / thesis figure carrier
+results/figures/image29.png,figure source / thesis figure carrier
+results/figures/image3.png,figure source / thesis figure carrier
+results/figures/image4.png,figure source / thesis figure carrier
+results/figures/image5.png,figure source / thesis figure carrier
+results/figures/image6.png,figure source / thesis figure carrier
+results/figures/image7.png,figure source / thesis figure carrier
+results/figures/image8.png,figure source / thesis figure carrier
+results/figures/image9.png,figure source / thesis figure carrier
+results/tables/TABLES_NOTE.md,table source / full-precision result carrier
+results/tables/Table_4_01.csv,table source / full-precision result carrier
+results/tables/Table_4_02.csv,table source / full-precision result carrier
+results/tables/Table_4_03.csv,table source / full-precision result carrier
+results/tables/Table_4_04.csv,table source / full-precision result carrier
+results/tables/Table_4_05.csv,table source / full-precision result carrier
+results/tables/Table_4_06.csv,table source / full-precision result carrier
+results/tables/Table_4_07.csv,table source / full-precision result carrier
+results/tables/Table_4_08.csv,table source / full-precision result carrier
+results/tables/Table_4_09.csv,table source / full-precision result carrier
+results/tables/Table_4_12.csv,table source / full-precision result carrier
+results/tables/Table_4_13.csv,table source / full-precision result carrier
+results/tables/Table_4_14.csv,table source / full-precision result carrier
+verification/RUN_MANIFEST.json,verification / integrity record
+verification/VERIFY_report.txt,verification / integrity record
+verification/k6_binary_identity.txt,verification / integrity record
+verification/platform_configuration_truth.csv,verification / integrity record
+verification/scenario_script_truth.csv,verification / integrity record
+verification/v330_candidate_status.md,verification / integrity record
+verification/verification_summary.md,verification / integrity record
+verification/verify_v330_repository_state.py,verification / integrity record
