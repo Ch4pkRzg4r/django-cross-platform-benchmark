@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Materialize the reviewed v365 application-support payload.
 
-The payload contains only support modules, migrations, templates and template tags
-recovered from the retained 2026-06-24 public-release archive. Existing core files
-are never overwritten by default.
+The payload contains support modules, migrations, templates and template tags
+recovered from the retained 2026-06-24 public-release archive.
+
+Existing files are handled safely:
+- if an existing file is byte-identical to the payload copy, it is skipped;
+- if an existing file differs, materialisation fails unless --overwrite is used.
 """
 
 from __future__ import annotations
@@ -27,6 +30,14 @@ def safe_members(tf: tarfile.TarFile):
         yield member
 
 
+def payload_path_for(member: tarfile.TarInfo) -> Path | None:
+    p = Path(member.name)
+    parts = [x for x in p.parts if x not in (".", "")]
+    if not parts or parts[0] != "application" or len(parts) == 1:
+        return None
+    return Path(*parts[1:])
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument(
@@ -37,13 +48,13 @@ def main() -> None:
     ap.add_argument(
         "--overwrite",
         action="store_true",
-        help="Allow replacement of an already-existing file. Default is fail closed.",
+        help="Allow replacement of an existing non-identical file.",
     )
     args = ap.parse_args()
 
     here = Path(__file__).resolve().parent
-    payload_path = here / PAYLOAD_NAME
-    raw = base64.b64decode(payload_path.read_text(encoding="utf-8"))
+    payload_file = here / PAYLOAD_NAME
+    raw = base64.b64decode(payload_file.read_text(encoding="utf-8"))
     digest = hashlib.sha256(raw).hexdigest()
     if digest != EXPECTED_PAYLOAD_SHA256:
         raise RuntimeError(
@@ -53,41 +64,51 @@ def main() -> None:
     target = Path(args.target).resolve()
     target.mkdir(parents=True, exist_ok=True)
 
+    written = 0
+    identical = 0
+
     with tarfile.open(fileobj=io.BytesIO(raw), mode="r:gz") as tf:
         members = list(safe_members(tf))
-        for member in members:
-            if not member.isfile():
-                continue
-            # Payload layout is ./application/<relative path> plus ./README.txt.
-            p = Path(member.name)
-            parts = [x for x in p.parts if x not in (".", "")]
-            if not parts or parts[0] != "application":
-                continue
-            rel = Path(*parts[1:])
-            out = target / rel
-            if out.exists() and not args.overwrite:
-                raise FileExistsError(
-                    f"Refusing to overwrite existing file: {out}. "
-                    "Use --overwrite only after reviewing the provenance boundary."
-                )
 
+        # Preflight the full payload before writing anything.
+        planned = []
         for member in members:
             if not member.isfile():
                 continue
-            p = Path(member.name)
-            parts = [x for x in p.parts if x not in (".", "")]
-            if not parts or parts[0] != "application":
+            rel = payload_path_for(member)
+            if rel is None:
                 continue
-            rel = Path(*parts[1:])
-            out = target / rel
-            out.parent.mkdir(parents=True, exist_ok=True)
             src = tf.extractfile(member)
             if src is None:
-                raise RuntimeError(f"Could not extract {member.name}")
-            out.write_bytes(src.read())
-            print(f"materialized {rel.as_posix()}")
+                raise RuntimeError(f"Could not read {member.name}")
+            data = src.read()
+            out = target / rel
+
+            if out.exists():
+                if out.read_bytes() == data:
+                    planned.append((out, data, "identical"))
+                    continue
+                if not args.overwrite:
+                    raise FileExistsError(
+                        f"Refusing to overwrite non-identical file: {out}. "
+                        "Use --overwrite only after reviewing the provenance boundary."
+                    )
+                planned.append((out, data, "overwrite"))
+            else:
+                planned.append((out, data, "create"))
+
+        for out, data, action in planned:
+            if action == "identical":
+                identical += 1
+                print(f"identical   {out.relative_to(target).as_posix()}")
+                continue
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_bytes(data)
+            written += 1
+            print(f"{action:10s} {out.relative_to(target).as_posix()}")
 
     print(f"PASS: payload SHA-256 {digest}")
+    print(f"PASS: written={written}, identical-skipped={identical}")
 
 
 if __name__ == "__main__":
