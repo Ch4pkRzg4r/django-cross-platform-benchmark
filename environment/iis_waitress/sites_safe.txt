@@ -1,0 +1,4 @@
+name         : thesis-iis-app
+state        : Started
+physicalPath : C:\inetpub\thesis-app
+bindings     : Microsoft.IIs.PowerShell.Framework.ConfigurationElement
