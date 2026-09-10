@@ -1,0 +1,41 @@
+name: verify-current-release
+
+on:
+  push:
+    branches: [main, repo-completeness-v365]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: environment/requirements-analysis-v330.txt
+
+      - name: Install analysis dependencies
+        run: python -m pip install -r environment/requirements-analysis-v330.txt
+
+      - name: Verify frozen v330 repository state
+        run: python verification/verify_v330_repository_state.py
+
+      - name: Verify current v360 release layer
+        run: python analysis/run_v360_from_repo.py --out-dir "${{ runner.temp }}/v360-output"
+
+      - name: Compile public application Python
+        run: |
+          python -m compileall -q application
+          python -m json.tool application/datadump.PUBLIC.json > /dev/null
+
+      - name: Ensure historical raw fixture is absent
+        shell: bash
+        run: |
+          test ! -f application/datadump.json
+          echo "PASS: raw historical fixture is not committed"
