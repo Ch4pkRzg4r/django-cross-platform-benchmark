@@ -4,6 +4,8 @@ Payload carrier: `application_support_v365.b64`
 Decoded gzip-tar SHA-256: `7a4dacc5a01390c4b9d887d5ee5c4fb22c884d0054ab966ece5dc00a76b3ed7c`  
 Source archive SHA-256: `3b4d15c1f9e200e9cc93fe13cb344f18dffa2ffb1893fb1e0929d6e2dbe0393f`
 
+The GitHub text carrier is stored with one terminal base64 padding character omitted (`size = 18,779`, so one `=` is required to reach a multiple of four). The materializer restores only mathematically required terminal padding before strict base64 decoding, then verifies the decoded gzip-tar against the SHA-256 above **before any extraction**. A padding repair cannot bypass the decoded-content hash gate.
+
 The payload contains 43 reviewed text source files and no credentials, raw settings, raw compose secrets, build logs or binary static/media assets:
 
 - `commerce/__init__.py`
@@ -50,4 +52,4 @@ The payload contains 43 reviewed text source files and no credentials, raw setti
 - `ecommerce/asgi.py`
 - `ecommerce/gunicorn_conf.py`
 
-The materializer verifies the decoded payload hash before extracting and refuses to overwrite existing files unless `--overwrite` is explicitly supplied. Local validation of this payload completed successfully with Python byte-compilation.
+The materializer verifies the decoded payload hash before extracting and refuses to overwrite existing files unless `--overwrite` is explicitly supplied. Local validation of the original decoded payload completed successfully with Python byte-compilation. The repository materializer was updated on 10 September 2026 to normalize stripped terminal base64 padding while preserving the same decoded SHA-256 gate.
