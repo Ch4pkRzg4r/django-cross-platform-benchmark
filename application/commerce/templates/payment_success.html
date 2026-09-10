@@ -1,0 +1,31 @@
+<!-- payment_success.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <section id="header">
+        <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" class="logo" alt="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'shop' %}">Shop</a></li>
+                <li><a href="{% url 'cart' %}">Cart</a></li>
+                <li><a href="{% url 'checkout' %}">Checkout</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="payment-success" class="section-p1">
+        <h3>Payment Successful</h3>
+        <p>Thank you for your order, {{ order.user.username }}! Your payment of ${{ order.total_amount }} was successful.</p>
+        <p>Order ID: {{ order.id }}</p>
+        <a href="{% url 'index' %}" class="normal">Back to Home</a>
+    </section>
+</body>
+</html>

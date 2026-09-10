@@ -22,7 +22,7 @@ import io
 import tarfile
 from pathlib import Path
 
-EXPECTED_PAYLOAD_SHA256 = "7a4dacc5a01390c4b9d887d5ee5c4fb22c884d0054ab966ece5dc00a76b3ed7c"
+EXPECTED_PAYLOAD_SHA256 = "bddd760dedccabe7c13ad2454c612980e03024acb1ca838e56a0703a2aa682dd"
 PAYLOAD_NAME = "application_support_v365.b64"
 
 

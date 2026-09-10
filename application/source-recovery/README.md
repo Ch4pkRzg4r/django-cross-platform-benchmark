@@ -15,3 +15,7 @@ The safe recovery process only promotes independently reviewed support files tha
 Binary decorative static assets and the historical raw build logs are not required for the k6 benchmark request paths and are not promoted by this recovery step. The full retained source archive remains controlled evidence.
 
 This recovery step does not change the frozen 280×39 canonical dataset or any validated thesis result.
+
+## Carrier integrity repair — 10 September 2026
+
+The earlier text carrier on `repo-completeness-v365` was rejected after its decoded SHA-256 failed the hash gate. The carrier was rebuilt from the retained source archive SHA-256 `3b4d15c1f9e200e9cc93fe13cb344f18dffa2ffb1893fb1e0929d6e2dbe0393f`. The current `PAYLOAD_MANIFEST.md` records the rebuilt payload SHA-256 and per-file identities. The rejected mismatching decoded hash was never accepted as provenance authority.

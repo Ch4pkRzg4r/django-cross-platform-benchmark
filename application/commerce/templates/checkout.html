@@ -1,0 +1,55 @@
+<!-- checkout.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <section id="header">
+        <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" class="logo" alt="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'shop' %}">Shop</a></li>
+                <li><a href="{% url 'cart' %}">Cart</a></li>
+                <li><a class="active" href="{% url 'checkout' %}">Checkout</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="checkout" class="section-p1">
+        <h3>Checkout</h3>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Product</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart.cartitems.all %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.subtotal }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td><strong>${{ total_amount }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="normal">Confirm Payment</button>
+        </form>
+    </section>
+</body>
+</html>
