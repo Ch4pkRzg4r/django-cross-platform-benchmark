@@ -1,0 +1,5 @@
+ProcessId       : 6584
+ParentProcessId : 4032
+Name            : python.exe
+ExecutablePath  : C:\Program Files\Python312\python.exe
+CommandLine     : "C:\Program Files\Python312\python.exe" -m waitress --listen=*:21196 --threads=8 ecommerce.wsgi:application
