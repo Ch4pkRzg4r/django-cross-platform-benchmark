@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+  
+            <h3>User Profile</h3>
+            <div class="profile-details">
+                <div class="form-wrapper">
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <i class="zmdi zmdi-account"></i>
+                </div>
+                <div class="form-wrapper">
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <i class="zmdi zmdi-email"></i>
+                </div>
+                <!-- Additional profile fields can be added here -->
+              
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

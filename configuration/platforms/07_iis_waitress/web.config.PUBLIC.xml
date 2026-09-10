@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+    <handlers>
+      <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified" requireAccess="Script" />
+    </handlers>
+    <httpPlatform processPath="C:\Program Files\Python312\python.exe"
+                  arguments="-m waitress --listen=*:%HTTP_PLATFORM_PORT% --threads=8 ecommerce.wsgi:application"
+                  stdoutLogEnabled="true"
+                  stdoutLogFile="C:\inetpub\thesis-app\logs\python.log"
+                  startupTimeLimit="60"
+                  startupRetryCount="3"
+                  requestTimeout="00:04:00">
+      <environmentVariables>
+        <environmentVariable name="SECRET_KEY" value="[REDACTED]" />
+        <environmentVariable name="DEBUG" value="False" />
+        <environmentVariable name="ALLOWED_HOSTS" value="*" />
+        <environmentVariable name="DB_NAME" value="ecommerce_benchmark" />
+        <environmentVariable name="DB_USER" value="benchuser" />
+        <environmentVariable name="DB_PASSWORD" value="[REDACTED]" />
+        <environmentVariable name="DB_HOST" value="[REDACTED_ENDPOINT]" />
+        <environmentVariable name="DB_PORT" value="6432" />
+        <environmentVariable name="DB_CONN_MAX_AGE" value="60" />
+        <environmentVariable name="DJANGO_DISABLE_SERVER_SIDE_CURSORS" value="True" />
+        <environmentVariable name="PYTHONUNBUFFERED" value="1" />
+        <environmentVariable name="BUILD_MARKER" value="PHASE65_REV5_WINDOWS_RESTORED_20260515-073549" />
+      </environmentVariables>
+    </httpPlatform>
+    <security>
+      <requestFiltering>
+        <requestLimits maxAllowedContentLength="10485760" />
+      </requestFiltering>
+    </security>
+  </system.webServer>
+</configuration>

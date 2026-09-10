@@ -1,0 +1,13 @@
+Id                  : 6584
+ProcessName         : python
+Path                : C:\Program Files\Python312\python.exe
+StartTime           : 6/22/2026 8:57:49 AM
+WorkingSet64        : 73748480
+PrivateMemorySize64 : 59023360
+
+Id                  : 4032
+ProcessName         : w3wp
+Path                : c:\windows\system32\inetsrv\w3wp.exe
+StartTime           : 6/22/2026 8:23:02 AM
+WorkingSet64        : 15966208
+PrivateMemorySize64 : 6189056

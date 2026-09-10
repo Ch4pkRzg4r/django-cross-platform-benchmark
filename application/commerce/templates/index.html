@@ -1,0 +1,236 @@
+<!-- index.html -->
+{% load static %}
+{% load custom_filters %}
+{% load filters %}
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <!-- Update your navigation menu in the templates, e.g., index.html -->
+<section id="header">
+    <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" class="logo" alt="logo"></a>
+    <div>
+      <!-- Update your navigation bar in the template file, e.g., base.html or index.html -->
+<ul id="navbar">
+    <li><a class="active" href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'shop' %}">Shop</a></li>
+    <li><a href="{% url 'blog' %}">Blog</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li><a href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+
+    {% if user.is_authenticated %}
+        <!-- Display the username as a link to the profile page -->
+        <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+        <!-- Logout button -->
+        <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+            {% csrf_token %}
+        </form>
+        <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+    {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+    {% endif %}
+</ul>
+
+    </div>
+</section>
+
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h4>Trade-in-offer</h4>
+        <h2>Super value deals</h2>
+        <h1>On all products</h1>
+        <p>Save more with coupons & up to 70% off!</p>
+        <a href="{% url 'shop' %}"><button>Shop Now </button></a>
+    </section>
+
+    <!-- Features Section -->
+    <section id="feature" class="section-p1">
+        {% for feature in features %}
+        <div class="fe-box">
+            <img src="{{ feature.image.url }}" alt="{{ feature.title }}">
+            <h6>{{ feature.title }}</h6>
+        </div>
+        {% endfor %}
+    </section>
+
+    
+    <!-- Featured Products Section -->
+    <section id="prodect1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            {% for product in products %}
+            <div class="pro" onclick="window.location.href='{% url 'product_detail' product.id %}';">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="des">
+                    <span>{{ product.category }}</span>
+                    <h5>{{ product.name }}</h5>
+                    <div class="star">
+                        {% for i in product.rating|range_filter %}
+                            <i class="fas fa-star"></i>
+                        {% endfor %}
+                    </div>
+                    <h4>${{ product.price }}</h4>
+                </div>
+                <a href="{% url 'product_detail' product.id %}"><i class="fa-solid fa-bag-shopping cart"></i></a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+     <!-- Banner Section -->
+     <section id="banner" class="section-m1">
+        <div class="" onclick="window.location.href='{% url 'shop' %}';">
+        <h4>Repair services</h4>
+        <h2>Up to <span>70% off</span> - All T-shirts & Accessories</h2>
+        <a href="{% url 'shop' %}"><button class="normal">Explore More</button></a>
+
+    </section>
+
+     <!-- New Arrivals Section -->
+     <section id="prodect1" class="section-p1">
+        <h2>New Arrivals</h2>
+        <p>Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            {% for product in new_arrivals %}
+            <div class="pro" onclick="window.location.href='{% url 'product_detail' product.id %}';">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="des">
+                    <span>{{ product.category }}</span>
+                    <h5>{{ product.name }}</h5>
+                    <div class="star">
+                        {% if product.rating is not None %}
+                            {% for i in product.rating|range_filter %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                        {% else %}
+                            <span>No rating available</span>
+                        {% endif %}
+                    </div>
+                    <h4>${{ product.price }}</h4>
+                </div>
+                <a href="{% url 'product_detail' product.id %}"><i class="fa-solid fa-bag-shopping cart"></i></a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+   <!-- Banner section for main banners 
+<section id="sm-banner" class="section-p1">
+    {% for banner in main_banners %}
+    <div class="banner-box">
+        <img src="{{ banner.image.url }}" alt="{{ banner.title }}">
+        <h4>{{ banner.subtitle }}</h4>
+        <h2>{{ banner.title }}</h2>
+        <span>{{ banner.description }}</span>
+        {% if banner.button_text %}
+        <button>{{ banner.button_text }}</button>
+        {% endif %}
+    </div>
+    {% endfor %}
+</section> -->
+
+    <!-- Third Banner Section
+    <section id="banner3">
+        {% for banner in third_banners %}
+        <div class="banner-box">
+            <h2>{{ banner.title }}</h2>
+            <h3>{{ banner.subtitle }}</h3>
+        </div>
+        {% endfor %}
+    </section>
+ -->
+  <!-- Newsletter Section -->
+<section id="newsletter" class="section-p1 section-m1">
+        <div class="newsletter" onclick="window.location.href='{% url 'signup' %}';">
+
+        <h4>Sign Up For Newsletters</h4>
+        <p>Get email updates about our latest shop and <span>special offers.</span></p>
+    </div>
+    <div id="form">
+        <a href="{% url 'signup' %}"><button class="normal">Create Account</button></a>
+    </div>
+</section>
+
+
+    <!--footer-->
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="{% static 'img/logo.png' %}" alt="">
+            <h4>Contact</h4>
+            <p><strong>address:</strong> iraq, kurdistan, sulaimani, rzgary, 406, 11, 20</p>
+            <p><strong>phone::</strong> +9647707777777</p>
+            <p><strong>Hour:</strong> 10:00 - 18:00, Mon-Sat</p>
+            <div class="follow">
+                <h4>Follow As</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="{% static 'img/pay/app.jpg' %}" alt="">
+                <img src="{% static 'img/pay/play.jpg' %}" alt="">
+            </div>
+            <p>Secured Payment Gateways </p>
+            <img src="{% static 'img/pay/pay.png' %}" alt="">
+        </div>
+
+        <div class="copyrightt">
+            <p>© 2024, E-commerce Website</p>
+        </div>
+
+    </footer>
+  <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

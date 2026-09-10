@@ -1,0 +1,330 @@
+/* Fonts */
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../fonts/poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("../fonts/poppins/Poppins-SemiBold.ttf");
+}
+
+/* Global Styles */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins-Regular";
+  color: #333;
+  font-size: 13px;
+  margin: 0;
+  background-image: url('../images/bg-registration-form-1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+input, textarea, select, button {
+  font-family: "Poppins-Regular";
+  color: #333;
+  font-size: 13px;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline: none;
+}
+
+/* Wrapper */
+.wrapper {
+  background: #fff;
+  max-width: 850px;
+  margin: auto;
+  display: flex;
+  padding: 20px;
+}
+
+.wrapper .image-holder {
+  width: 50%;
+  background: url('../images/registration-form-1.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.wrapper form {
+  width: 50%;
+  padding: 30px 45px;
+}
+
+.wrapper h3 {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-family: "Poppins-SemiBold";
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 50%;
+}
+
+.form-group input:first-child {
+  margin-right: 15px;
+}
+
+/* Form Control */
+.form-control {
+  border: 1px solid #333;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.form-control::-webkit-input-placeholder,
+.form-control::-moz-placeholder,
+.form-control:-ms-input-placeholder,
+.form-control:-moz-placeholder {
+  font-size: 13px;
+  color: #333;
+  font-family: "Poppins-Regular";
+}
+
+/* Form Wrapper */
+.form-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.form-wrapper i {
+  position: absolute;
+  bottom: 9px;
+  right: 0;
+  font-size: 17px;
+}
+
+
+/* Button */
+button {
+  border: none;
+  width: 164px;
+  height: 51px;
+  margin: auto;
+  margin-top: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #333;
+  font-size: 15px;
+  color: #fff;
+  transition-duration: 0.3s;
+}
+
+button i {
+  margin-left: 10px;
+}
+
+button:hover i,
+button:focus i,
+button:active i {
+  animation-name: hvr-icon-wobble-horizontal;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Button Animation */
+@keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    transform: translateX(6px);
+  }
+  33.3% {
+    transform: translateX(-5px);
+  }
+  49.95% {
+    transform: translateX(4px);
+  }
+  66.6% {
+    transform: translateX(-2px);
+  }
+  83.25% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .wrapper {
+    flex-direction: column;
+    background-position: right center;
+  }
+
+  .wrapper .image-holder {
+    width: 100%;
+    height: 250px;
+  }
+
+  .wrapper form {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  button {
+    margin-top: 30px;
+  }
+}
+
+/* Header Styling */
+.header {
+  background: #333;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav {
+  display: flex;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header ul li {
+  margin: 0 15px;
+}
+
+.header ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Poppins-SemiBold";
+  transition: color 0.3s;
+}
+
+.header ul li a:hover,
+.header ul li a.active {
+  color: #f1c40f;
+}
+
+/* Profile Image */
+.profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #f1c40f;
+}
+
+/* Wrapper Adjustment */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inner Container */
+.inner {
+  background: #fff;
+  max-width: 850px;
+  width: 100%;
+  margin: 20px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styling */
+.footer {
+  background: #333;
+  padding: 20px 0;
+  color: #fff;
+  text-align: center;
+  font-family: "Poppins-Regular";
+}
+
+
+/* Profile Page Styling */
+.form-content {
+  width: 50%;
+  padding: 30px 45px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+  margin-top: 20px;
+}
+
+.profile-details p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-family: "Poppins-Regular";
+}
+
+.button-wrapper {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-edit {
+  padding: 10px 25px;
+  background-color: #333;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.btn-edit:hover {
+  background-color: #f1c40f;
+}

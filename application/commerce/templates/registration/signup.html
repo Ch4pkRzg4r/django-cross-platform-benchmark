@@ -1,0 +1,43 @@
+<!-- ecommerce/templates/registration/signup.html -->
+{% extends 'base.html' %}  <!-- This line must be the very first line of the template -->
+{% load static %}  <!-- Load the static library -->
+
+{% block content %}
+<h2>Sign Up</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+{% endblock %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Sign Up{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section id="register-form" class="section-p1">
+        <div class="wrapper" style="background-image: url('images/bg-registration-form-1.jpg');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="images/registration-form-1.jpg" alt="">
+				</div>
+
+
+            <h2>Create an Account</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}   
+                <button type="submit" class="normal">Sign Up</button>
+            </form>
+        </div>
+        </div>
+    </section>
+</body>
+</html>

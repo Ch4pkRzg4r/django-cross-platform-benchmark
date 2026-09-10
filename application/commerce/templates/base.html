@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Ecommerce Website{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <section id="header" class="header">
+        <div class="container">
+            <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" class="logo" alt="logo"></a>
+            <nav>
+                <ul id="navbar">
+                    <li><a class="active" href="{% url 'index' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'profile' %}">
+                                {% if user.profile.image %}
+                                    <img src="{{ user.profile.image.url }}" alt="Profile" class="profile-image">
+                                {% else %}
+                                    {{ user.username }}
+                                {% endif %}
+                            </a>
+                        </li>
+                        <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                        <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Main content area -->
+    <div class="wrapper" style="background-image: url('{% static 'images/bg-registration-form-1.jpg' %}'); min-height: 100vh;">
+        <div class="inner">
+            {% block content %}
+            <!-- Content from other templates will be injected here -->
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- Footer Section (Optional) -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ecommerce Website. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

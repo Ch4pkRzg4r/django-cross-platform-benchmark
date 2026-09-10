@@ -1,0 +1,153 @@
+{% load static %} <!-- Add this line at the beginning of your template -->
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - E-commerce Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <section id="header">
+        <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" class="logo" alt="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'shop' %}">Shop</a></li>
+                <li><a class="active" href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                {% if user.is_authenticated %}
+                <!-- Display the username as a link to the profile page -->
+                <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+                <!-- Logout button -->
+                <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                    {% csrf_token %}
+                </form>
+                <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>        </div>
+    </section>
+
+    <!-- Page Header Section -->
+    <section id="page-header" class="blog-header">
+        <h2>#ReadMore</h2>
+        <p>Read all studies about our products!</p>
+    </section>
+
+    <!-- Blog Section -->
+   <!-- Blog Section -->
+<section id="blog">
+    {% for blog in blogs %}
+    <div class="blog-box">
+        <div class="blog-img">
+            <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+        </div>
+        <div class="blog-details">
+            <h4>{{ blog.title }}</h4>
+            <p>{{ blog.description|truncatewords:20 }}</p> <!-- Display a short description -->
+            <!-- Link to the blog detail page -->
+            <a href="{% url 'blog_detail' blog.id %}">CONTINUE READING</a>
+        </div>
+        <h1>{{ blog.date_created|date:"d/m" }}</h1>
+    </div>
+    {% endfor %}
+</section>
+
+
+    <!-- Pagination Section -->
+    <section id="pagination" class="section-p1">
+        <!-- You can add Django pagination controls here if necessary -->
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
+    </section>
+
+   <!-- Newsletter Section -->
+<!-- Newsletter Section -->
+<section id="newsletter" class="section-p1 section-m1">
+    <div class="newsletter" onclick="window.location.href='{% url 'signup' %}';">
+
+    <h4>Sign Up For Newsletters</h4>
+    <p>Get email updates about our latest shop and <span>special offers.</span></p>
+</div>
+<div id="form">
+    <a href="{% url 'signup' %}"><button class="normal">Create Account</button></a>
+</div>
+</section>
+
+
+    <!-- Footer Section -->
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="{% static 'img/logo.png' %}" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Iraq, Kurdistan, Sulaimani</p>
+            <p><strong>Phone:</strong> +9647707777777</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon-Sat</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="{% static 'img/pay/app.jpg' %}" alt="">
+                <img src="{% static 'img/pay/play.jpg' %}" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="{% static 'img/pay/pay.png' %}" alt="">
+        </div>
+
+        <div class="copyrightt">
+            <p>© 2024, E-commerce Website</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

@@ -338,8 +338,8 @@ from django.http import JsonResponse
 def custom_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password=[REDACTED]
-        user = authenticate(request, username=username, password=[REDACTED]
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
@@ -354,8 +354,8 @@ from django_ratelimit.decorators import ratelimit
 def custom_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password=[REDACTED]
-        user = authenticate(request, username=username, password=[REDACTED]
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
