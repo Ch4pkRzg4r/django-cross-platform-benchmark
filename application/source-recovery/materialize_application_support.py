@@ -7,6 +7,10 @@ recovered from the retained 2026-06-24 public-release archive.
 Existing files are handled safely:
 - if an existing file is byte-identical to the payload copy, it is skipped;
 - if an existing file differs, materialisation fails unless --overwrite is used.
+
+The base64 carrier is normalized for missing terminal padding before decoding.
+This is safe because the decoded gzip-tar is still required to match the
+hash-locked EXPECTED_PAYLOAD_SHA256 value before any extraction occurs.
 """
 
 from __future__ import annotations
@@ -38,6 +42,21 @@ def payload_path_for(member: tarfile.TarInfo) -> Path | None:
     return Path(*parts[1:])
 
 
+def decode_payload_text(text: str) -> bytes:
+    """Decode base64 while tolerating stripped terminal '=' padding only."""
+    compact = "".join(text.split())
+    if not compact:
+        raise RuntimeError("Application-support payload is empty.")
+
+    # A base64 carrier may lose trailing '=' in text transport. Restore only the
+    # mathematically required terminal padding; decoded SHA-256 remains the gate.
+    compact += "=" * (-len(compact) % 4)
+    try:
+        return base64.b64decode(compact, validate=True)
+    except Exception as exc:
+        raise RuntimeError(f"Application-support base64 decode failed: {exc}") from exc
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument(
@@ -54,7 +73,7 @@ def main() -> None:
 
     here = Path(__file__).resolve().parent
     payload_file = here / PAYLOAD_NAME
-    raw = base64.b64decode(payload_file.read_text(encoding="utf-8"))
+    raw = decode_payload_text(payload_file.read_text(encoding="utf-8"))
     digest = hashlib.sha256(raw).hexdigest()
     if digest != EXPECTED_PAYLOAD_SHA256:
         raise RuntimeError(
