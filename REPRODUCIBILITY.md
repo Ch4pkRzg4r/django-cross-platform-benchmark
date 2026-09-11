@@ -2,7 +2,7 @@
 
 ## Current controlling computational release
 
-The current thesis computational release is **v360**. It preserves the byte-exact validated **v330 calibrated end-to-end pipeline** as the computational base and adds a small, transparent release layer for the independently adjudicated post-v359 corrections.
+The **document candidate is v366**, while the current controlling **computational repository release remains v360**. v360 preserves the byte-exact validated **v330 calibrated end-to-end pipeline** as the computational base and adds a small, transparent release layer for independently adjudicated release-carrier corrections. The v366 document/repository closure does not renumber or replace that computational stack.
 
 The byte-exact v330 source SHA-256 remains:
 
@@ -14,7 +14,7 @@ Reconstruct that validated base source with:
 python analysis/materialize_v330_pipeline.py
 ```
 
-The controlling v360 repository entry point is:
+The controlling repository entry point is:
 
 ```bash
 python analysis/run_v360_from_repo.py
@@ -40,13 +40,15 @@ The historical v330 appendix carrier writer instead emitted the **ratio of cell 
 
 `median_r(latency_p99_r) / median_r(latency_p50_r)`
 
-Those are not the same operator. The printed thesis Table E.3 already used the intended median-of-run-ratios estimand; v360 therefore does **not** alter the frozen canonical dataset or the printed primary inference. It generates a corrected 28-cell tail-ratio carrier directly from run-level data and records the historical operator as superseded for that carrier only.
+Those are not the same operator. The printed thesis used the intended median-of-run-ratios estimand; v360 therefore does **not** alter the frozen canonical dataset or the printed primary inference. It generates a corrected 28-cell tail-ratio carrier directly from run-level data and records the historical operator as superseded for that carrier only.
 
-v360 also emits transparent carriers for:
+v360 also emits transparent **historical-namespace** carriers for:
 
-- Figure 4.1 median-p95 coordinates, regenerated directly from the 28 canonical cells;
+- a 28-cell median-p95 coordinate carrier;
 - completed-iteration shortfall relative to scenario-specific planned starts, explicitly separated from `dropped_iterations` and from an actual-start census;
-- Figure 4.13 within-scenario rank profiles with exact stored-precision tie handling.
+- the historical within-scenario rank/tie carrier formerly labelled Figure 4.13 in the wrapper namespace.
+
+These carrier filenames/numbers are computational provenance; they are **not the current v366 thesis figure numbering**. The current document crosswalk is `results/current-thesis/figure_map_v366.csv` and ends at Figure 4.8 (six continued panels).
 
 ## Frozen dataset and main inference
 
@@ -61,8 +63,8 @@ The validated v330 base reproduces the controlling statistical analysis:
 - 84 p95 Dunn comparisons with Holm adjustment within each scenario's 21-pair family;
 - 23 significant p95 pairwise contrasts in the frozen data;
 - Cliff's delta and rank-based eta-squared;
-- 140 percentile-bootstrap intervals using 10,000 resamples and base seed 20260603;
-- Chapter-4 Tables 4.1-4.16 under the full controlled evidence inputs.
+- 140 percentile-bootstrap intervals using 10,000 resamples under the controlling deterministic seed schedule rooted at 20260603;
+- validated Chapter-4 numerical/table carriers under the full controlled analytical inputs.
 
 The superseded cross-scenario Friedman/Wilcoxon H4 analysis is **not part of the current controlling analysis**.
 
@@ -76,21 +78,26 @@ A normal v360 release check writes into `.v360-run/release/`:
 - `v360_figure4_13_rank_carrier.csv`
 - `v360_release_manifest.json`
 
-The release manifest records the canonical hash, design cardinality, estimand definitions, shortfall counts, explicit output hashes and the repository commit when Git metadata are available. Repeated successful runs must leave every listed output hash verifiable; the manifest itself is deliberately excluded from its own output-hash list.
+The historical filenames are retained for provenance. The release manifest records the canonical hash, design cardinality, estimand definitions, shortfall counts, explicit output hashes and the repository commit when Git metadata are available. Repeated successful runs must leave every listed output hash verifiable; the manifest itself is deliberately excluded from its own output-hash list.
 
-## Scenario-D phase carrier
+## Scenario and rate semantics
 
-`data/supplementary/timeseries_burst_recovery.csv` is the retained replication-median per-second burst carrier. The thesis phase definition is baseline `60 <= tau <= 300`, peak `360 <= tau < 960`, and post-ramp `tau >= 1020`. The published peak-window achieved-rate value is a data-derived median of the retained per-second RPS curve in the half-open peak window; the frozen carrier yields 40 RPS for all seven paths. A literal `40` in the byte-exact historical v330 writer is provenance, not the current definition of the estimand.
+Final workload-script semantics are documented in `configuration/SCENARIO_AUTHORITY_V366.md`.
+
+- Scenario C uses 10 iterations/s with three GET requests per iteration, so request-rate fields are not iteration-rate fields.
+- Scenario D is staged/ramping (5→40→5 iterations/s); the canonical scalar `target_rps=10` is historical metadata and is not the burst schedule authority.
+
+`data/supplementary/timeseries_burst_recovery.csv` is the retained replication-median per-second burst carrier. The thesis phase definition is baseline `60 <= tau <= 300`, peak `360 <= tau < 960`, and post-ramp `tau >= 1020`. The published peak-window achieved-rate value is data-derived from the retained per-second curve; the frozen carrier yields 40 requests/s for all seven paths. A literal `40` in byte-exact historical code is provenance, not the definition of the estimand.
 
 ## Full exact thesis-mirror prerequisites
 
-GitHub intentionally does not duplicate the complete 120-run Docker telemetry archive as ordinary Git content. Exact Table 4.11 reproduction therefore still requires the controlled `docker_stats.zip` evidence archive.
+GitHub intentionally does not duplicate the complete 120-run Docker telemetry archive as ordinary Git content. Exact reproduction of the scoped Linux resource summary therefore still requires the controlled `docker_stats.zip` evidence archive.
 
-The exact frozen-thesis regression additionally uses the controlled final-thesis publication-reference assets. These are maintained in the evidence package and are not silently substituted when input data change.
+The historical v330 wrapper also contains an 18-raster publication-copy regression dependency. Those exact historical target rasters were not all recovered in the independently audited submission evidence. Current v366 embedded figures are verified against the actual v366 document and are **not** silently substituted as byte-identical historical targets.
 
 ## Data-driven safeguard
 
-The validated v330 pipeline was tested on a disposable altered-data copy. Changing compatible source values changed the corresponding table value, Kruskal-Wallis result and dynamic figure output. Exact frozen-thesis publication assets were not emitted on altered input. The analysis is therefore not a hard-coded output replay.
+The validated v330 pipeline was tested on a disposable altered-data copy. Changing compatible source values changed the corresponding table value, Kruskal-Wallis result and dynamic figure output. Exact frozen publication assets were not emitted on altered input. The analysis is therefore not a hard-coded output replay.
 
 The v360 release layer also derives its carriers from run-level canonical values; it does not read printed thesis values as calculation inputs.
 
@@ -100,6 +107,16 @@ Computational rerunning from retained analytical evidence is supported. Re-execu
 
 No benchmark-time, continuity-bridged executable identity manifest is retained for the load generator; a **later current-only capture** is available in `verification/k6_binary_identity.txt`. It must not be promoted to campaign-time binary proof.
 
-## Raw archive integrity
+The Nginx/uWSGI retained configuration files also contain a concrete historical/current conflict (TCP 4×2 INI versus UNIX-socket/nominal 2×4 descriptions). The prospective consistent rerun recipe is under `configuration/reproduction/nginx-uwsgi-v366/`; it is not retroactive proof of the campaign-time variant.
 
-The repository includes per-file integrity manifests for the retained raw k6 streams, run logs, Docker telemetry and archive parts under `data/raw-archive-manifests/`. The heavy raw evidence itself is retained in a controlled external archive because of size. No public raw-data URL is claimed until upload, verification and release approval are complete.
+## Raw archive integrity and current availability
+
+The repository includes expected per-file integrity manifests for raw k6 streams, run logs, Docker telemetry and historical archive parts under `data/raw-archive-manifests/`. **A manifest is an identity/checking record, not proof that the corresponding bytes are currently available.**
+
+Independent recovery of the raw archives supplied with the v365 audit established **73 complete canonical JSON/CSV run pairs; 207 canonical run pairs were unavailable** in the supplied submission evidence. The four supplied raw ZIPs were truncated; complete-prefix members that passed structural/hash checks reconciled with their corresponding canonical rows. Full raw-to-canonical reconstruction of all 280 retained runs therefore cannot be certified from the currently supplied raw bytes.
+
+See `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md` for the precise current state and recovery protocol.
+
+## Current document/repository closure
+
+`THESIS_V366_ALIGNMENT.md` records the document-facing v366 authority, current figure crosswalk, PERMDISP provenance qualification, public/private fixture boundary, raw-availability boundary and Nginx prospective reproduction rule. These are provenance/reproduction corrections; they do not change the frozen primary numerical results.
