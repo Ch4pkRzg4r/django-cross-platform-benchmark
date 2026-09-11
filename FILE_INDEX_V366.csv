@@ -1,0 +1,332 @@
+path,role
+.gitattributes,repository research artefact
+.github/workflows/finalize-v366-closure.yml,continuous-integration workflow
+.github/workflows/verify-current-release.yml,continuous-integration workflow
+.github/workflows/verify-v330.yml,continuous-integration workflow
+.gitignore,repository research artefact
+ARTEFACT_PROVENANCE.md,repository documentation / provenance / closure note
+CITATION.cff,citation metadata
+DATA_AVAILABILITY.md,repository documentation / provenance / closure note
+FILE_INDEX.csv,historical file index
+FILE_INDEX_V366.csv,current v366 tracked-file index
+FILE_INDEX_v330.csv,historical file index
+LICENSE-CODE-MIT.txt,licence / redistribution statement
+LICENSE-DATA-CC-BY-4.0.txt,licence / redistribution statement
+LICENSING.md,licence / redistribution statement
+LOCAL_INVENTORY_V365_FINDINGS.md,repository research artefact
+MANIFEST_SHA256.csv,historical integrity manifest
+MANIFEST_V330_UPDATE_SHA256.csv,historical integrity manifest
+MANIFEST_V366_SHA256.csv,current v366 SHA-256 integrity manifest (self excluded from hash rows)
+README.md,repository documentation / provenance / closure note
+REPOSITORY_CLOSURE_V365.md,repository documentation / provenance / closure note
+REPOSITORY_CLOSURE_V366.md,repository documentation / provenance / closure note
+REPOSITORY_COMPLETENESS_AUDIT_V344.md,repository documentation / provenance / closure note
+REPOSITORY_COMPLETENESS_V365_PLAN.md,repository documentation / provenance / closure note
+REPOSITORY_FIXTURE_STATIC_GATE_V365.md,repository documentation / provenance / closure note
+REPOSITORY_FIXTURE_STATIC_TRANSFER_REVIEW_V365.md,repository documentation / provenance / closure note
+REPOSITORY_FIXTURE_STATIC_V2_PASS.md,repository documentation / provenance / closure note
+REPOSITORY_GAP_SCAN_V365.md,repository documentation / provenance / closure note
+REPOSITORY_SAFE_TRANSFER_V365.md,repository documentation / provenance / closure note
+REPRODUCIBILITY.md,repository documentation / provenance / closure note
+SECURITY_AND_REDACTION.md,repository documentation / provenance / closure note
+THESIS_V344_ALIGNMENT.md,thesis/repository alignment record
+THESIS_V360_ALIGNMENT.md,thesis/repository alignment record
+THESIS_V366_ALIGNMENT.md,thesis/repository alignment record
+analysis/README.md,analysis / release-validation code
+analysis/analyze_coldstart.py,analysis / release-validation code
+analysis/analyze_timeseries.py,analysis / release-validation code
+analysis/ch4_evidence_pipeline.py,analysis / release-validation code
+analysis/historical-provenance/README.md,historical analytical provenance
+analysis/historical-provenance/phase3_inferential.py,historical analytical provenance
+analysis/materialize_v330_pipeline.py,analysis / release-validation code
+analysis/phase1_validation.py,analysis / release-validation code
+analysis/phase2_eda.py,analysis / release-validation code
+analysis/run_analysis.py,analysis / release-validation code
+analysis/run_v330_from_repo.py,analysis / release-validation code
+analysis/run_v360_from_repo.py,analysis / release-validation code
+analysis/v330-payload/README.md,analysis / release-validation code
+analysis/v330-payload/payload_01.b64,analysis / release-validation code
+analysis/v330-payload/payload_02.b64,analysis / release-validation code
+analysis/v330-payload/payload_03.b64,analysis / release-validation code
+analysis/v330-payload/payload_04.b64,analysis / release-validation code
+analysis/v330-payload/payload_05.b64,analysis / release-validation code
+analysis/v360_release_corrections.py,analysis / release-validation code
+application/.env.example,application source / runtime / reproduction configuration
+application/DOCKERFILE_AUTHORITY_V365.md,application source / runtime / reproduction configuration
+application/Dockerfile,application source / runtime / reproduction configuration
+application/Dockerfile.apache-wsgi,application source / runtime / reproduction configuration
+application/Dockerfile.benchmark.PUBLIC,application source / runtime / reproduction configuration
+application/Dockerfile.nginx-uwsgi,application source / runtime / reproduction configuration
+application/Dockerfile.v2,application source / runtime / reproduction configuration
+application/FIXTURE_PUBLIC_PROVENANCE_V365.md,application source / runtime / reproduction configuration
+application/STATIC_ASSET_BOUNDARY.md,application source / runtime / reproduction configuration
+application/build-and-push.sh,application source / runtime / reproduction configuration
+application/commerce/__init__.py,Django application source
+application/commerce/admin.py,Django application source
+application/commerce/apps.py,Django application source
+application/commerce/forms.py,Django application source
+application/commerce/migrations/0001_initial.py,Django application source
+application/commerce/migrations/0002_contactinfo_contactperson.py,Django application source
+application/commerce/migrations/0003_remove_contactinfo_map_embed_url.py,Django application source
+application/commerce/migrations/0004_cart_cartitem.py,Django application source
+application/commerce/migrations/0005_profile.py,Django application source
+application/commerce/migrations/0006_profile_bio_profile_birth_date_profile_location_and_more.py,Django application source
+application/commerce/migrations/0007_customuser.py,Django application source
+application/commerce/migrations/0008_delete_customuser.py,Django application source
+application/commerce/migrations/0009_cartitem_size.py,Django application source
+application/commerce/migrations/0010_contactmessage.py,Django application source
+application/commerce/migrations/0011_rename_date_created_contactmessage_created_at_and_more.py,Django application source
+application/commerce/migrations/0012_alter_contactperson_image_order_payment.py,Django application source
+application/commerce/migrations/0013_remove_order_cart_orderitem.py,Django application source
+application/commerce/migrations/0014_order_cart_delete_orderitem.py,Django application source
+application/commerce/migrations/0015_remove_order_cart_order_status_orderitem.py,Django application source
+application/commerce/migrations/__init__.py,Django application source
+application/commerce/models.py,Django application source
+application/commerce/signals.py,Django application source
+application/commerce/templates/about.html,Django application source
+application/commerce/templates/base.html,Django application source
+application/commerce/templates/blog.html,Django application source
+application/commerce/templates/blog_detail.html,Django application source
+application/commerce/templates/cart.html,Django application source
+application/commerce/templates/checkout.html,Django application source
+application/commerce/templates/contact.html,Django application source
+application/commerce/templates/index.html,Django application source
+application/commerce/templates/payment.html,Django application source
+application/commerce/templates/payment_success.html,Django application source
+application/commerce/templates/profile.html,Django application source
+application/commerce/templates/registration/login.html,Django application source
+application/commerce/templates/registration/signup.html,Django application source
+application/commerce/templates/shop.html,Django application source
+application/commerce/templates/sproduct.html,Django application source
+application/commerce/templatetags/__init__.py,Django application source
+application/commerce/templatetags/custom_filters.py,Django application source
+application/commerce/templatetags/filters.py,Django application source
+application/commerce/tests.py,Django application source
+application/commerce/urls.py,Django application source
+application/commerce/views.py,Django application source
+application/datadump.PUBLIC.json,application source / runtime / reproduction configuration
+application/ecommerce/__init__.py,Django project/runtime source or safe configuration
+application/ecommerce/asgi.py,Django project/runtime source or safe configuration
+application/ecommerce/gunicorn_conf.py,Django project/runtime source or safe configuration
+application/ecommerce/settings.PUBLIC.py,Django project/runtime source or safe configuration
+application/ecommerce/settings.py,Django project/runtime source or safe configuration
+application/ecommerce/urls.py,Django project/runtime source or safe configuration
+application/ecommerce/wsgi.py,Django project/runtime source or safe configuration
+application/load_data.py,application source / runtime / reproduction configuration
+application/load_public_fixture.py,application source / runtime / reproduction configuration
+application/manage.py,application source / runtime / reproduction configuration
+application/media_from_static_map.csv,application source / runtime / reproduction configuration
+application/postgres/pg_hba.conf,application source / runtime / reproduction configuration
+application/postgres/postgresql.conf,application source / runtime / reproduction configuration
+application/requirements.txt,application source / runtime / reproduction configuration
+application/source-recovery/PAYLOAD_MANIFEST.md,reviewed application-source recovery carrier / provenance
+application/source-recovery/README.md,reviewed application-source recovery carrier / provenance
+application/source-recovery/application_support_v365.b64,reviewed application-source recovery carrier / provenance
+application/source-recovery/materialize_application_support.py,reviewed application-source recovery carrier / provenance
+application/static/css/style.css,application static asset / documented redistribution boundary
+application/static/css/style.css.map,application static asset / documented redistribution boundary
+application/static/css/style.scss,application static asset / documented redistribution boundary
+application/static/fonts/material-design-iconic-font/css/material-design-iconic-font.css,application static asset / documented redistribution boundary
+application/static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css,application static asset / documented redistribution boundary
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.eot,application static asset / documented redistribution boundary
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.svg,application static asset / documented redistribution boundary
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.ttf,application static asset / documented redistribution boundary
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff,application static asset / documented redistribution boundary
+application/static/fonts/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff2,application static asset / documented redistribution boundary
+application/static/fonts/poppins/Poppins-Regular.ttf,application static asset / documented redistribution boundary
+application/static/fonts/poppins/Poppins-SemiBold.ttf,application static asset / documented redistribution boundary
+application/static/images/bg-registration-form-1.jpg,application static asset / documented redistribution boundary
+application/static/images/registration-form-1.jpg,application static asset / documented redistribution boundary
+application/static/img/about/1.mp4,application static asset / documented redistribution boundary
+application/static/img/about/a1.png,application static asset / documented redistribution boundary
+application/static/img/about/a2.jpg,application static asset / documented redistribution boundary
+application/static/img/about/a3.png,application static asset / documented redistribution boundary
+application/static/img/about/a4.png,application static asset / documented redistribution boundary
+application/static/img/about/a5.jpg,application static asset / documented redistribution boundary
+application/static/img/about/a6.jpg,application static asset / documented redistribution boundary
+application/static/img/about/banner.png,application static asset / documented redistribution boundary
+application/static/img/banner/b1.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b10.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b14.png,application static asset / documented redistribution boundary
+application/static/img/banner/b16.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b17.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b18.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b19.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b2.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b20.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b4.jpg,application static asset / documented redistribution boundary
+application/static/img/banner/b7.jpg,application static asset / documented redistribution boundary
+application/static/img/blog/b1.jpg,application static asset / documented redistribution boundary
+application/static/img/blog/b2.jpg,application static asset / documented redistribution boundary
+application/static/img/blog/b3.jpg,application static asset / documented redistribution boundary
+application/static/img/blog/b4.jpg,application static asset / documented redistribution boundary
+application/static/img/blog/b5.jpg,application static asset / documented redistribution boundary
+application/static/img/blog/b6.jpg,application static asset / documented redistribution boundary
+application/static/img/blog/b7.jpg,application static asset / documented redistribution boundary
+application/static/img/button.png,application static asset / documented redistribution boundary
+application/static/img/features/f1.png,application static asset / documented redistribution boundary
+application/static/img/features/f2.png,application static asset / documented redistribution boundary
+application/static/img/features/f3.png,application static asset / documented redistribution boundary
+application/static/img/features/f4.png,application static asset / documented redistribution boundary
+application/static/img/features/f5.png,application static asset / documented redistribution boundary
+application/static/img/features/f6.png,application static asset / documented redistribution boundary
+application/static/img/hero4.png,application static asset / documented redistribution boundary
+application/static/img/logo.png,application static asset / documented redistribution boundary
+application/static/img/pay/app.jpg,application static asset / documented redistribution boundary
+application/static/img/pay/pay.png,application static asset / documented redistribution boundary
+application/static/img/pay/play.jpg,application static asset / documented redistribution boundary
+application/static/img/people/1.png,application static asset / documented redistribution boundary
+application/static/img/people/2.png,application static asset / documented redistribution boundary
+application/static/img/people/3.png,application static asset / documented redistribution boundary
+application/static/img/products/f1.jpg,application static asset / documented redistribution boundary
+application/static/img/products/f2.jpg,application static asset / documented redistribution boundary
+application/static/img/products/f3.jpg,application static asset / documented redistribution boundary
+application/static/img/products/f4.jpg,application static asset / documented redistribution boundary
+application/static/img/products/f5.jpg,application static asset / documented redistribution boundary
+application/static/img/products/f6.jpg,application static asset / documented redistribution boundary
+application/static/img/products/f7.jpg,application static asset / documented redistribution boundary
+application/static/img/products/f8.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n1.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n2.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n3.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n4.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n5.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n6.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n7.jpg,application static asset / documented redistribution boundary
+application/static/img/products/n8.jpg,application static asset / documented redistribution boundary
+application/static/script.js,application static asset / documented redistribution boundary
+application/static/style.css,application static asset / documented redistribution boundary
+application/supervisord.conf,application source / runtime / reproduction configuration
+application/uwsgi.ini,application source / runtime / reproduction configuration
+benchmark/k6-scenarios/scenario_A_browse.js,campaign k6 workload scenario script
+benchmark/k6-scenarios/scenario_B_mixed.js,campaign k6 workload scenario script
+benchmark/k6-scenarios/scenario_C_checkout.js,campaign k6 workload scenario script
+benchmark/k6-scenarios/scenario_D_burst.js,campaign k6 workload scenario script
+benchmark/orchestrator/orchestrator.ps1,campaign orchestrator
+benchmark/parse_k6_output.py,benchmark tooling
+configuration/SCENARIO_AUTHORITY_V366.md,deployment/workload configuration and authority documentation
+configuration/apache-mod_wsgi.conf,deployment/workload configuration and authority documentation
+configuration/docker-compose-phase65.PUBLIC.yml,deployment/workload configuration and authority documentation
+configuration/docker/apache.conf,deployment/workload configuration and authority documentation
+configuration/docker/nginx.conf,deployment/workload configuration and authority documentation
+configuration/nginx-uwsgi.conf,deployment/workload configuration and authority documentation
+configuration/platforms.PUBLIC.json,deployment/workload configuration and authority documentation
+configuration/platforms/06_flyio/FLY_PUBLIC_PROVENANCE.md,platform-specific deployment configuration / evidence
+configuration/platforms/06_flyio/fly.PUBLIC.toml,platform-specific deployment configuration / evidence
+configuration/platforms/07_iis_waitress/apply-memory-limit.ps1,platform-specific deployment configuration / evidence
+configuration/platforms/07_iis_waitress/web.config.PUBLIC.xml,platform-specific deployment configuration / evidence
+configuration/platforms/README.md,platform-specific deployment configuration / evidence
+configuration/reproduction/nginx-uwsgi-v366/Dockerfile,prospective public reproduction derivative; not historical proof
+configuration/reproduction/nginx-uwsgi-v366/README.md,prospective public reproduction derivative; not historical proof
+configuration/reproduction/nginx-uwsgi-v366/nginx.conf,prospective public reproduction derivative; not historical proof
+configuration/reproduction/nginx-uwsgi-v366/uwsgi.ini,prospective public reproduction derivative; not historical proof
+configuration/scenarios.json,deployment/workload configuration and authority documentation
+configuration/uwsgi.ini,deployment/workload configuration and authority documentation
+data/canonical/DATA_DICTIONARY.md,canonical analytical dataset / dictionary
+data/canonical/master_runs.csv,canonical analytical dataset / dictionary
+data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md,raw-evidence integrity/availability record
+data/raw-archive-manifests/archive_parts_sha256_manifest.csv,raw-evidence integrity/availability record
+data/raw-archive-manifests/docker_stats_sha256_manifest.csv,raw-evidence integrity/availability record
+data/raw-archive-manifests/raw_files_sha256_manifest.csv,raw-evidence integrity/availability record
+data/raw-archive-manifests/run_logs_sha256_manifest.csv,raw-evidence integrity/availability record
+data/supplementary/WARMUP_TRANSIENT_V365_CORRECTION.md,supplementary analytical data / correction record
+data/supplementary/coldstart_raw.csv,supplementary analytical data / correction record
+data/supplementary/docker-stats-sample/01_apache_modwsgi__A_browse__rep01__docker_stats.csv,supplementary analytical data / correction record
+data/supplementary/timeseries_burst_recovery.csv,supplementary analytical data / correction record
+data/supplementary/warmup_transient.csv,supplementary analytical data / correction record
+data/supplementary/warmup_transient_v365_corrected.csv,supplementary analytical data / correction record
+documentation/STATIC_ASSET_MANIFEST_V365.csv,repository documentation / static-asset manifest
+documentation/evidence_state.md,repository documentation / static-asset manifest
+documentation/nonfigure_or_unreferenced_media_inventory.csv,repository documentation / static-asset manifest
+environment/EXECUTION_ENVIRONMENT.md,environment / dependency / runtime evidence
+environment/iis_waitress/active_waitress_process.txt,environment / dependency / runtime evidence
+environment/iis_waitress/appcmd_modules.txt,environment / dependency / runtime evidence
+environment/iis_waitress/python312_pip_freeze.txt,environment / dependency / runtime evidence
+environment/iis_waitress/python_w3wp_memory_snapshot.txt,environment / dependency / runtime evidence
+environment/iis_waitress/runtime_versions.txt,environment / dependency / runtime evidence
+environment/iis_waitress/sites_safe.txt,environment / dependency / runtime evidence
+environment/pgbouncer_runtime_extract.PUBLIC.txt,environment / dependency / runtime evidence
+environment/pip_freeze_iis_runtime.txt,environment / dependency / runtime evidence
+environment/requirements-analysis-v330.txt,environment / dependency / runtime evidence
+environment/requirements.txt,environment / dependency / runtime evidence
+results/current-thesis/README.md,current-thesis documentation / crosswalk / research artefact
+results/current-thesis/figure_map.csv,current-thesis documentation / crosswalk / research artefact
+results/current-thesis/figure_map_v366.csv,current-thesis documentation / crosswalk / research artefact
+results/current-thesis/tables/Table_4_01.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_02.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_03.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_04.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_05.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_06.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_07.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_08.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_09.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_10.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_11.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_12.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_13.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_14.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_15.csv,historical/current-thesis table mirror namespace
+results/current-thesis/tables/Table_4_16.csv,historical/current-thesis table mirror namespace
+results/current-thesis/verification/DATA_DRIVEN_MUTATION_TEST.txt,historical/current-thesis verification artefact
+results/current-thesis/verification/EXACT_PUBLISHED_FIGURE_ASSET_CHECK.txt,historical/current-thesis verification artefact
+results/current-thesis/verification/EXACT_TABLE_MIRROR_CHECK.txt,historical/current-thesis verification artefact
+results/current-thesis/verification/FINAL_CALIBRATION_REPORT.txt,historical/current-thesis verification artefact
+results/current-thesis/verification/NUMERIC_REGRESSION_CHECK_v329.txt,historical/current-thesis verification artefact
+results/current-thesis/verification/PIPELINE_SUMMARY.json,historical/current-thesis verification artefact
+results/current-thesis/verification/PUBLISHED_FIGURE_SHA256_MANIFEST.csv,historical/current-thesis verification artefact
+results/current-thesis/verification/README.md,historical/current-thesis verification artefact
+results/figures/README_CURRENT_STATUS.md,historical figure source / thesis figure carrier
+results/figures/figure_map.csv,historical figure source / thesis figure carrier
+results/figures/image1.png,historical figure source / thesis figure carrier
+results/figures/image10.png,historical figure source / thesis figure carrier
+results/figures/image11.png,historical figure source / thesis figure carrier
+results/figures/image12.png,historical figure source / thesis figure carrier
+results/figures/image13.png,historical figure source / thesis figure carrier
+results/figures/image14.png,historical figure source / thesis figure carrier
+results/figures/image15.png,historical figure source / thesis figure carrier
+results/figures/image16.png,historical figure source / thesis figure carrier
+results/figures/image17.png,historical figure source / thesis figure carrier
+results/figures/image18.png,historical figure source / thesis figure carrier
+results/figures/image19.png,historical figure source / thesis figure carrier
+results/figures/image2.png,historical figure source / thesis figure carrier
+results/figures/image20.png,historical figure source / thesis figure carrier
+results/figures/image21.png,historical figure source / thesis figure carrier
+results/figures/image22.png,historical figure source / thesis figure carrier
+results/figures/image23.png,historical figure source / thesis figure carrier
+results/figures/image24.png,historical figure source / thesis figure carrier
+results/figures/image25.png,historical figure source / thesis figure carrier
+results/figures/image26.png,historical figure source / thesis figure carrier
+results/figures/image27.png,historical figure source / thesis figure carrier
+results/figures/image28.png,historical figure source / thesis figure carrier
+results/figures/image29.png,historical figure source / thesis figure carrier
+results/figures/image3.png,historical figure source / thesis figure carrier
+results/figures/image4.png,historical figure source / thesis figure carrier
+results/figures/image5.png,historical figure source / thesis figure carrier
+results/figures/image6.png,historical figure source / thesis figure carrier
+results/figures/image7.png,historical figure source / thesis figure carrier
+results/figures/image8.png,historical figure source / thesis figure carrier
+results/figures/image9.png,historical figure source / thesis figure carrier
+results/tables/TABLES_NOTE.md,table source / full-precision result carrier
+results/tables/Table_4_01.csv,table source / full-precision result carrier
+results/tables/Table_4_02.csv,table source / full-precision result carrier
+results/tables/Table_4_03.csv,table source / full-precision result carrier
+results/tables/Table_4_04.csv,table source / full-precision result carrier
+results/tables/Table_4_05.csv,table source / full-precision result carrier
+results/tables/Table_4_06.csv,table source / full-precision result carrier
+results/tables/Table_4_07.csv,table source / full-precision result carrier
+results/tables/Table_4_08.csv,table source / full-precision result carrier
+results/tables/Table_4_09.csv,table source / full-precision result carrier
+results/tables/Table_4_12.csv,table source / full-precision result carrier
+results/tables/Table_4_13.csv,table source / full-precision result carrier
+results/tables/Table_4_14.csv,table source / full-precision result carrier
+tools/finalize_v366_repository.py,repository finalisation / QA tool
+verification/RUN_MANIFEST.json,verification / integrity record or executable QA
+verification/VERIFY_report.txt,verification / integrity record or executable QA
+verification/k6_binary_identity.txt,verification / integrity record or executable QA
+verification/platform_configuration_truth.csv,verification / integrity record or executable QA
+verification/scenario_script_truth.csv,verification / integrity record or executable QA
+verification/v330_candidate_status.md,verification / integrity record or executable QA
+verification/verification_summary.md,verification / integrity record or executable QA
+verification/verify_v330_repository_state.py,verification / integrity record or executable QA
+verification/verify_v366_repository_closure.py,verification / integrity record or executable QA
