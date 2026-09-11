@@ -1,0 +1,98 @@
+{
+  "release": "v368",
+  "document_sha256": "d241b1cd79838ed7086ee18a4c5b89f6de6416beb74dec6b832fc1920e8996fe",
+  "endnote_authority_sha256": "ef01e2a5aeba491847ecbbe58ea239d68a39ce0e4c5552d58b7a0b8cdf58fb9d",
+  "chapter_two_verdict": "CHAPTER TWO — READY AS WRITTEN",
+  "closed_findings": [
+    "C2-F001",
+    "C2-F002",
+    "C2-F003",
+    "C2-F004"
+  ],
+  "live_endnote": {
+    "citation_fields": 225,
+    "bibliography_fields": 1,
+    "distinct_records": 115,
+    "source_use_links": 256
+  },
+  "metadata_corrections": {
+    "12": {
+      "journal": "World Wide Web",
+      "volume": "2",
+      "pages": "69–83"
+    },
+    "13": {
+      "journal": "Reliability Engineering & System Safety",
+      "volume": "32",
+      "pages": "171–191"
+    },
+    "14": {
+      "journal": "Journal of Computer Sciences Institute",
+      "volume": "36",
+      "pages": "336–341"
+    },
+    "19": {
+      "journal": "Proceedings of the VLDB Endowment",
+      "volume": "16",
+      "number": "11",
+      "pages": "3335–3348",
+      "ref_type": "Journal Article",
+      "remove_edition": true
+    },
+    "41": {
+      "journal": "ACM Computing Surveys",
+      "volume": "57",
+      "number": "3",
+      "custom7": "65",
+      "pages": "65:1–65:36"
+    },
+    "89": {
+      "journal": "Future Generation Computer Systems",
+      "volume": "179",
+      "custom7": "108336"
+    },
+    "90": {
+      "journal": "Journal of Systems and Software",
+      "volume": "170",
+      "custom7": "110708"
+    },
+    "96": {
+      "journal": "Journal of Business Research",
+      "volume": "104",
+      "pages": "333–339"
+    },
+    "107": {
+      "journal": "MIS Quarterly",
+      "volume": "26",
+      "number": "2",
+      "pages": "xiii–xxiii"
+    },
+    "111": {
+      "journal": "Future Internet",
+      "volume": "16",
+      "number": "12",
+      "custom7": "475"
+    }
+  },
+  "metadata_article_number_mapping": "EndNote Custom 7 / XML custom7",
+  "metadata_mapping_source": "https://docs.endnote.com/docs/endnote/2025/v1/windows/en/content/17reftypes/reference_types_tables/journal_article.htm",
+  "changed_thesis_paragraphs": [
+    336,
+    536,
+    591,
+    593,
+    718,
+    3563,
+    3706,
+    3708,
+    3710,
+    3720,
+    3745
+  ],
+  "unchanged_table21_studies": 12,
+  "unchanged_chapter_two_sources": 52,
+  "canonical_sha256": "710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7",
+  "frozen_v330_sha256": "d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574",
+  "computational_release": "v367",
+  "whole_thesis_verdict": "PENDING NATIVE WORD PDF AND FINAL VISUAL REGRESSION"
+}

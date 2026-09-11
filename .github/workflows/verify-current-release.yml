@@ -20,6 +20,9 @@ jobs:
           cache: 'pip'
           cache-dependency-path: environment/requirements-analysis-v330.txt
 
+      - name: Verify v368 correction manifest and protected evidence bytes
+        run: python verification/verify_v368_correction.py
+
       - name: Install analysis dependencies
         run: python -m pip install -r environment/requirements-analysis-v330.txt
 

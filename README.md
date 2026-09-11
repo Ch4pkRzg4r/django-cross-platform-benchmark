@@ -6,7 +6,7 @@ Research artefacts supporting the MSc thesis **“Benchmarking and Evaluation of
 
 ## Current thesis / analysis alignment
 
-The current document candidate is **v367**. Its verified corrections preserve the frozen scientific results; native Word finalisation and the final PDF regression review remain pending. No final submission verdict is implied.
+The current document candidate is **v368**, with the four frozen Chapter Two corrections applied. The computational release remains **v367** and all scientific results are unchanged. Native Word finalisation and the final PDF regression review remain pending. No final submission verdict is implied. See `THESIS_V368_ALIGNMENT.md` for the targeted correction record.
 
 1. Frozen canonical dataset: `data/canonical/master_runs.csv` — **280 × 39**.
 2. Byte-exact validated **v330 calibrated end-to-end pipeline** — the statistical base.
@@ -35,7 +35,7 @@ The repository intentionally retains historical files and namespaces. A historic
 - the byte-exact v330 pipeline remains the frozen computational base;
 - `analysis/ch4_evidence_pipeline.py` and `analysis/historical-provenance/` are retained for historical analytical provenance;
 - `results/current-thesis/figure_map.csv` is the historical v330/current-thesis figure namespace used by the validated wrapper;
-- `results/current-thesis/figure_map_v367.csv` is the document-facing crosswalk for the current v367 Chapter 4, whose numbering ends at Figure 4.8 (six continued panels);
+- `results/current-thesis/figure_map_v367.csv` is the document-facing crosswalk for Chapter 4 (unchanged in v368), whose numbering ends at Figure 4.8 (six continued panels);
 - the historical computational pin `5cfb18adb04da928bd07517a4f76261fe74246a1` remains a historical pin where cited; it is not the identity of the current public branch head.
 
 ## Main frozen analytical results
