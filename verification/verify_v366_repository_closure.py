@@ -63,7 +63,14 @@ def main() -> None:
     found = re.findall(r"^\| `([^`]+)` \|", dictionary, flags=re.M)
     if found[:39] != expected_fields or len(found) < 39:
         fail(f"data dictionary field order/completeness: found {len(found)} field rows")
-    for required in ["three GET requests per iteration", "5→40→5", "bytes per second, not bits per second", "Blank is **not zero**", "latency-only Apdex-style"]:
+    required_dictionary_phrases = [
+        "three GET requests per iteration",
+        "baseline 5 → ramp to 40 → peak 40 → ramp to 5 → recovery 5",
+        "bytes per second, not bits per second",
+        "Blank is **not zero**",
+        "latency-only Apdex-style",
+    ]
+    for required in required_dictionary_phrases:
         if required not in dictionary:
             fail(f"data dictionary semantic note missing: {required}")
     ok("complete 39-field dictionary and scenario-specific rate semantics")
