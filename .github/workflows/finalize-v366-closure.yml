@@ -1,0 +1,43 @@
+name: finalize-v366-closure
+
+on:
+  push:
+    branches: [v366-minor-revisions]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout v366 branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate current v366 file index and manifest
+        run: python tools/finalize_v366_repository.py
+
+      - name: Verify v366 documentation and evidence closure
+        run: python verification/verify_v366_repository_closure.py
+
+      - name: Commit refreshed generated index/manifest when needed
+        shell: bash
+        run: |
+          if git diff --quiet -- FILE_INDEX_V366.csv MANIFEST_V366_SHA256.csv && \
+             git diff --cached --quiet -- FILE_INDEX_V366.csv MANIFEST_V366_SHA256.csv; then
+            echo "Generated v366 index/manifest already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add FILE_INDEX_V366.csv MANIFEST_V366_SHA256.csv
+          git commit -m "Refresh v366 repository index and integrity manifest"
+          git push
