@@ -17,6 +17,7 @@ LOCAL_INVENTORY_V365_FINDINGS.md,repository research artefact
 MANIFEST_SHA256.csv,historical integrity manifest
 MANIFEST_V330_UPDATE_SHA256.csv,historical integrity manifest
 MANIFEST_V366_SHA256.csv,current v366 SHA-256 integrity manifest (self excluded from hash rows)
+PULL_REQUEST_V366_SUMMARY.md,repository research artefact
 README.md,repository documentation / provenance / closure note
 REPOSITORY_CLOSURE_V365.md,repository documentation / provenance / closure note
 REPOSITORY_CLOSURE_V366.md,repository documentation / provenance / closure note
