@@ -31,8 +31,7 @@ jobs:
       - name: Commit refreshed generated index/manifest when needed
         shell: bash
         run: |
-          if git diff --quiet -- FILE_INDEX_V366.csv MANIFEST_V366_SHA256.csv && \
-             git diff --cached --quiet -- FILE_INDEX_V366.csv MANIFEST_V366_SHA256.csv; then
+          if [ -z "$(git status --porcelain -- FILE_INDEX_V366.csv MANIFEST_V366_SHA256.csv)" ]; then
             echo "Generated v366 index/manifest already current."
             exit 0
           fi
