@@ -26,8 +26,11 @@ jobs:
       - name: Verify frozen v330 repository state
         run: python verification/verify_v330_repository_state.py
 
-      - name: Verify current v360 release layer
-        run: python analysis/run_v360_from_repo.py --out-dir "${{ runner.temp }}/v360-output"
+      - name: Verify current v367 release layers
+        run: python analysis/run_v367_from_repo.py --out-dir "${{ runner.temp }}/v367-output"
+
+      - name: Verify v367 strict H4 predicate and figure output integrity
+        run: python verification/verify_v367_release.py --out-dir "${{ runner.temp }}/v367-output"
 
       - name: Compile public application Python
         run: |
@@ -39,3 +42,4 @@ jobs:
         run: |
           test ! -f application/datadump.json
           echo "PASS: raw historical fixture is not committed"
+

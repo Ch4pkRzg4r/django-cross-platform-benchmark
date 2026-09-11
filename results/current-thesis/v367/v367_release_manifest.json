@@ -1,0 +1,116 @@
+{
+  "release": "v367",
+  "canonical_sha256": "710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7",
+  "canonical_shape": [
+    280,
+    39
+  ],
+  "h4_rule": "For every platform, median(D)>median(A), median(D)>median(B), and median(D)>median(C).",
+  "h4_overall_supported": false,
+  "historical_h4_overall_supported": false,
+  "platform_flags_changed": [
+    "04_aca"
+  ],
+  "figure_4_3_estimand": "100*(median_provider(cell medians)-median_self(cell medians))/median_self(cell medians)",
+  "figure_font_check": {
+    "placed_width_pt": 450,
+    "placed_height_pt": 270,
+    "minimum_font_pt": 10.5,
+    "text_objects": [
+      {
+        "text": "-0.5%",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "0.0%",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "-0.5%",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "+0.6%",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "A. Browse",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "B. Mixed",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "C. Cart-path\nGET",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "D. Burst",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "Relative goodput gap (%)",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "\u22120.6",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "\u22120.4",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "\u22120.2",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "0.0",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "0.2",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "0.4",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "0.6",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "0.8",
+        "placed_font_pt": 10.5
+      },
+      {
+        "text": "Relative callback-qualified goodput gap\nProvider-managed versus self-managed paths",
+        "placed_font_pt": 11.5
+      }
+    ]
+  },
+  "outputs": {
+    "v367_h4_descriptive.csv": {
+      "sha256": "ebc9f418f87dd251debf129d70334ffe52737412e23c64ed7c39c2550e7d4a30",
+      "bytes": 644
+    },
+    "v367_figure4_3_goodput_gap.csv": {
+      "sha256": "1f5871ad4475ed3576fb179e7c5f01dc85dadd6c0200ff48ff0924329b4e9a57",
+      "bytes": 260
+    },
+    "Figure_4_3_v367.png": {
+      "sha256": "a857359b83036520ffb42b645682baebee0c70f88e7f82db025d95e8ceb5f04e",
+      "bytes": 118588
+    },
+    "Figure_4_3_v367.pdf": {
+      "sha256": "9646e4401b5fcfb47b7637601dcf61ebc1e1856f83a8f83755d8efc8a4b1b481",
+      "bytes": 21666
+    },
+    "Figure_4_3_v367.svg": {
+      "sha256": "fc2351e15309b222597019365ca08d2adab95c98270c66e919f52d65dc5923d5",
+      "bytes": 11171
+    }
+  }
+}

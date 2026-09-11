@@ -1,56 +1,13 @@
 # Analysis directory
 
-## Current computational authority
+The current repository entry point is `python analysis/run_v367_from_repo.py` from the repository root. It invokes the unchanged v360 carrier layer and then the v367 descriptive H4 and Figure 4.3 corrections. Native Word finalisation of the v367 thesis remains pending.
 
-The repository deliberately separates the **document version** from the **computational release layers**.
+- **v330** is the byte-exact statistical base. `materialize_v330_pipeline.py` verifies source SHA-256 `d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574`.
+- **v360** retains the corrected run-level tail-ratio, completed-iteration-shortfall, p95-cell and historical rank/tie carriers. Its implementation and outputs are unchanged.
+- **v367** applies the thesis's strict H4 rule (D greater than each A/B/C median on every platform) and regenerates Figure 4.3 with labels at least 10.5 pt at final placement. It supersedes the frozen helper only for H4; the overall decision remains not supported.
 
-- Current thesis document candidate: **v366** (minor-revision closure of the independently audited v365 candidate).
-- Current repository computational entry point: **v360**.
-- Frozen validated computational base: **v330**.
+To regenerate only the affected outputs, run `python analysis/v367_release_corrections.py`. To check them, run `python verification/verify_v367_release.py`. Both accept `--master` and `--out-dir`; the canonical input must match the frozen SHA-256. For full-base/controlled-input execution, see `../REPRODUCIBILITY.md`.
 
-The byte-exact v330 calibrated end-to-end pipeline remains the frozen numerical base. Its validated source SHA-256 is:
+The 280×39 canonical data, 20 Kruskal–Wallis tests, 84 p95 Dunn/Holm comparisons, 23 significant contrasts, effect sizes and 140 bootstrap intervals remain unchanged. The v367 correction does not introduce a new statistical model or rerun requirement for the completed primary audit.
 
-`d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574`
-
-Materialise and verify that frozen source with:
-
-```bash
-python materialize_v330_pipeline.py
-```
-
-The current repository-aware entry point is:
-
-```bash
-python run_v360_from_repo.py
-```
-
-To execute the full frozen base before the v360 release layer, follow `REPRODUCIBILITY.md`; exact resource-table reproduction additionally requires the controlled 120-run Docker telemetry archive.
-
-## What each layer controls
-
-### v330 — frozen validated base
-
-The byte-exact v330 pipeline prepares/validates the analytical frame, performs the scenario-stratified inferential analysis and produces the frozen analytical/table carriers. For the frozen 280×39 input it reproduces the controlling primary inference, including:
-
-- 20 scenario-stratified Kruskal–Wallis tests;
-- 84 p95 Dunn comparisons with Holm adjustment within each scenario’s 21-pair family;
-- 23 significant p95 contrasts;
-- Cliff’s delta and rank-based eta-squared;
-- 140 percentile-bootstrap intervals using 10,000 resamples under the controlling deterministic seed schedule;
-- the validated numerical components underlying Tables 4.1–4.16 in the historical wrapper namespace.
-
-### v360 — current computational release layer
-
-`run_v360_from_repo.py` invokes `v360_release_corrections.py` over the frozen canonical data. It corrects/re-expresses a small set of independently adjudicated release carriers without rewriting the v330 base or the 280×39 dataset. These include the run-level tail-ratio carrier, completed-iteration shortfall, the p95 cell-coordinate carrier and the historical rank/tie carrier.
-
-### v366 — document/evidence alignment, not a new statistical model
-
-The v366 minor-revision closure updates document/repository provenance wording, current-figure mapping, raw-availability disclosure, the complete data dictionary and a prospective Nginx/uWSGI reproduction recipe. It does **not** introduce a new inferential pipeline and does not change the frozen primary numerical results.
-
-## Historical and focused utilities
-
-`run_analysis.py`, `phase1_validation.py`, `phase2_eda.py`, `ch4_evidence_pipeline.py`, `analyze_coldstart.py` and `analyze_timeseries.py` are retained because they document analytical development/provenance and some remain useful focused utilities. They must not be mistaken for the current repository entry point.
-
-`historical-provenance/` contains explicitly superseded analytical code. Historical BCa/bootstrap, ranking and other exploratory outputs remain provenance records where retained; they do not replace the final percentile-bootstrap convention or the controlling scenario-stratified analysis.
-
-See `../REPRODUCIBILITY.md` and `../THESIS_V366_ALIGNMENT.md` for the complete hierarchy and evidence boundaries.
+Historical utilities and `historical-provenance/` are retained for their documented roles. The frozen `_consistent_h4_supported` helper's median-of-A/B/C predicate is historical; the identically named function in `v367_release_corrections.py` is current. See `../THESIS_V367_ALIGNMENT.md` for the correction and evidence boundaries.

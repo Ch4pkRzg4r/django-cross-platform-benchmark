@@ -1,0 +1,8 @@
+platform,A_median,B_median,C_median,D_median,D_gt_A,D_gt_B,D_gt_C,supported,historical_median_ABC_rule
+01_apache_modwsgi,0.014541,0.0078705,0.01923,0.0070095,False,False,False,False,False
+02_nginx_uwsgi,0.0,0.0,0.0,0.0,False,False,False,False,False
+03_django_gunicorn,1.4e-05,0.0,0.0,0.0038135,True,True,True,True,True
+07_iis_waitress,0.0,0.0,0.0,4.6500000000000005e-05,True,True,True,True,True
+04_aca,0.000194,0.0002035,0.000148,0.0002025,True,False,True,False,True
+05_koyeb,0.0007329999999999999,0.0004625,0.000389,0.0004205,False,False,True,False,False
+06_flyio,0.001046,0.000407,0.0017245,0.0008879999999999999,False,True,False,False,False

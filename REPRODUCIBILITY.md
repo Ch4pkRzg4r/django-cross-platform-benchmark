@@ -2,7 +2,9 @@
 
 ## Current controlling computational release
 
-The **document candidate is v366**, while the current controlling **computational repository release remains v360**. v360 preserves the byte-exact validated **v330 calibrated end-to-end pipeline** as the computational base and adds a small, transparent release layer for independently adjudicated release-carrier corrections. The v366 document/repository closure does not renumber or replace that computational stack.
+The **document candidate and current correction entry point are v367**. The entry point runs the unchanged v360 carrier layer and then the v367 H4/Figure 4.3 correction layer over the byte-exact v330 statistical base. Native Word finalisation and the final PDF review are pending; this release is not a submission verdict.
+
+The v367 H4 predicate requires D to exceed **each** of A, B and C on every platform. It supersedes the frozen helper's median-of-A/B/C rule for that descriptive decision. Only Azure Container Apps' individual flag changes; overall H4 remains not supported. Figure 4.3 retains its values with all labels at least 10.5 pt at the placed size. See `THESIS_V367_ALIGNMENT.md`.
 
 The byte-exact v330 source SHA-256 remains:
 
@@ -17,18 +19,18 @@ python analysis/materialize_v330_pipeline.py
 The controlling repository entry point is:
 
 ```bash
-python analysis/run_v360_from_repo.py
+python analysis/run_v367_from_repo.py
 ```
 
-By default this validates the frozen canonical design and writes the v360 release carriers. To execute the full validated v330 base first and then the v360 release layer, use:
+By default this validates the frozen canonical design, writes the unchanged v360 carriers, then writes v367 H4 and Figure 4.3 outputs. To execute the full validated v330 base first and then both release layers, use:
 
 ```bash
-python analysis/run_v360_from_repo.py --run-v330 \
+python analysis/run_v367_from_repo.py --run-v330 \
   --docker-stats /path/to/docker_stats.zip \
   --figure-reference-dir /path/to/reference/thesis_figures
 ```
 
-The release-layer implementation is `analysis/v360_release_corrections.py`. Its release files are staged and validated before publication; the manifest hashes an explicit output list and does not hash itself or unrelated stale files.
+The retained v360 implementation is `analysis/v360_release_corrections.py`; the current correction implementation is `analysis/v367_release_corrections.py`. Run the latter directly to regenerate only the affected H4/figure outputs. Its release files are staged and validated before publication; the manifest hashes an explicit output list and does not hash itself or unrelated stale files.
 
 ## Why v360 exists
 
@@ -48,7 +50,7 @@ v360 also emits transparent **historical-namespace** carriers for:
 - completed-iteration shortfall relative to scenario-specific planned starts, explicitly separated from `dropped_iterations` and from an actual-start census;
 - the historical within-scenario rank/tie carrier formerly labelled Figure 4.13 in the wrapper namespace.
 
-These carrier filenames/numbers are computational provenance; they are **not the current v366 thesis figure numbering**. The current document crosswalk is `results/current-thesis/figure_map_v366.csv` and ends at Figure 4.8 (six continued panels).
+These carrier filenames/numbers are computational provenance; they are **not the current v367 thesis figure numbering**. The current document crosswalk is `results/current-thesis/figure_map_v367.csv` and ends at Figure 4.8 (six continued panels).
 
 ## Frozen dataset and main inference
 
@@ -119,4 +121,16 @@ See `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md` for the prec
 
 ## Current document/repository closure
 
-`THESIS_V366_ALIGNMENT.md` records the document-facing v366 authority, current figure crosswalk, PERMDISP provenance qualification, public/private fixture boundary, raw-availability boundary and Nginx prospective reproduction rule. These are provenance/reproduction corrections; they do not change the frozen primary numerical results.
+`THESIS_V367_ALIGNMENT.md` records the current corrections and 115-reference authority. `THESIS_V366_ALIGNMENT.md` retains the historical v366 authority, current figure crosswalk, PERMDISP provenance qualification, public/private fixture boundary, raw-availability boundary and Nginx prospective reproduction rule. These are provenance/reproduction corrections; they do not change the frozen primary numerical results.
+
+
+## v367 outputs and targeted verification
+
+The default v367 output directory is `.v367-run/release/`; the unchanged v360 files remain in `.v360-run/release/`. `--out-dir /path` places both layers' explicitly named files in the requested directory.
+
+- `v367_h4_descriptive.csv`: seven platform rows, A/B/C/D medians, three strict comparisons, current flag and historical-helper flag.
+- `v367_figure4_3_goodput_gap.csv`: four unchanged family-gap values derived from the canonical data.
+- `Figure_4_3_v367.png`, `.pdf`, `.svg`: regenerated 450×270 pt figure.
+- `v367_release_manifest.json`: input identity, H4 decision, figure font check and explicit output hashes.
+
+Verify the affected outputs with `python verification/verify_v367_release.py`. For an explicit output directory, pass the same `--out-dir` to generation and verification. The strict-rule check covers the ACA counterexample and equal-zero rejection; it does not rerun primary inference or bootstrap calculations.
