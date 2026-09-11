@@ -32,6 +32,7 @@ SECURITY_AND_REDACTION.md,repository documentation / provenance / closure note
 THESIS_V344_ALIGNMENT.md,thesis/repository alignment record
 THESIS_V360_ALIGNMENT.md,thesis/repository alignment record
 THESIS_V366_ALIGNMENT.md,thesis/repository alignment record
+V366_CORRECTION_REGISTER.md,repository research artefact
 analysis/README.md,analysis / release-validation code
 analysis/analyze_coldstart.py,analysis / release-validation code
 analysis/analyze_timeseries.py,analysis / release-validation code
