@@ -1,47 +1,48 @@
 # Raw Archive Availability and Reconstruction
 
-## Current submission-access state
+## Raw-data location and access
 
-The repository contains integrity manifests describing the expected historical raw campaign files and archive parts. **Those manifests are identity records; they are not evidence that every corresponding raw byte stream is currently accessible.**
+The complete retained raw k6 collection is stored in the author's [raw-data archive on Google Drive](https://drive.google.com/drive/folders/1jAqu_W0vK0bgscBe5DE6t67NCMf2Sfhd). It contains **280 canonical JSON/CSV run pairs (560 files)** for seven platforms × four scenarios × ten replications. The raw archives are stored outside GitHub; this repository provides the canonical analytical dataset, code and integrity manifests.
 
-The independent v365 full-evidence audit examined the raw archives supplied with the submission evidence. Four files (`raw_k6_280.zip`, `raw_k6_B_mixed.zip`, `raw_k6_C_checkout.zip`, and `raw_k6_D_burst.zip`) begin with ZIP local-file headers but are **truncated**: they lack a complete central directory/end-of-central-directory record and their terminal member streams are incomplete.
+Google Drive permissions govern access. If the folder requires permission, request access from the author through Google Drive. The link identifies the storage location and does not imply unrestricted public download access.
 
-Complete-prefix recovery and canonical SHA-256 matching established:
+## Multipart archive layout
 
-- **73 complete canonical run pairs** (73 JSON + 73 CSV) recoverable and identity-verified;
-- **207 of the 280 canonical run pairs unavailable** in the supplied submission evidence;
-- every recovered complete member was checked for completed DEFLATE stream, size/CRC where available and canonical raw-file hash identity;
-- malformed terminal partial members were not counted as complete runs.
+Use these two complete RAR sets in the linked folder:
 
-Recoverable complete run coverage in the supplied damaged archives was:
+| Raw format | Archive parts | Contents |
+|---|---|---|
+| JSON | `taw data  json.part001.rar` through `taw data  json.part005.rar` | 280 retained per-run JSON files |
+| CSV | `raw data excel.part001.rar` through `raw data excel.part003.rar` | 280 retained per-run CSV files; the archive name uses “excel” |
 
-- Apache + mod_wsgi: A=10, B=10, C=10, D=10;
-- Nginx + uWSGI: B=9, C=1, D=10;
-- Django + Gunicorn: D=10;
-- Azure Container Apps: D=3.
+Preserve the supplied filenames, download all parts of each required set into the same local directory, and open the first part to test and extract that set. The integrity statement here applies to the eight listed RAR volumes and their verified contents; other archive formats in the folder are not substituted for these verified sets.
 
-Other recovered same-name/pilot candidates did not add canonical matches for the missing run identities. Multipart-RAR manifests were found, but the actual historical RAR volumes were **not present in the inspected submission/recovery evidence**. Therefore the repository no longer claims that complete locally verified multipart RAR sets are presently available to a reader of this public release.
+## Verified retained-data coverage
 
-## What remains reproducible
+The integrity review read the actual archive bytes and verified:
 
-- The frozen canonical analytical dataset (`data/canonical/master_runs.csv`, 280 × 39) remains byte-identified and supports complete rerunning of the retained computational analysis.
-- The recovered 73 complete raw run pairs independently reconcile with their corresponding canonical rows and support, rather than contradict, the frozen parser-derived values.
-- Full raw-to-canonical reconstruction of all 280 retained runs **cannot be certified from the currently supplied raw bytes**.
-- The missing raw streams are an evidence-availability boundary; they are not imputed, regenerated or treated as zero.
+- all eight archive-volume sizes and SHA-256 values against the retained volume manifest;
+- all 560 per-run file sizes and SHA-256 values against `raw_files_sha256_manifest.csv`;
+- all 280 canonical run IDs, without missing, extra or duplicate retained identities;
+- the complete 7×4×10 retained design: 40 pairs per platform, 70 pairs per scenario and 10 pairs per platform–scenario cell.
 
-## Integrity manifests
+The frozen canonical dataset (`data/canonical/master_runs.csv`, 280×39) has SHA-256:
 
-The adjacent manifests retain the expected identities for historical raw files, run logs, Docker telemetry and historical archive parts. They are useful for checking a recovered file/volume **if the actual bytes are later supplied**. They must not be described as proof that the bytes are currently available.
+`710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7`
 
-## If additional historical volumes are recovered
+## Raw-to-canonical reconciliation
 
-Do not overwrite the damaged submission archives. Stage recovered volumes separately and:
+Replaying the historical JSON parser over all 280 retained JSON streams reproduced all **32 JSON-derived fields per run** at the parser's stored precision: **8,960 comparisons with no discrepancy**. Seven identity/metadata fields (`run_id`, `platform`, `scenario`, `replication`, `start_time`, `end_time`, `target_rps`) were retained from the canonical dataset and are not counted as independently reconstructed JSON fields. CSV size/hash verification is distinct from semantic replay of downstream CSV-based calculations.
 
-1. test the complete archive/container before extraction (`7z t ...` or the format-appropriate test command);
-2. extract to a disposable directory;
-3. verify every recovered raw file against `raw_files_sha256_manifest.csv`;
-4. verify naming/run-ID uniqueness and the 7 × 4 × 10 expected retained design;
-5. rerun representative and full raw-to-canonical reconciliation through the historical parser logic;
-6. record the recovered-volume hashes and custody/source in a new dated evidence register.
+## Verification of a downloaded copy
 
-No public raw-data URL or complete-raw release is claimed until those steps have succeeded for the actual bytes.
+1. Preserve the downloaded archive bytes and record their sizes and SHA-256 values.
+2. Test each complete multipart RAR set before extraction.
+3. Verify every raw file against `raw_files_sha256_manifest.csv`.
+4. Check run-ID uniqueness, JSON/CSV pairing and the 7×4×10 retained design.
+5. Replay the historical parser and compare the 32 derived fields at its stored precision.
+6. Check metadata and downstream temporal/statistical outputs under their respective procedures.
+
+## Interpretation boundary
+
+Complete retained raw files support checking the reported 280-run dataset. They do not, by themselves, establish a complete immutable ledger of every attempt, replacement or exclusion, identify every effective per-run runtime setting, or recreate unrecorded historical provider state. Version-specific audit records retain their historical scope; this document states the current retained-data availability and access route.

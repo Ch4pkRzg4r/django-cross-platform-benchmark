@@ -2,7 +2,13 @@
 
 Research artefacts supporting the MSc thesis **“Benchmarking and Evaluation of Traditional Web Servers and Serverless Architectures for an E-Commerce System”** by **Chapk Rzgar Mohammed Abdalla**, College of Science, University of Sulaimani (2026).
 
-> Repository status: **public source/computational research repository**. Sensitive credentials, private histories, original identifying account data, provider-private material and unrecovered heavy raw evidence are not published. See `SECURITY_AND_REDACTION.md`, `DATA_AVAILABILITY.md` and `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md`.
+> Repository status: **public source/computational research repository**. Sensitive credentials, private histories, original identifying account data, provider-private material and the heavy raw archives are not distributed as ordinary Git content. The raw archives are stored separately on Google Drive as described below. See `SECURITY_AND_REDACTION.md`, `DATA_AVAILABILITY.md` and `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md`.
+
+## Raw-data access
+
+The complete retained raw k6 collection—**280 JSON/CSV run pairs (560 files)**—is stored separately in the author's [raw-data archive on Google Drive](https://drive.google.com/drive/folders/1jAqu_W0vK0bgscBe5DE6t67NCMf2Sfhd). GitHub hosts the code, canonical analytical dataset, supplementary inputs and integrity manifests. Download access is governed by the Google Drive permissions; if access is restricted, request permission from the author through Google Drive.
+
+See `DATA_AVAILABILITY.md` for the current storage and access statement. Version-specific audit and alignment records retain their historical scope and do not supersede this current raw-data availability statement.
 
 ## Current thesis / analysis alignment
 
@@ -73,7 +79,7 @@ The targeted 279-run sensitivity excluding only `05_koyeb__C_checkout__rep08` re
 
 The repository supports inspection and computational rerunning from the frozen analytical evidence. It does **not** claim bit-for-bit re-execution of the historical managed-cloud campaign: provider-internal state, historical provider state, complete per-run deployment identity and some external transients are not reconstructible after the experiment.
 
-The current submission evidence also does **not** contain a complete intact 280-run raw-request archive. Independent recovery of the supplied damaged raw archives established **73 complete canonical JSON/CSV run pairs; 207 canonical run pairs were unavailable** in the supplied submission evidence. The repository retains expected per-file and archive-part integrity manifests, but a manifest is not evidence that the corresponding bytes are presently accessible. See `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md`.
+The complete retained raw collection comprises five JSON and three CSV RAR volumes in the Google Drive folder linked above. The integrity review verified all eight volumes and all 560 per-run files against the retained size and SHA-256 manifests, with all 280 canonical run pairs present. These raw files are stored outside GitHub. See `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md` for the archive layout, checks and access instructions.
 
 Full 120-run Linux Docker telemetry remains controlled external evidence because of size; the repository contains its integrity manifests and representative/sample material. Historical scripts remain available for provenance but are labelled historical where they are not the current executable authority.
 

@@ -6,7 +6,7 @@ path,role
 .gitignore,Preserved existing artifact; version-named releases retain historical provenance
 ARTEFACT_PROVENANCE.md,Preserved existing artifact; version-named releases retain historical provenance
 CITATION.cff,Preserved existing artifact; version-named releases retain historical provenance
-DATA_AVAILABILITY.md,Preserved existing artifact; version-named releases retain historical provenance
+DATA_AVAILABILITY.md,Current raw-data location and access documentation; Google Drive archive
 FILE_INDEX.csv,Preserved existing artifact; version-named releases retain historical provenance
 FILE_INDEX_V366.csv,Preserved existing artifact; version-named releases retain historical provenance
 FILE_INDEX_V367.csv,Preserved existing artifact; version-named releases retain historical provenance
@@ -22,7 +22,7 @@ MANIFEST_V366_SHA256.csv,Preserved existing artifact; version-named releases ret
 MANIFEST_V367_SHA256.csv,Preserved existing artifact; version-named releases retain historical provenance
 MANIFEST_V368_SHA256.csv,Current integrity manifest; self excluded
 PULL_REQUEST_V366_SUMMARY.md,Preserved existing artifact; version-named releases retain historical provenance
-README.md,v368 directly affected documentation or verification
+README.md,Current raw-data location and access documentation; Google Drive archive
 REPOSITORY_CLOSURE_V365.md,Preserved existing artifact; version-named releases retain historical provenance
 REPOSITORY_CLOSURE_V366.md,Preserved existing artifact; version-named releases retain historical provenance
 REPOSITORY_COMPLETENESS_AUDIT_V344.md,Preserved existing artifact; version-named releases retain historical provenance
@@ -32,7 +32,7 @@ REPOSITORY_FIXTURE_STATIC_TRANSFER_REVIEW_V365.md,Preserved existing artifact; v
 REPOSITORY_FIXTURE_STATIC_V2_PASS.md,Preserved existing artifact; version-named releases retain historical provenance
 REPOSITORY_GAP_SCAN_V365.md,Preserved existing artifact; version-named releases retain historical provenance
 REPOSITORY_SAFE_TRANSFER_V365.md,Preserved existing artifact; version-named releases retain historical provenance
-REPRODUCIBILITY.md,Preserved existing artifact; version-named releases retain historical provenance
+REPRODUCIBILITY.md,Current raw-data location and access documentation; Google Drive archive
 SECURITY_AND_REDACTION.md,Preserved existing artifact; version-named releases retain historical provenance
 THESIS_V344_ALIGNMENT.md,Preserved existing artifact; version-named releases retain historical provenance
 THESIS_V360_ALIGNMENT.md,Preserved existing artifact; version-named releases retain historical provenance
@@ -235,7 +235,7 @@ configuration/scenarios.json,Preserved existing artifact; version-named releases
 configuration/uwsgi.ini,Preserved existing artifact; version-named releases retain historical provenance
 data/canonical/DATA_DICTIONARY.md,Preserved existing artifact; version-named releases retain historical provenance
 data/canonical/master_runs.csv,Preserved existing artifact; version-named releases retain historical provenance
-data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md,Preserved existing artifact; version-named releases retain historical provenance
+data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md,Current raw-data location and access documentation; Google Drive archive
 data/raw-archive-manifests/archive_parts_sha256_manifest.csv,Preserved existing artifact; version-named releases retain historical provenance
 data/raw-archive-manifests/docker_stats_sha256_manifest.csv,Preserved existing artifact; version-named releases retain historical provenance
 data/raw-archive-manifests/raw_files_sha256_manifest.csv,Preserved existing artifact; version-named releases retain historical provenance

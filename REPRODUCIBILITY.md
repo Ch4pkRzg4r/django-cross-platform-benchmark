@@ -113,11 +113,11 @@ The Nginx/uWSGI retained configuration files also contain a concrete historical/
 
 ## Raw archive integrity and current availability
 
-The repository includes expected per-file integrity manifests for raw k6 streams, run logs, Docker telemetry and historical archive parts under `data/raw-archive-manifests/`. **A manifest is an identity/checking record, not proof that the corresponding bytes are currently available.**
+The complete retained raw k6 collection is stored in the author's [raw-data archive on Google Drive](https://drive.google.com/drive/folders/1jAqu_W0vK0bgscBe5DE6t67NCMf2Sfhd): **280 canonical JSON/CSV run pairs (560 files)**, distributed across five JSON and three CSV RAR volumes. GitHub contains the canonical analytical dataset and the integrity manifests under `data/raw-archive-manifests/`; the heavy raw archives are downloaded separately from Google Drive.
 
-Independent recovery of the raw archives supplied with the v365 audit established **73 complete canonical JSON/CSV run pairs; 207 canonical run pairs were unavailable** in the supplied submission evidence. The four supplied raw ZIPs were truncated; complete-prefix members that passed structural/hash checks reconciled with their corresponding canonical rows. Full raw-to-canonical reconstruction of all 280 retained runs therefore cannot be certified from the currently supplied raw bytes.
+The integrity review checked the actual bytes of all eight volumes and all 560 files against the retained sizes and SHA-256 values and reconciled the complete 7×4×10 retained design. The historical JSON parser reproduced all 32 JSON-derived fields for each retained run (8,960 comparisons); seven identity/metadata fields were retained from the canonical dataset and are not counted as independently re-derived JSON fields. Complete retained-run data do not establish a complete all-attempt ledger or reproduce unobserved historical provider state.
 
-See `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md` for the precise current state and recovery protocol.
+Google Drive permissions govern access. If the folder requires permission, request access from the author through Google Drive. See `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md` for the archive layout and verification procedure. This is the current raw-data statement; version-specific audit records retain their historical scope.
 
 ## Current document/repository closure
 
