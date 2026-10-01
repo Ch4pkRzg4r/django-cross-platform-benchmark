@@ -1,36 +1,35 @@
 # Reproducibility
 
-## Current controlling computational release
+## Current controlling release: 1 October 2026
 
-The **document candidate and current correction entry point are v367**. The entry point runs the unchanged v360 carrier layer and then the v367 H4/Figure 4.3 correction layer over the byte-exact v330 statistical base. Native Word finalisation and the final PDF review are pending; this release is not a submission verdict.
-
-The v367 H4 predicate requires D to exceed **each** of A, B and C on every platform. It supersedes the frozen helper's median-of-A/B/C rule for that descriptive decision. Only Azure Container Apps' individual flag changes; overall H4 remains not supported. Figure 4.3 retains its values with all labels at least 10.5 pt at the placed size. See `THESIS_V367_ALIGNMENT.md`.
-
-The byte-exact v330 source SHA-256 remains:
-
-`d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574`
-
-Reconstruct that validated base source with:
+The current Word set and source identities are recorded in `THESIS_2026-10-01_ALIGNMENT.md` and `documentation/thesis_alignment_2026-10-01.json`. The canonical 280×39 data and byte-exact v330 statistical base are unchanged.
 
 ```bash
-python analysis/materialize_v330_pipeline.py
+python -m pip install -r environment/requirements-analysis-v330.txt
+python analysis/run_current_thesis.py
+python verification/verify_current_thesis.py
 ```
 
-The controlling repository entry point is:
+Install Nimbus Roman (URW Base 35 fonts) to reproduce the typography of Figures 4.4 and 4.9. Font substitution changes rendered pixels without changing the data. The recorded local pixel comparison uses the installed Nimbus Roman font and the package versions in the release manifest; cross-environment byte-identical PDF/raster output is not promised.
+
+The default output is `.current-thesis-run/release/`. `--out-dir PATH` selects a different output directory. Each run stages its files and writes its manifest only after successful calculation and rendering. The output manifest hashes every generated carrier/figure but not itself.
+
+1. `base_layers/`: unchanged v360 estimands and v367 strict H4/Figure 4.3 correction.
+2. `supplement/`: 280-run and 28-cell completed-iteration shortfall, seven H4 descriptive flags and 28 scenario-specific conditional warm-cost values.
+3. `delivery_figure/`: Figure 4.4 from the 280-run carrier.
+4. `profile_panels/`: the 336-cell carrier and six Figure 4.9 panels (104 high/low markers).
+
+These are descriptive additions to the existing analysis, not new independent experiments or a composite winner. Fixed cost-model prices are the thesis's historical assumptions, not current quotations. The strict H4 decision remains supported by two configurations and not by all seven. `verification/verify_current_thesis.py` compares regenerated carriers with retained reviewed carriers, checks canonical/source identity and verifies the output manifest. It does not claim a complete historical deployment rerun.
+
+To execute the frozen v330 base before these layers, the unchanged controlled-input prerequisites still apply:
 
 ```bash
-python analysis/run_v367_from_repo.py
-```
-
-By default this validates the frozen canonical design, writes the unchanged v360 carriers, then writes v367 H4 and Figure 4.3 outputs. To execute the full validated v330 base first and then both release layers, use:
-
-```bash
-python analysis/run_v367_from_repo.py --run-v330 \
+python analysis/run_current_thesis.py --run-v330 \
   --docker-stats /path/to/docker_stats.zip \
   --figure-reference-dir /path/to/reference/thesis_figures
 ```
 
-The retained v360 implementation is `analysis/v360_release_corrections.py`; the current correction implementation is `analysis/v367_release_corrections.py`. Run the latter directly to regenerate only the affected H4/figure outputs. Its release files are staged and validated before publication; the manifest hashes an explicit output list and does not hash itself or unrelated stale files.
+This optional exact-mirror mode is not the default and was not rerun for the 1 October document wording correction. The historical 18-figure raster gate belongs to the v330 namespace, not to current Figure 4.1–4.9. Reconstruct the unchanged base alone with `python analysis/materialize_v330_pipeline.py`; expected source SHA-256 is `d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574`.
 
 ## Why v360 exists
 
@@ -50,7 +49,7 @@ v360 also emits transparent **historical-namespace** carriers for:
 - completed-iteration shortfall relative to scenario-specific planned starts, explicitly separated from `dropped_iterations` and from an actual-start census;
 - the historical within-scenario rank/tie carrier formerly labelled Figure 4.13 in the wrapper namespace.
 
-These carrier filenames/numbers are computational provenance; they are **not the current v367 thesis figure numbering**. The current document crosswalk is `results/current-thesis/figure_map_v367.csv` and ends at Figure 4.8 (six continued panels).
+These carrier filenames/numbers are computational provenance; they are **not the current thesis figure numbering**. The current document crosswalk is `results/current-thesis/figure_map_2026-10-01.csv` and ends at Figure 4.9(a–f).
 
 ## Frozen dataset and main inference
 
@@ -95,7 +94,7 @@ Final workload-script semantics are documented in `configuration/SCENARIO_AUTHOR
 
 GitHub intentionally does not duplicate the complete 120-run Docker telemetry archive as ordinary Git content. Exact reproduction of the scoped Linux resource summary therefore still requires the controlled `docker_stats.zip` evidence archive.
 
-The historical v330 wrapper also contains an 18-raster publication-copy regression dependency. Those exact historical target rasters were not all recovered in the independently audited submission evidence. Current v366 embedded figures are verified against the actual v366 document and are **not** silently substituted as byte-identical historical targets.
+The historical v330 wrapper also contains an 18-raster publication-copy regression dependency. Those exact historical target rasters were not all recovered in the independently audited submission evidence. The current embedded figures are verified against the controlling corrected Word document and are **not** silently substituted as byte-identical historical targets.
 
 ## Data-driven safeguard
 
@@ -119,10 +118,9 @@ The integrity review checked the actual bytes of all eight volumes and all 560 f
 
 Google Drive permissions govern access. If the folder requires permission, request access from the author through Google Drive. See `data/raw-archive-manifests/AVAILABILITY_AND_RECONSTRUCTION.md` for the archive layout and verification procedure. This is the current raw-data statement; version-specific audit records retain their historical scope.
 
-## Current document/repository closure
+## Current document/repository alignment
 
-`THESIS_V367_ALIGNMENT.md` records the current corrections and 115-reference authority. `THESIS_V366_ALIGNMENT.md` retains the historical v366 authority, current figure crosswalk, PERMDISP provenance qualification, public/private fixture boundary, raw-availability boundary and Nginx prospective reproduction rule. These are provenance/reproduction corrections; they do not change the frozen primary numerical results.
-
+`THESIS_2026-10-01_ALIGNMENT.md` is the current alignment record. The v366/v367/v368 alignment documents and SHA manifests are immutable historical snapshots; run their version-wide manifests at the corresponding historical commits, not against later edited README files. They do not supersede the current raw-data statement or establish the current Word file's field structure. The current Word body uses static citations and links, not the live EndNote fields recorded for v368.
 
 ## v367 outputs and targeted verification
 

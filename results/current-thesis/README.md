@@ -1,46 +1,24 @@
-# Current-thesis analytical artefacts and document crosswalk
+# Thesis analytical artefacts and document crosswalk
 
-This directory contains two deliberately different kinds of material:
+The current document-facing map is `figure_map_2026-10-01.csv`:
 
-1. the **historical v330/current-thesis wrapper namespace** retained for computational regression/provenance; and
-2. the **current v366 document-facing crosswalk** that maps the final thesis numbering without pretending that historical wrapper filenames were renamed at campaign time.
+- 4.1: relative p95 latency gap.
+- 4.2: callback-qualified goodput attainment.
+- 4.3: relative callback-qualified goodput gap (unchanged v367 renderer).
+- 4.4: completed-iteration delivery across 280 retained runs.
+- 4.5: temporal diagnostics (warm-up and post-idle).
+- 4.6: Scenario D burst-phase p95 relative to baseline.
+- 4.7: median p95 with percentile-bootstrap intervals.
+- 4.8: conditional warm-cost versus scenario-specific median p95.
+- 4.9(a–f): 336-cell scenario-specific metric profile.
 
-## Historical computational namespace
+`release-2026-10-01/` holds the reviewed descriptive CSV regression references and manifest. The current entry point regenerates these data from `data/canonical/master_runs.csv`; reference CSVs are read only by verification, never by the calculators.
 
-- `tables/` contains the validated v330 Table 4.1–4.16 CSV mirror namespace used by the frozen computational wrapper.
-- `figure_map.csv` is the historical wrapper figure map. It includes historical numbers through Figure 4.13 and must **not** be read as the current document’s figure numbering.
-- `verification/` contains frozen-input calibration/publication-asset checks for that historical wrapper namespace.
-- `analysis/v360_release_corrections.py` generates the v360 release carriers directly from the frozen canonical run-level dataset.
-
-The v360 layer supersedes the historical ratio-of-cell-medians appendix-carrier operator only and provides corrected/explicit carriers for the run-level p99/p50 estimand, completed-iteration shortfall, p95 cell coordinates and the historical rank/tie representation. It does not renumber the current thesis figures.
-
-## Current v366 document-facing map
-
-The current thesis Chapter 4 ends at **Figure 4.8**, with Figure 4.8 continued across six panels. The authoritative document-facing crosswalk is:
-
-`figure_map_v366.csv`
-
-That crosswalk identifies the current thesis caption and the retained analytical/source carrier used to check it. It does **not** relabel the historical `figure_map.csv` assets as if they had always carried the current numbers.
-
-The current document sequence is:
-
-- Figure 4.1 — relative p95 latency gap;
-- Figure 4.2 — callback-qualified goodput attainment;
-- Figure 4.3 — relative callback-qualified goodput gap;
-- Figure 4.4 — temporal diagnostics (warm-up and post-idle panels);
-- Figure 4.5 — Scenario-D burst-phase p95 relative to baseline;
-- Figure 4.6 — median p95 with final 95% percentile-bootstrap intervals;
-- Figure 4.7 — conditional warm-cost versus scenario-specific median p95;
-- Figure 4.8(a–f) — six-panel scenario-specific metric profile.
-
-The exact v366 embedded publication rasters are document-finalisation artefacts. The historical 18-raster copy gate under `verification/PUBLISHED_FIGURE_SHA256_MANIFEST.csv` remains a historical wrapper dependency and was not silently redefined as the v366 figure set.
-
-## Running the current computation
+The `tables/`, `figure_map.csv`, versioned maps and `verification/` retain historical computational/publication namespaces. Their numbering must not be substituted for the current document numbering. Historical table filenames remain unchanged for the frozen v330 regression. `v367/` retains the Figure 4.3/H4 outputs.
 
 ```bash
-python analysis/run_v360_from_repo.py
+python analysis/run_current_thesis.py
+python verification/verify_current_thesis.py
 ```
 
-Generated v360 release carriers are written to `.v360-run/release/` and include their own manifest. The byte-exact validated v330 source remains the computational base; historical scripts such as `analysis/ch4_evidence_pipeline.py` remain provenance records rather than the current release authority.
-
-See `../../REPRODUCIBILITY.md` and `../../THESIS_V366_ALIGNMENT.md`.
+Default outputs go to `.current-thesis-run/release/`; see `../../REPRODUCIBILITY.md` for scope, fonts and optional controlled-input execution.
