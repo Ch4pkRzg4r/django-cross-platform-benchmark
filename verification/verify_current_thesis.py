@@ -9,7 +9,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out-dir',type=Path)
     a=p.parse_args();repo=Path(__file__).resolve().parents[1]
     out=(a.out_dir or repo/'.current-thesis-run/release').resolve()
-    record=json.loads((repo/'documentation/thesis_alignment_2026-10-01.json').read_text())
+    record=json.loads((repo/'documentation/thesis_alignment_2026-10-02.json').read_text())
     assert digest(repo/'data/canonical/master_runs.csv')==record['canonical_sha256']
     encoded=''.join((repo/'analysis/v330-payload'/f'payload_{i:02d}.b64').read_text().strip() for i in range(1,6))
     assert hashlib.sha256(gzip.decompress(base64.b64decode(encoded))).hexdigest()==record['frozen_v330_sha256']
@@ -33,7 +33,7 @@ def main():
     assert set(h4.loc[h4.H4_descriptive_supported,'platform'])=={'03_django_gunicorn','07_iis_waitress'}
     figure_map=pd.read_csv(repo/'results/current-thesis/figure_map_2026-10-01.csv')
     assert list(figure_map.Figure)==[f'4.{i}' for i in range(1,9)]+[f'4.9{c}' for c in 'abcdef']
-    rows=list(csv.DictReader((repo/'MANIFEST_2026-10-01_SHA256.csv').open(newline='')))
+    rows=list(csv.DictReader((repo/'MANIFEST_2026-10-02_SHA256.csv').open(newline='')))
     assert len({x['path'] for x in rows})==len(rows)
     for row in rows:
         f=repo/row['path'];assert f.stat().st_size==int(row['bytes']),row['path']

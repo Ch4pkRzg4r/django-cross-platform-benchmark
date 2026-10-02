@@ -1,8 +1,8 @@
 # Reproducibility
 
-## Current controlling release: 1 October 2026
+## Current document alignment: 2 October 2026
 
-The current Word set and source identities are recorded in `THESIS_2026-10-01_ALIGNMENT.md` and `documentation/thesis_alignment_2026-10-01.json`. The canonical 280×39 data and byte-exact v330 statistical base are unchanged.
+The current Word set and source identities are recorded in `THESIS_2026-10-02_ALIGNMENT.md` and `documentation/thesis_alignment_2026-10-02.json`. The canonical 280×39 data and byte-exact v330 statistical base are unchanged.
 
 ```bash
 python -m pip install -r environment/requirements-analysis-v330.txt
@@ -29,7 +29,7 @@ python analysis/run_current_thesis.py --run-v330 \
   --figure-reference-dir /path/to/reference/thesis_figures
 ```
 
-This optional exact-mirror mode is not the default and was not rerun for the 1 October document wording correction. The historical 18-figure raster gate belongs to the v330 namespace, not to current Figure 4.1–4.9. Reconstruct the unchanged base alone with `python analysis/materialize_v330_pipeline.py`; expected source SHA-256 is `d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574`.
+This optional exact-mirror mode is not the default and was not rerun for the 1 or 2 October document wording corrections. The historical 18-figure raster gate belongs to the v330 namespace, not to current Figure 4.1–4.9. Reconstruct the unchanged base alone with `python analysis/materialize_v330_pipeline.py`; expected source SHA-256 is `d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574`.
 
 ## Why v360 exists
 
@@ -120,7 +120,7 @@ Google Drive permissions govern access. If the folder requires permission, reque
 
 ## Current document/repository alignment
 
-`THESIS_2026-10-01_ALIGNMENT.md` is the current alignment record. The v366/v367/v368 alignment documents and SHA manifests are immutable historical snapshots; run their version-wide manifests at the corresponding historical commits, not against later edited README files. They do not supersede the current raw-data statement or establish the current Word file's field structure. The current Word body uses static citations and links, not the live EndNote fields recorded for v368.
+`THESIS_2026-10-02_ALIGNMENT.md` is the current alignment record. The v366/v367/v368 alignment documents and SHA manifests are immutable historical snapshots; run their version-wide manifests at the corresponding historical commits, not against later edited README files. They do not supersede the current raw-data statement or establish the current Word file's field structure. The current Word body uses static citations and links, not the live EndNote fields recorded for v368.
 
 ## v367 outputs and targeted verification
 

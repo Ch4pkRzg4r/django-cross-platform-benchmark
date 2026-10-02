@@ -12,7 +12,7 @@ See `DATA_AVAILABILITY.md` for the current storage and access statement. Version
 
 ## Current thesis / analysis alignment
 
-The controlling document set is the **1 October 2026 corrected, identity-restored Word set**: Full, Part 1 and Part 2. The frozen canonical data and primary inference remain unchanged. The current entry point adds the reviewed 27 September descriptive carriers and the Figure 4.4 / 4.9 renderers to the preserved v360/v367 layers. See `THESIS_2026-10-01_ALIGNMENT.md` for the document identities and validation scope.
+The controlling document set is the **2 October 2026 clarified, identity-restored Word set**: Full, Part 1 and Part 2. The frozen canonical data and primary inference remain unchanged. The current entry point adds the reviewed 27 September descriptive carriers and the Figure 4.4 / 4.9 renderers to the preserved v360/v367 layers. See `THESIS_2026-10-02_ALIGNMENT.md` for the document identities and validation scope.
 
 ```bash
 python analysis/run_current_thesis.py
@@ -56,7 +56,7 @@ The targeted 279-run sensitivity excluding only `05_koyeb__C_checkout__rep08` re
 
 ## Repository structure
 
-- `THESIS_2026-10-01_ALIGNMENT.md` — current document/repository alignment and validation boundaries; versioned earlier records remain historical.
+- `THESIS_2026-10-02_ALIGNMENT.md` — current document/repository alignment and validation boundaries; versioned earlier records remain historical.
 - `REPRODUCIBILITY.md` — current entry point, unchanged v330 base, inputs and release carriers.
 - `benchmark/` — orchestrator, k6 workload scripts and parser.
 - `application/` — reviewed/sanitised benchmark-relevant Django source/runtime material.

@@ -1,0 +1,53 @@
+{
+  "release": "2026-10-02",
+  "canonical_sha256": "710b3a7a79d794425ac04254caba892419ad78f56cf4c174843e3c417c5ebde7",
+  "frozen_v330_sha256": "d4c5febbd8c778c7089f59228a696e9eb63c5aa733090e080f41a0496335b574",
+  "descriptive_carriers": [
+    "supplement/H4_seven_platform_rules.csv",
+    "supplement/delivery_shortfall_280_runs.csv",
+    "supplement/delivery_shortfall_28_cells.csv",
+    "supplement/scenario_specific_cost_28.csv",
+    "profile_panels/profile_336_cells.csv"
+  ],
+  "protected_source_sha256": {
+    "analysis/v360_release_corrections.py": "6ba4b20ae23349968c44bb7daece38e91bb4ff007c7ed4bb11359452e50882d4",
+    "analysis/v367_release_corrections.py": "a05fc442bffd6d85b0f460f78e69f5531805d20da6662198d783fb7bdc3f48e0",
+    "analysis/run_v367_from_repo.py": "edbb895fc00b368e3b9d2381655c95015bb1766cd36c3d48362b23c4022f57a4",
+    "data/supplementary/timeseries_burst_recovery.csv": "4c51eaed1582888aa023e4e7df580a7a74a1298358c93efdc92ed2d43b63cb4a"
+  },
+  "document_sha256": {
+    "Thesis_Full_Corrected.docx": "bf0b79041ce497db199bc25f0016891315a42ac286441b636042ee842270c1a4",
+    "Thesis_Part_1_Corrected.docx": "66b8d604c5881426bf18e738ced8b7a062cd1cd2ef1bea59231bd114317135ac",
+    "Thesis_Part_2_Corrected.docx": "164e67c1ee534c39dec497e27f16732af4f67245f495c35881db70fa9f1420c1"
+  },
+  "document_review_scope": "Four provenance/interpretation paragraphs updated; package, hyperlink, numerical-table and media preservation checked; local render regression and all 222 navigation targets checked. No new live benchmark, full raw replay, native Word or Turnitin test.",
+  "body_citation_structure": "Static text and hyperlinks; no live EndNote field reintroduction.",
+  "scientific_primary_values_changed": false,
+  "corrections": [
+    "Section 3.11.1 distinguishes the researcher-reported operational retest explanation from independently linked run evidence.",
+    "Section 3.17.2 retains sample-selection uncertainty without asserting a demonstrated outcome-based motive.",
+    "Section 4.3 explicitly separates the unchanged 280-run primary analysis from the unchanged archived-summary sensitivity.",
+    "Section 6.4 summarises the remaining attribution and attempt-history limits."
+  ],
+  "native_word_submission_verdict": "Not asserted",
+  "rendered_pages": {
+    "Full": 191,
+    "Part_1": 102,
+    "Part_2": 89
+  },
+  "navigation_entries_checked": 222,
+  "navigation_mismatches": 0,
+  "reviewed_regression_reference_sha256": {
+    "supplement/H4_seven_platform_rules.csv": "afb7f4d8cd73dea27b15ef43ce9dbf13e9e818459df4a6bbb89b18dc67dc7d70",
+    "supplement/delivery_shortfall_280_runs.csv": "57561bb4a9602f55ffca3b9dc32610f0efc6fbf7d497245cf172183499d02c90",
+    "supplement/delivery_shortfall_28_cells.csv": "94bccd68aefa84ae277e0a9aa326aee5c68fa3aedef2470637e6cb40bef2b498",
+    "supplement/scenario_specific_cost_28.csv": "38fe00f6df6a75dfce3107ff0ce69c2e081325ecbfc02740ddc63fa689684560",
+    "profile_panels/profile_336_cells.csv": "3da05ac8dd9295d80f428ffa9adeb03d3801d0b11526e9f6a812af44f6616bab"
+  },
+  "previous_document_alignment": "documentation/thesis_alignment_2026-10-01.json",
+  "all_tables_and_media_unchanged": true,
+  "all_citation_hyperlinks_preserved": true,
+  "primary_and_sensitivity_numbers_unchanged": true,
+  "evidence_boundary": "The operational retest explanation is not independently mapped to every replaced run. No canonical observation is reclassified, removed or replaced in this revision.",
+  "computational_reference_release": "2026-10-01"
+}
